@@ -72,7 +72,7 @@
     align-items: center;     
     justify-content: center;  
     overflow: hidden;
-    padding-bottom: 15px;         
+    padding-bottom: 10px;         
 }
 #navLogo img{
     max-width: 100%;
@@ -151,6 +151,7 @@ body,html{
     font-size: 20px;
     border: none;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: pointer;
 }
 #logBtn:hover{
     background-color: #ffd900da;
@@ -168,6 +169,7 @@ body,html{
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    cursor: pointer;
 }
 #profBtn > img{
     vertical-align: middle;
