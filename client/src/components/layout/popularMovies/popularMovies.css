@@ -1,0 +1,53 @@
+.popularMovies{
+    color: white;
+    text-align: center;
+    border: 20px solid white;
+    padding-top: 150px;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    display: flex;
+    align-items: top;
+    height: 200px;
+    padding-left: 100px;
+    padding-right: 100px;
+
+    gap: 20px;
+
+}
+.popularMovies > #movie1 img{
+    max-width: 100px;
+    display: block;
+    object-fit: contain;
+    filter: grayscale(0%);
+    transition: 0.3 ease;
+}
+.popularMovies > #movie2 img{
+    max-width: 100px;
+    display: block;
+    object-fit: contain;
+}
+.popularMovies > #movie3 img{
+    max-width: 100px;
+    display: block;
+    object-fit: contain;
+}
+.popularMovies > #movie4 img{
+    max-width: 100px;
+    display: block;
+    object-fit: contain;
+}
+.popularMovies > #movie5 img{
+    max-width: 100px;
+    display: block;
+    object-fit: contain;
+
+}
+.popularMovies > #movie6 img{
+    max-width: 100px;
+    display: block;
+    object-fit: contain;
+
+}
+.popularMovies > #movie1 img:hover{
+    filter: grayscale(100%);
+}

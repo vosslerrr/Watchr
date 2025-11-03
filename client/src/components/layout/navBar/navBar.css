@@ -1,0 +1,230 @@
+.navBar{
+    margin: 0;
+    padding: 0;
+    height: 100px;
+    width: 100%;
+    background-color:#1E1E1E;
+    align-items:center;              
+    flex-shrink: 1;
+    display:flex;
+    justify-content: space-between;
+    align-content: center;
+    
+    
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.left{
+   padding-left: 300px;
+}
+.right{
+    color: white;
+    padding-right: 400px;
+}
+.left, .right{
+    
+    gap: 10px;
+    display:flex;
+    align-items:center;
+    
+}
+.middle, .left,.right{
+   
+}
+.middle{
+    flex:1;          
+    display: flex;
+    justify-content: center;
+    min-width:0;    
+    
+}
+
+#searchBar{
+    width : 100%;
+    max-width: 800px;
+    padding:10px 12px;
+    display:flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    
+}
+
+#search-input{
+    width : 100%;
+    padding: 10px 12px;
+    height: 100%;
+    border:3px solid black;
+    border-radius:25px;
+    outline:none;
+    flex-grow: 1;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-image: url('../../../../public/search-glass.png');
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position: right;
+}
+
+#navLogo{
+    width: 160px;
+    height: 505px;
+    display: flex;
+    align-items: center;     
+    justify-content: center;  
+    overflow: hidden;
+    padding-bottom: 15px;         
+}
+#navLogo img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+}
+#dropbtn{
+    height: 39px;
+    padding: 0 12px;
+    background-color: #FFD700;
+    color: white;
+    
+    border-radius:20px;
+    font-size: 20px;
+    border: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+#menu{
+    position: relative;
+    display: inline-block;
+}
+#dropbtn > span, #dropbtn > img{
+    vertical-align: middle;
+}
+#dropdown-content{
+    width: 100%;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #FFD700;
+    z-index: 1;
+}
+#dropdown-content a{
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    
+}
+#dropdown-content a:hover{
+    background-color: black;
+}
+#menu:hover #dropdown-content{
+    border-radius: 0px 0px 20px 20px;
+    display: block;
+    
+}
+#menu:hover #dropbtn{
+    border-radius: 20px 20px 0 0;
+    background-color: #ffd900da;
+
+}
+#menu:hover #dropdown-content #watchlistOption{
+    border-radius: 0 0 18px 18px;
+}
+body{
+    background-color: #2B2B2B;
+}
+body,html{
+    margin: 0;
+    padding: 0;
+}
+#log{
+    position: relative;
+    display: inline-block;
+}
+#logBtn{
+    height: 39px;
+    padding: 0 12px;
+    background-color: #FFD700;
+    color: white;
+    
+    border-radius:25px;
+    font-size: 20px;
+    border: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+#logBtn:hover{
+    background-color: #ffd900da;
+}
+#logBtn > span, #logBtn > img{
+    vertical-align: middle;
+}
+#profBtn{
+    width: 50px;
+    height: 50px;
+    background-color: #1E1E1E;
+    border-radius: 50%;
+    border:3px solid #FFD700;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+#profBtn > img{
+    vertical-align: middle;
+}
+#profBtn:hover{
+    background-color: #2B2B2B;
+    border-color: #ffd900da;
+}
+#profBtn img{
+    width: 120%;
+    height: 120%;
+    object-fit: contain;
+    background: transparent;
+}
+#profile{
+    position: relative;
+}
+#profile-menu{
+    position: absolute;
+    top: 120%;
+    left: 110%;
+    
+    transform: translateY(-50%);
+    background: #1E1E1E;
+    border: 1px black;
+    border-radius: 12px;
+    min-width: 180px;
+    
+    z-index: 999;
+    box-shadow: 0 8px 25px black;
+}
+#profile-menu a{
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 14px;
+    font-size: 14px;
+    display: block;
+}
+#profile-menu a:hover{
+  background: #2b2b2b;
+}
+#profile-header{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 14px;
+  border-bottom: 1px solid #333;
+}
+
+#avatar-small{
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #ffd700;
+}
+
+#profile-name{
+  color: white;
+  font-weight: 600;
+}
