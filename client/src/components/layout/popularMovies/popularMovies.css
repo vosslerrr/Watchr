@@ -1,48 +1,52 @@
+html, body{
+    overflow: hidden;
+}
 .movieBar{
     display: flex;
     align-items: center;
     justify-content: center;
-    
     gap: 25px;
-    padding: 0 300px 0 200px;
+    padding: 0 320px 0 240px;
     background-color: #2B2B2B;
 }
 #popularMovies{
-    justify-content: center;
+    justify-content: flex-start;
     display: flex;
-    align-items: top;
-    border: 20px solid white;
+    align-items: flex-start;
     padding-top: 100px;
     flex-shrink: 1;
     flex-wrap: nowrap;
-    overflow: hidden;
     height: 400px;
-    gap: 20px;
+    gap: 33px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
 }
 #popularMovies > #movie1 img{
-    max-width: 215px;
+    max-width: 220px;
     display: block;
     object-fit: contain;
     filter: grayscale(0%);
     transition: 0.3 ease;
-    
 }
-
 #popularMovies > #movie1 img:hover{
     filter: grayscale(100%);
 }
-
+#popularMovies::-webkit-scrollbar{
+   display: none;
+}
 #popularMoviesLeft{
     background-color: #2B2B2B;
     border: none;
     cursor: pointer;
 }
 #popularMoviesLeft img{
-
+    
 }
 #popularMoviesRight{
     background-color: #2B2B2B;
-    border: none;
+    border:none;
     cursor: pointer;
 }
 #popularMoviesRight img{

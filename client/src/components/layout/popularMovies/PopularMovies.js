@@ -18,25 +18,37 @@ function PopularMovies(){
             .then(allDetails => setDetails(allDetails));
     }, [movies]);
 
+    const popularMoviesRef = useRef(null);
+    const scrollLeft = () => {
+        if(popularMoviesRef.current) {
+            popularMoviesRef.current.scrollLeft -= 1265;
+        }
+    }
+    const scrollRight = () => {
+        if(popularMoviesRef.current) {
+            popularMoviesRef.current.scrollLeft += 1265;
+        }
+    }
+
     return(
             <div>
                 <div className="movieBar">
                     <div id="left">
-                        <button id="popularMoviesLeft">
+                        <button id="popularMoviesLeft" onClick={scrollLeft}>
                             <img src="/left-arrow.png"></img>
                         </button>
                     </div>
-                    <div id="popularMovies">    
+                    <div id="popularMovies" ref={popularMoviesRef}>    
                         {movies.map((m, index) => (
                             <div id="movie1" key={m.id}>
                                 {details[index]?.poster_path?.[0] && (
-                                <a href="/movies"><img src={`https://image.tmdb.org/t/p/w500${details[index].poster_path}`}/></a>
+                                <a href={`https://themoviedb.org/movie/${details[index].id}`}><img src={`https://image.tmdb.org/t/p/w500${details[index].poster_path}`}/></a>
                                 )}
                             </div>
                         ))}   
                     </div>
                     <div id="right">
-                        <button id="popularMoviesRight">
+                        <button id="popularMoviesRight" onClick={scrollRight}>
                             <img src="/right-arrow.png"></img>
                         </button>
                     </div>

@@ -84,7 +84,7 @@
     height: 39px;
     padding: 0 12px;
     background-color: #FFD700;
-    color: white;
+    color: black;
     
     border-radius:20px;
     font-size: 20px;
@@ -108,7 +108,7 @@
     z-index: 1;
 }
 #dropdown-content a{
-    color: white;
+    color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -116,6 +116,7 @@
 }
 #dropdown-content a:hover{
     background-color: black;
+    color: white;
 }
 #menu:hover #dropdown-content{
     border-radius: 0px 0px 20px 20px;
@@ -145,7 +146,7 @@ body,html{
     height: 39px;
     padding: 0 12px;
     background-color: #FFD700;
-    color: white;
+    color: black;
     
     border-radius:25px;
     font-size: 20px;
