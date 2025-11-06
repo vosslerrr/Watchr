@@ -8,7 +8,7 @@ dotenv.config({path: "../.env"});
 const router = express.Router();
 
 router.post("/register", async(req,res) => {
-    const { usernam, password } = req.body;
+    const { username, password } = req.body;
 
     try {
         let user = await User.findOne({ username });
@@ -29,7 +29,10 @@ router.post("/register", async(req,res) => {
 
         jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 3600 }, 
         (err, token) => {
-            if (err) throw err;
+            if (err) {
+                console.log(err);
+                throw err;
+            }
             res.json({ token });
         });
     } catch (err) {
@@ -58,7 +61,7 @@ router.post('/login', async (req, res) => {
             }
         };
 
-        jwt.sign(payload, config.jwtSecret, { expiresIn: 3600 }, 
+        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 3600 }, 
         (err, token) => {
             if (err) throw err;
             res.json({ token });
