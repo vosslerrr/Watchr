@@ -1,7 +1,7 @@
 import NavBar from "../layout/NavBar/NavBar"
 import UserInfo from "../layout/UserInfo/UserInfo";
 
-function Profile() {
+function ProfilePage() {
   return (
     <div>
       <NavBar />
@@ -10,4 +10,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default ProfilePage;
