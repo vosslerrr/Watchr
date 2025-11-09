@@ -23,7 +23,7 @@ router.get("/popular", async (req, res) => {
 
 router.get("/upcoming", async (req, res) => {
   const response = await fetch(
-    "https://api.themoviedb.org/3/movie/upcoming",
+    "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&with_original_language=en&region=US&sort_by=popularity.desc&with_release_type=2&primary_release_date.gte=2025-12-01&primary_release_date.lte=2026-02-01",
     {
       headers: {
         accept: "application/json",

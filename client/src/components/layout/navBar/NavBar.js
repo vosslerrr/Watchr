@@ -57,7 +57,7 @@ function NavBar(){
                 </button>
                 </div>
 
-                <div id="profile" ref={profRef}>
+            <div id="profile" ref={profRef}>
                 <button
                     id="profBtn"
                     type="button"
@@ -71,13 +71,13 @@ function NavBar(){
 
                 {isOpen && (
                     <div id="profile-menu">
-                    <div id="profile-header">
-                        <div id="avatar-small"></div>
-                        <div id="profile-name">Deeb111</div>
-                    </div>
-                    <a href="/profile">Profile</a>
-                    <a href="/settings">Settings</a>
-                    <a href="/logout">Sign Out</a>
+                        <div id="profile-header">
+                            <div id="avatar-small"></div>
+                            <div id="profile-name">Username</div>
+                        </div>
+                        <a href="/profile">Profile</a>
+                        <a href="/settings">Settings</a>
+                        <a href="/logout" id="logoutButton">Sign Out</a>
                     </div>
                 )}
                 </div>
