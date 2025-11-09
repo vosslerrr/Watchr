@@ -15,6 +15,17 @@
     top: 50px;
     left: 50px;
     height: 150px;
+    width: 150px;
+    border-radius: 100px;
+    border-style: solid;
+    border-width: 2px;
+    color: transparent;
+    transition: border-color 0.3s ease-in-out;
+}
+
+#avatar:hover{
+    border-color: white;
+    cursor: pointer;
 }
 
 #username{
