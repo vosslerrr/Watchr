@@ -6,8 +6,6 @@ import UpcomingMovies from '../layout/upcomingMovies/UpcomingMovies';
 import FriendReviews from "../layout/friendReviews/FriendReviews";
 
 function HomePage() {
-   
-
   return (
     <div>
       <NavBar />
