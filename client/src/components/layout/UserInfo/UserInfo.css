@@ -1,0 +1,91 @@
+.UserInfo{
+    background-color:#1E1E1E;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 25px;
+    color: white;
+    margin: 50px 250px 50px 250px;
+    height: 250px;
+    width: 1350px;
+}
+
+#avatar{
+    position: relative;
+    top: 50px;
+    left: 50px;
+    height: 150px;
+    width: 150px;
+    border-radius: 100px;
+    border-style: solid;
+    border-width: 2px;
+    color: transparent;
+    transition: border-color 0.3s ease-in-out;
+}
+
+#avatar:hover{
+    border-color: white;
+    cursor: pointer;
+}
+
+#username{
+    position: relative;
+    left: 75px;
+    bottom: 15px;
+}
+
+.avgRating{
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    left: 600px;
+    border-right-style: solid;
+    border-right-width: 2px;
+    border-color: white;
+}
+
+#avgNum{
+    position: relative;
+    left: 60px;
+    bottom: 35px;
+}
+
+#avgText{
+    position: relative;
+    right: 15px;
+}
+
+.followers{
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    left: 605px;
+    border-right-style: solid;
+    border-right-width: 2px;
+    border-color: white;
+}
+
+#numFollowers{
+    position: relative;
+    left: 50px;
+    bottom: 35px;
+}
+
+#textFollowers{
+    position: relative;
+    right: 15px;
+}
+
+.following{
+    position: relative;
+    left: 610px;
+}
+
+#numFollowing{
+    position: relative;
+    left: 50px;
+    bottom: 35px;
+}
+
+#textFollowing{
+    position: relative;
+    right: 15px;
+}

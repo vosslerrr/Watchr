@@ -15,7 +15,6 @@ function NavBar(){
         }, []);
 
     return (
-
         <div className="navBar">
             <div className="left">
                 <div id="navLogo">
