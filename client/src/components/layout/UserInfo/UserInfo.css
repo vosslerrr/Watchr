@@ -3,10 +3,8 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 25px;
     color: white;
-    position: relative;
-    top: 50px;
-    left: 250px;
-    height: 300px;
+    margin: 50px 250px 50px 250px;
+    height: 250px;
     width: 1350px;
 }
 
