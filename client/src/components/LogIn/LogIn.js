@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { logInUser } from '../../utils/api';
 import './login.css';
 
-const Login = ({ setLoggedInUser }) => {
+function Login(){
     const [formData, setFormData] = useState({
         username: '',
         password: ''
@@ -15,15 +15,14 @@ const Login = ({ setLoggedInUser }) => {
 
     const onSubmit = async e => {
         e.preventDefault();
-        try {
-            const res = await logInUser(username, password);
+        const res = await logInUser(username, password);
+
+        if(res.msg == null)
+        {
             localStorage.setItem('token', res.token);
-            setLoggedInUser(username);
             setMessage('Logged in successfully');
-        } catch (err) {
-            console.error(err);
-            setMessage('Failed to login - wrong credentials');         
         }
+        else{ setMessage(res.msg); }
     };
 
     return (

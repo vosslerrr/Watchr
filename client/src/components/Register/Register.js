@@ -16,6 +16,7 @@ function Register(){
     const onSubmit = async e => {
         e.preventDefault();
         const res = await registerUser(username, password);
+        
         if(res.msg == null){ setMessage('Registered successfully'); }
         else{ setMessage(res.msg); }
     };
