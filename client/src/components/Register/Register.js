@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './register.css';
 import { registerUser } from '../../utils/api';
 
-const Register = () => {
+function Register(){
     const [formData, setFormData] = useState({
         username: '',
         password: ''
@@ -15,13 +15,9 @@ const Register = () => {
 
     const onSubmit = async e => {
         e.preventDefault();
-        try {
-            const res = await registerUser(username, password);
-            setMessage('Registered successfully');
-        } catch (err) {
-            console.error(err);
-            setMessage('Failed to register, User already exists');
-        }
+        const res = await registerUser(username, password);
+        if(res.msg == null){ setMessage('Registered successfully'); }
+        else{ setMessage(res.msg); }
     };
 
     return (
