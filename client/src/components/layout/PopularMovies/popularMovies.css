@@ -1,18 +1,17 @@
-
 html, body{
-  
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
 }
+
 .popularMoviesSection{
     background: var(--bgBody);
 }
+
 .popularHeader {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     padding: 0 320px 0 240px;
-    position: relative;  /* this is necessary for pseudo element below*/
+    position: relative; 
 }
 
 .popularHeader::after {
@@ -23,6 +22,7 @@ html, body{
     width: 64.3%;        
     border-bottom: 1px solid var(--bgText);
 }
+
 .seeAll {
     margin: 0;
     font-size: 16px;
@@ -37,15 +37,16 @@ html, body{
     color: var(--bgText);
     text-decoration: underline;
 }
+
 .popularTitle{
     margin: 24px 0 12px;
     font-size: 28px;
     font-weight: 700;
     color: var(--bgText);
     line-height: 1.2;
-    padding-left: 60px;
-    
+    padding-left: 60px;   
 }
+
 .movieBar{
     display: flex;
     align-items: center;
@@ -94,16 +95,8 @@ html, body{
     cursor: pointer;
 }
 
-#popularMoviesLeft img{
-    
-}
-
 #popularMoviesRight{
     background-color: var(--bgBody);
     border:none;
     cursor: pointer;
-}
-
-#popularMoviesRight img{
-
 }

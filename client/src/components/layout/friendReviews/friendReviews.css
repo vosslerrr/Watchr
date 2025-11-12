@@ -1,16 +1,19 @@
 body{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
 .welcomeHeader{
     margin-top: 70px;
     margin-bottom: 40px;
 }
+
 #welcomeMessage{
     position: relative;
     left: 36%;
     color: var(--text);
     font-size: 35px;
 }
+
 #welcomeMessage a{
     text-decoration: none;
     color: var(--bgGold);
