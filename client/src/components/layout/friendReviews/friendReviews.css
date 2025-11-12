@@ -9,7 +9,7 @@ body{
 
 #welcomeMessage{
     position: relative;
-    left: 36%;
+    left: 32%;
     color: var(--text);
     font-size: 35px;
 }

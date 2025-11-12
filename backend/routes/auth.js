@@ -23,11 +23,14 @@ router.post("/register", async(req,res) => {
     await user.save();
 
     const payload = {
-        user: { id: user.id }
+        user: { 
+            id: user._id,
+            username: user.username 
+        }
     };
 
-    jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h" }, 
-    (token) => { res.json({ token }); });
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h" }); 
+    res.json({ token });
 });
 
 router.post('/login', async (req,res) => {
@@ -44,11 +47,14 @@ router.post('/login', async (req,res) => {
     }
 
     const payload = {
-        user: { id: user.id }
+        user: { 
+            id: user._id,
+            username: user.username 
+        }
     };
 
-    jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h" }, 
-    (token) => { res.json({ token }); });
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h" }); 
+    res.json({ token });
 });
 
 export default router;

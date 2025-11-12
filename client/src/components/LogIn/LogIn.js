@@ -16,11 +16,11 @@ function Login(){
     const onSubmit = async e => {
         e.preventDefault();
         const res = await logInUser(username, password);
-
+        
         if(res.msg == null)
         {
             localStorage.setItem('token', res.token);
-            setMessage('Logged in successfully');
+            window.location.href = '/';
         }
         else{ setMessage(res.msg); }
     };
