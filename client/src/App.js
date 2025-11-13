@@ -5,6 +5,7 @@ import Home from './components/HomePage/HomePage';
 import ProfilePage from './components/ProfilePage/ProfilePage'
 import Register from './components/Register/Register'
 import Login from "./components/LogIn/LogIn";
+import LoggedInRoutes from './components/Logged In/LoggedInRoutes';
 
 function App() {
     const [user, setUser] = useState(null);
@@ -27,13 +28,7 @@ function App() {
     return(
         <>
         {user ? (
-           <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/profile/:username" element={<ProfilePage />} />
-                <Route path="/settings" element={<Register />} /> 
-                <Route path="/logout" element={<Login />} />
-                <Route path="*" element={<h1>404 Not Found</h1>} />
-            </Routes>
+           <LoggedInRoutes />
         ) : (
            <Routes>
                 <Route path="/" element={<Home />} />
