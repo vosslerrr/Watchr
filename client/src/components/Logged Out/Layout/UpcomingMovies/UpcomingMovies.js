@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
-import './popularMovies.css';
-import { getMovieDetails, getPopularMovies } from "../../../utils/api";
+import './upcomingMovies.css';
+import { getMovieDetails, getUpcomingMovies } from '../../../../utils/api';
 
-function PopularMovies(){
+function UpcomingMovies(){
     const [movies, setMovies] = useState([]);
     const [details, setDetails] = useState([]);
   
     useEffect(() => {
-        getPopularMovies()
+        getUpcomingMovies()
             .then(data => setMovies(data.results));
     }, []);
 
@@ -18,32 +18,32 @@ function PopularMovies(){
             .then(allDetails => setDetails(allDetails));
     }, [movies]);
 
-    const popularMoviesRef = useRef(null);
+    const upcomingMoviesRef = useRef(null);
     const scrollLeft = () => {
-        if(popularMoviesRef.current) {
-            popularMoviesRef.current.scrollLeft -= 1265;
+        if(upcomingMoviesRef.current) {
+            upcomingMoviesRef.current.scrollLeft -= 1265;
         }
     }
     const scrollRight = () => {
-        if(popularMoviesRef.current) {
-            popularMoviesRef.current.scrollLeft += 1265;
+        if(upcomingMoviesRef.current) {
+            upcomingMoviesRef.current.scrollLeft += 1265;
         }
     }
 
     return(
-            <section className="popularMoviesSection">
-                <div className="popularHeader">
-                    <h2 className="popularTitle">Popular Movies</h2>
-                    <a href="/movies" className="seeAll">SEE ALL</a>
+            <section className="upcomingMoviesSection">
+                <div className="upcomingHeader">
+                    <h2 className="upcomingTitle">Upcoming Movies</h2>
+                    <a href="/movies" className="seeAllupcoming">SEE ALL</a>
                     
                 </div>
-                <div className="movieBar">
+                <div className="upcomingMovieBar">
                     <div id="left">
-                        <button id="popularMoviesLeft" onClick={scrollLeft}>
+                        <button id="upcomingMoviesLeft" onClick={scrollLeft}>
                             <img src="/left-arrow.png"></img>
                         </button>
                     </div>
-                    <div id="popularMovies" ref={popularMoviesRef}>    
+                    <div id="upcomingMovies" ref={upcomingMoviesRef}>    
                         {movies.map((m, index) => (
                             <div id="movie1" key={m.id}>
                                 {details[index]?.poster_path?.[0] && (
@@ -53,7 +53,7 @@ function PopularMovies(){
                         ))}   
                     </div>
                     <div id="right">
-                        <button id="popularMoviesRight" onClick={scrollRight}>
+                        <button id="upcomingMoviesRight" onClick={scrollRight}>
                             <img src="/right-arrow.png"></img>
                         </button>
                     </div>
@@ -61,4 +61,4 @@ function PopularMovies(){
             </section>
     );
 }
-export default PopularMovies;
+export default UpcomingMovies;

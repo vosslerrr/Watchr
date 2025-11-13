@@ -2,7 +2,7 @@ import NavBar from "../Layout/NavBar/NavBar";
 import UserInfo from "../Layout/UserInfo/UserInfo";
 import UserReviews from "../Layout/UserReviews/UserReviews";
 
-function ProfilePage() {
+function InProfilePage() {
   return (
     <div>
       <NavBar />
@@ -12,4 +12,4 @@ function ProfilePage() {
   );
 }
 
-export default ProfilePage;
+export default InProfilePage;

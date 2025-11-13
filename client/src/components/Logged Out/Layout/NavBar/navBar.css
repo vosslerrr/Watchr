@@ -74,7 +74,7 @@ body,html{
     outline:none;
     flex-grow: 1;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-image: url('../../../../public/search-glass.png');
+    background-image: url('../../../../../public/search-glass.png');
     background-repeat: no-repeat;
     background-size: 30px 30px;
     background-position: right;
