@@ -76,7 +76,10 @@ function NavBar(){
                         </div>
                         <a href="/profile">Profile</a>
                         <a href="/settings">Settings</a>
-                        <a href="/logout" id="logoutButton">Sign Out</a>
+                        <a onClick={(e) => {
+                            localStorage.removeItem("token");
+                            window.location.href='/';
+                        }} id="logoutButton">Sign Out</a>
                     </div>
                 )}
                 </div>
