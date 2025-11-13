@@ -4,7 +4,7 @@ import './friendReviews.css';
 function FriendReviews(){
     return(
         <div className="welcomeHeader">
-            <span id="welcomeMessage"><a href="">Sign In/Register</a> to See Your Friend's Reviews</span>
+            <span id="welcomeMessage"> Welcome Back</span>
         </div>
     );
 }

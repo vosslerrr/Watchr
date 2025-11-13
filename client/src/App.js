@@ -1,4 +1,3 @@
-import { Routes, Route } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { jwtDecode } from "jwt-decode";
 import LoggedInRoutes from './components/Logged In/LoggedInRoutes';

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { logInUser } from '../../utils/api';
+import { logInUser } from '../../../utils/api';
 import './login.css';
 
-function Login(){
+function LogIn(){
     const [formData, setFormData] = useState({
         username: '',
         password: ''
@@ -38,4 +38,4 @@ function Login(){
     );
 };
 
-export default Login;
+export default LogIn;
