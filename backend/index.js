@@ -18,4 +18,4 @@ mongoose.connect(process.env.MONGO_URI)
 app.use("/routes/tmdb", tmdbRoutes);
 app.use("/routes/auth", authRoutes);
 
-app.listen(5000, '0.0.0.0', () => console.log("Server running at port 5000"));
+app.listen(5000, "0.0.0.0", () => console.log("Server running at port 5000"));
