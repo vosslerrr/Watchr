@@ -33,7 +33,7 @@ router.get("/upcoming", async (req, res) => {
 
     const data = (await response).data;
     res.json(data);
-})
+});
 
 router.get("/:movie_id/details", async (req, res) => {
     const { movie_id } = req.params;
