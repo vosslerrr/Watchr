@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { logInUser } from '../../../utils/EC2api';
+import { logInUser } from '../../../utils/api'; //change back to EC2api when finished testing
 import './login.css';
 
 function LogIn(){
