@@ -1,4 +1,4 @@
-import NavBar from "../layout/NavBar/NavBar"
+import NavBar from "../layout/NavBar/NavBar";
 import UserInfo from "../layout/UserInfo/UserInfo";
 import UserReviews from "../layout/UserReviews/UserReviews";
 
