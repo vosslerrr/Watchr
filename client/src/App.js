@@ -17,6 +17,7 @@ function App() {
             });
             } catch (err) {
                 localStorage.removeItem("token");
+                localStorage.removeItem("username");
             }
         }
     }, []);
