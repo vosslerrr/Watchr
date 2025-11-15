@@ -1,21 +1,20 @@
-
-html, body{
-  
+html, body{ 
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 
+.upcomingMoviesSection{
+    background: var(--bgBody);   
 }
-.popularMoviesSection{
-    background: var(--bgBody);
-}
-.popularHeader {
+
+.upcomingHeader {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     padding: 0 320px 0 240px;
-    position: relative;  /* this is necessary for pseudo element below*/
+    position: relative;
 }
 
-.popularHeader::after {
+.upcomingHeader::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -23,7 +22,8 @@ html, body{
     width: 64.3%;        
     border-bottom: 1px solid var(--bgText);
 }
-.seeAll {
+
+.seeAllupcoming {
     margin: 0;
     font-size: 16px;
     font-weight: 600;
@@ -33,20 +33,21 @@ html, body{
     margin-right: 70px;
 }
 
-.seeAll:hover {
+.seeAllupcoming:hover {
     color: var(--bgText);
     text-decoration: underline;
 }
-.popularTitle{
+
+.upcomingTitle{
     margin: 24px 0 12px;
     font-size: 28px;
     font-weight: 700;
     color: var(--bgText);
     line-height: 1.2;
     padding-left: 60px;
-    
 }
-.movieBar{
+
+.upcomingMovieBar{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,7 +56,7 @@ html, body{
     background-color: var(--bgBody);
 }
 
-#popularMovies{
+#upcomingMovies{
     justify-content: flex-start;
     display: flex;
     align-items: flex-start;
@@ -72,7 +73,7 @@ html, body{
     padding-top: 0;
 }
 
-#popularMovies > #movie1 img{
+#upcomingMovies > #movie1 img{
     max-width: 220px;
     display: block;
     object-fit: contain;
@@ -80,30 +81,22 @@ html, body{
     transition: 0.3 ease;
 }
 
-#popularMovies > #movie1 img:hover{
+#upcomingMovies > #movie1 img:hover{
     filter: grayscale(100%);
 }
 
-#popularMovies::-webkit-scrollbar{
+#upcomingMovies::-webkit-scrollbar{
    display: none;
 }
 
-#popularMoviesLeft{
+#upcomingMoviesLeft{
     background-color: var(--bgBody);
     border: none;
     cursor: pointer;
 }
 
-#popularMoviesLeft img{
-    
-}
-
-#popularMoviesRight{
+#upcomingMoviesRight{
     background-color: var(--bgBody);
     border:none;
     cursor: pointer;
-}
-
-#popularMoviesRight img{
-
 }

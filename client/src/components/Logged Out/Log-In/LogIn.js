@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './register.css';
-import { registerUser } from '../../utils/EC2api';
+import { logInUser } from '../../../utils/EC2api';
+import './login.css';
 
-function Register(){
+function LogIn(){
     const [formData, setFormData] = useState({
         username: '',
         password: ''
@@ -15,23 +15,27 @@ function Register(){
 
     const onSubmit = async e => {
         e.preventDefault();
-        const res = await registerUser(username, password);
+        const res = await logInUser(username, password);
         
-        if(res.msg == null){ setMessage('Registered successfully'); }
+        if(res.msg == null)
+        {
+            localStorage.setItem('token', res.token);
+            window.location.href = '/';
+        }
         else{ setMessage(res.msg); }
     };
 
     return (
         <div className="auth-form">
-            <h2>Register</h2>
+            <h2>Login</h2>
             <form onSubmit={onSubmit}>
                 <input type="text" placeholder="Username" name="username" value={username} onChange={onChange} required />
                 <input type="password" placeholder="Password" name="password" value={password} onChange={onChange} required />
-                <button type="submit">Register</button>
+                <button type="submit">Login</button>
             </form>
             <p className="message">{message}</p>
         </div>
     );
 };
 
-export default Register;
+export default LogIn;
