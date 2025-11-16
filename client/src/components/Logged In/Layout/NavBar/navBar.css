@@ -13,11 +13,6 @@ body{
     background-color: var(--bgBody);
 }
 
-body,html{
-    margin: 0;
-    padding: 0;
-}
-
 .navBar{
     margin: 0;
     padding: 0;
