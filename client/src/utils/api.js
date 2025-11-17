@@ -30,3 +30,8 @@ export async function registerUser(username, password){
     });
     return res.json();
 }
+
+export async function getUserDetails(username){
+    const res = await fetch(`http://localhost:5000/routes/user/${username}/details`);
+    return res.json();
+}

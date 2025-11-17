@@ -8,8 +8,7 @@ router.get("/:username/details", async(req, res) => {
 
     let user = await User.findOne({ username });
 
-    console.log(user.data);
-    res.json({ user });
+    res.send(user);
 });
 
 export default router;
