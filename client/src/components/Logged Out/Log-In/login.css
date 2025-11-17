@@ -36,3 +36,9 @@
     margin-top: 10px;
     color: green;
 }
+
+#registerMessage {
+    position: relative;
+    left: 825px;
+    top: 10px;
+}

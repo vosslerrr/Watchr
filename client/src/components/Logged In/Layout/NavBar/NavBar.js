@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import './navBar.css';
 
 function NavBar(){
+    const username = localStorage.getItem("username");
     const [isOpen, setIsOpen] = useState(false);
     const profRef = useRef(null);
     useEffect(() => {
@@ -72,9 +74,9 @@ function NavBar(){
                     <div id="profile-menu">
                         <div id="profile-header">
                             <div id="avatar-small"></div>
-                            <div id="profile-name">Username</div>
+                            <div id="profile-name">{username}</div>
                         </div>
-                        <a href="/profile">Profile</a>
+                        <Link to={`/${username}`}>Profile</Link>
                         <a href="/settings">Settings</a>
                         <a onClick={(e) => {
                             localStorage.removeItem("token");
