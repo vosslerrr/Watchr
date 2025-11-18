@@ -1,9 +1,10 @@
 import "./UserInfo.css"
 import React, { useState, useEffect } from 'react';
 import { getUserDetails } from "../../../../utils/api";
+import { useParams } from "react-router-dom";
 
 function UserInfo(){
-    const username = localStorage.getItem("username");
+    const { username } = useParams();
     const [numFollowers, setNumFollowers] = useState('');
     const [numFollowing, setNumFollowing] = useState('');
     

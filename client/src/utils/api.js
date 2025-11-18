@@ -13,6 +13,11 @@ export async function getMovieDetails(movie_id){
     return res.json();
 }
 
+export async function getMovieCredits(movie_id){
+    const res = await fetch(`http://localhost:5000/routes/tmdb/${movie_id}/credits`);
+    return res.json();
+}
+
 export async function logInUser(username, password){
     const res = await fetch("http://localhost:5000/routes/auth/login", {
         method: "POST",

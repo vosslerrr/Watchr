@@ -54,4 +54,20 @@ router.get("/:movie_id/details", async (req, res) => {
     res.json(data);
 });
 
+router.get("/:movie_id/credits", async (req, res) => {
+    const { movie_id } = req.params;
+    const response = axios.get(
+        `https://api.themoviedb.org/3/movie/${movie_id}/credits`,
+        {
+            headers: {
+                accept: "application/json",
+                Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`
+            }
+        }
+    );
+
+    const data = (await response).data;
+    res.json(data);
+});
+
 export default router;
