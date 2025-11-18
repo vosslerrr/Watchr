@@ -13,14 +13,8 @@ body{
     background-color: var(--bgBody);
 }
 
-body,html{
-    margin: 0;
-    padding: 0;
-}
-
 .navBar{
-    margin: 0;
-    padding: 0;
+ 
     height: 100px;
     width: 100%;
     background-color: #1E1E1E;
@@ -258,4 +252,7 @@ body,html{
 #profile-name{
   color: var(--text);
   font-weight: 600;
+}
+#logoutButton{
+    cursor: pointer;
 }

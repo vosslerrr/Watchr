@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import './popularMovies.css';
-import { getMovieDetails, getPopularMovies } from '../../../../utils/EC2api';
+import { getMovieDetails, getPopularMovies } from '../../../../utils/api';
+import { Link } from "react-router-dom";
 
 function PopularMovies(){
     const [movies, setMovies] = useState([]);
@@ -47,7 +48,7 @@ function PopularMovies(){
                         {movies.map((m, index) => (
                             <div id="movie1" key={m.id}>
                                 {details[index]?.poster_path?.[0] && (
-                                <a href={`https://themoviedb.org/movie/${details[index].id}`}><img src={`https://image.tmdb.org/t/p/w500${details[index].poster_path}`}/></a>
+                                <Link to={`/${details[index].id}`}><img src={`https://image.tmdb.org/t/p/w500${details[index].poster_path}`}/></Link>
                                 )}
                             </div>
                         ))}   
