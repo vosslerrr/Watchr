@@ -1,5 +1,5 @@
 import NavBar from '../Layout/NavBar/NavBar';
-import FriendReviews from '../Layout/FriendReviews/FriendReviews';
+import WelcomeMessage from '../Layout/WelcomMessage/WelcomeMessage';
 import PopularMovies from '../../Layout/PopularMovies/PopularMovies';
 import UpcomingMovies from '../../Layout/UpcomingMovies/UpcomingMovies';
 
@@ -7,7 +7,7 @@ function OutHomePage() {
     return (
         <div>
             <NavBar />
-            <FriendReviews />
+            <WelcomeMessage />
             <PopularMovies />
             <UpcomingMovies />
         </div>

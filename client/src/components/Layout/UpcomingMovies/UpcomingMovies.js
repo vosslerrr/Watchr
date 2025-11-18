@@ -44,13 +44,19 @@ function UpcomingMovies(){
                         </button>
                     </div>
                     <div id="upcomingMovies" ref={upcomingMoviesRef}>    
-                        {movies.map((m, index) => (
-                            <div id="movie1" key={m.id}>
-                                {details[index]?.poster_path?.[0] && (
-                                <a href={`https://themoviedb.org/movie/${details[index].id}`}><img src={`https://image.tmdb.org/t/p/w500${details[index].poster_path}`}/></a>
-                                )}
-                            </div>
-                        ))}   
+                        {movies.map((m, index) => {
+                            const poster = details[index]?.poster_path;
+
+                            return(
+                                poster ? (
+                                    <div id="movie1" key={m.id}>
+                                        <a href={`https://themoviedb.org/movie/${details[index].id}`}>
+                                            <img src={`https://image.tmdb.org/t/p/w500${poster}`}/>
+                                        </a>
+                                    </div>
+                                ) : null
+                            );
+                        })}
                     </div>
                     <div id="right">
                         <button id="upcomingMoviesRight" onClick={scrollRight}>
