@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import './upcomingMovies.css';
-import { getMovieDetails, getUpcomingMovies } from '../../../../utils/EC2api';
+import { getMovieDetails, getUpcomingMovies } from '../../../utils/api'; //change later
 
 function UpcomingMovies(){
     const [movies, setMovies] = useState([]);
