@@ -13,6 +13,11 @@ export async function getMovieDetails(movie_id){
     return res.json();
 }
 
+export async function getCredits(movie_id) {
+    const res = await fetch(`http://localhost:5000/routes/tmdb/${movie_id}/credits`);
+    return res.json();
+}
+
 export async function logInUser(username, password){
     const res = await fetch("http://localhost:5000/routes/auth/login", {
         method: "POST",
@@ -27,6 +32,15 @@ export async function registerUser(username, password){
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
+    });
+    return res.json();
+}
+
+export async function postUserReview(username, movie_id, reviewPara, rating){
+    const res = await fetch(`http://localhost:5000/routes/user/newreview/${username}/${movie_id}`, {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reviewPara, rating })
     });
     return res.json();
 }

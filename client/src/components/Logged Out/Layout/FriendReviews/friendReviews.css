@@ -2,24 +2,24 @@ body{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.welcomeHeader{
+.outWelcomeHeader{
     margin-top: 70px;
     margin-bottom: 40px;
 }
 
-#welcomeMessage{
-    position: relative;
+#outWelcomeMessage{
+    
     left: 32%;
     color: var(--text);
     font-size: 35px;
 }
 
-#welcomeMessage a{
+#outWelcomeMessage a{
     text-decoration: none;
     color: var(--bgGold);
 }
 
-#welcomeMessage a:hover{
+#outWelcomeMessage a:hover{
     color: rgb(148, 148, 148);
     text-decoration: underline;
 }
