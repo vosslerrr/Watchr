@@ -1,0 +1,312 @@
+.moviePage {
+    display: flex;
+    margin: 150px 0 150px 300px;
+    flex-direction: row;
+    gap: 50px;
+    color: var(--text);
+    width: 100%;
+    height: 100%;
+}
+
+.moviePoster #movieImage {
+    width: 369px;
+    flex-shrink: 0;
+    border-radius: 8px;
+}
+
+.movieInfo {
+    flex: 1;
+    font-size: 20px;
+    position: relative;
+}
+
+.movieInfo a {
+    font-size: 15px;
+    position: relative;
+    bottom: 10px;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+.movieInfo #movieDetails {
+    display: block;
+    max-width: 400px;
+    overflow-y: scroll;
+    height: 100px;
+    padding-right: 10px;
+}
+
+#movieDetails::-webkit-scrollbar {
+    width: 8px;
+}
+
+#movieDetails::-webkit-scrollbar-track {
+    border-radius: 4px;
+}
+
+#movieDetails::-webkit-scrollbar-thumb {
+    background: #e2e2e288;
+    border-radius: 4px;
+}
+
+#movieDetails::-webkit-scrollbar-thumb:hover {
+    background: #e2e2e2cc;
+}
+
+.movieInfo h2 {
+    text-decoration: underline;
+}
+
+.titleRow {
+    gap: 50px;
+    display: flex;
+    width: 100%;
+}
+
+.movieTitle {
+    margin: 0;
+    color: var(--text);
+}
+
+.movieDate {
+    font-size: 20px;
+    opacity: 0.7;
+}
+
+.userReviewWrapper {
+    position: absolute;
+    top: 125px;
+    left: 500px;
+}
+
+#review-Button{
+    color: var(--bgGold);
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+#review-Button:hover{
+    color: rgb(148, 148, 148);
+}
+
+.review-Overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.review-Overlay.open{
+    display: flex;
+}
+
+.reviewConent {
+    background: var(--bgBody);
+    padding: 20px;
+    border-radius: 12px;
+    height: 400px;
+    width: 800px;
+}
+#popupImage{
+    width: 220px;
+    border-radius: 8px;
+    margin-top: 10px;
+    
+}
+
+.popupMovieTitle{
+    color: var(--bgGold);
+}
+.popupDate{
+    opacity: 0.7;
+}
+.popupTitle,
+.popupMovieTitle,
+.popupDate{
+    display: inline;
+}
+
+#reviewBox{
+    position: absolute;
+    top: 318px;
+    height: 250px;
+    width: 550px;
+    left: 790px;
+    border-radius: 8px;
+    border: #e2e2e21f;
+    font-size: 25px;
+    padding: 6px;
+    line-height: normal;  
+    vertical-align: top;   
+    resize: none;
+    
+}
+
+#reviewBox::-webkit-scrollbar {
+    width: 8px;
+    height: 2px;
+}
+
+#reviewBox::-webkit-scrollbar-track {
+    border-radius: 4px;
+}
+
+#reviewBox::-webkit-scrollbar-thumb {
+    background: #646464;
+    border-radius: 4px;
+    cursor: auto;
+}
+
+#reviewBox::-webkit-scrollbar-thumb:hover {
+    background: #525252cc;
+    
+    
+}
+#reviewBox:focus{
+    outline: none;
+}
+
+#save-Review{
+    position: absolute;
+    left: 1170px;
+    top: 610px;
+    border-radius: 6px;
+    height: 50px;
+    width: 180px;
+    background-color: var(--bgGold);
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#save-Review:hover{
+    background-color: var(--goldHover);
+    
+}
+
+#save-Review:active{
+    transform: scale(0.98)
+}
+
+#ratingInput{
+    position: absolute;
+    top: 609px;
+    left: 1080px;
+    width: 50px;
+    text-align: center;
+    height: 44px;
+    font-size: 20px;
+    color: black;
+    pointer-events: auto;
+    caret-color: transparent;
+    user-select: none;
+    border-radius: 8px;
+    
+}
+#ratingInput::-webkit-inner-spin-button,
+#ratingInput::-webkit-outer-spin-button {
+    opacity: 1;
+    pointer-events: all;
+
+}
+#ratingInput:focus{
+    outline: none;
+}
+
+#ratingInput:active{
+    transform: none;
+}
+
+.castRowWrapper {
+    position: relative;
+    width: 780px;
+}
+
+.castRow {
+    display: flex;
+    margin-top: 50px;
+    gap: 10px;
+    flex-wrap: nowrap;
+    max-width: 780px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 70px;
+    scroll-behavior: smooth;
+}
+#castName, #castMovieName{
+    display: block;
+    max-width: 100%;
+    flex-direction: column;
+    text-align: center;
+    
+}
+
+.castLeft, .castRight {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--bgBody);
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 10;
+}
+
+.castLeft {
+    left: -40px;
+}
+
+.castRight {
+    right: -40px;
+}
+
+.castRow img {
+    width: 100px;
+    border-radius: 8px 8px 0 0;
+    border-bottom: 1px solid #e2e2e288;
+}
+
+#castSpan {
+    font-size: 25px;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+#cast1 {
+    position: relative;
+    top: 45px;
+    right: 59px;
+    border: 1px solid #e2e2e288;
+    border-radius: 8px;
+    width: 100px;
+    background-color: #e2e2e21f;
+}
+
+#castName {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+#castMovieName {
+    font-size: 12px;
+    opacity: 0.5;
+}
+
+.castRow::-webkit-scrollbar {
+    height: 8px;
+}
+
+.castRow::-webkit-scrollbar-track {
+    border-radius: 4px;
+}
+
+.castRow::-webkit-scrollbar-thumb {
+    background: #e2e2e288;
+    border-radius: 4px;
+}
+
+.castRow::-webkit-scrollbar-thumb:hover {
+    background: #e2e2e2cc;
+}

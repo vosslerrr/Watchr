@@ -1,12 +1,12 @@
 import NavBar from "../Layout/NavBar/NavBar";
-import Movies from "../Layout/Movies/Movies";
+import MovieDescription from "../Layout/MovieDescription/MovieDescription";
 
 
 function InMoviePage() {
   return (
     <div>
       <NavBar />
-      <Movies />
+      <MovieDescription />
     </div>
   );
 }

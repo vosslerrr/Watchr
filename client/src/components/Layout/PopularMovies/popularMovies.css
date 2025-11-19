@@ -58,7 +58,6 @@
     justify-content: flex-start;
     display: flex;
     align-items: flex-start;
-    padding-top: 100px;
     flex-shrink: 1;
     flex-wrap: nowrap;
     height: 400px;
