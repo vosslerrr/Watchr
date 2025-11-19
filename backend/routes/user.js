@@ -12,22 +12,39 @@ router.get("/details/:username", async(req, res) => {
     res.send(user);
 });
 
-router.post("follow/:follower/:target", async(req, res) => {
+router.post("/unfollow/:follower/:target", async(req, res) => {
     const { follower, target } = req.params;
 
-    const follower_id = await User.findOne({ username: follower });
-    const target_id = await User.findOne({ username: target });
+    const followerUser = await User.findOne({ username: follower });
+    const targetUser = await User.findOne({ username: target });
 
     await User.updateOne(
-        { username: target_id._id },
-        { $addToSet: { followers: follower_id._id } }
+        { _id: targetUser._id },
+        { $pull: { followers: followerUser._id } }
     );
 
     await User.updateOne(
-        { username: follower_id._id },
-        { $addToSet: { following: target_id._id } }
+        { _id: followerUser._id },
+        { $pull: { following: targetUser._id } }
     );
-})
+});
+
+router.post("/follow/:follower/:target", async(req, res) => {
+    const { follower, target } = req.params;
+
+    const followerUser = await User.findOne({ username: follower });
+    const targetUser = await User.findOne({ username: target });
+
+    await User.updateOne(
+        { _id: targetUser._id },
+        { $addToSet: { followers: followerUser._id } }
+    );
+
+    await User.updateOne(
+        { _id: followerUser._id },
+        { $addToSet: { following: targetUser._id } }
+    );
+});
 
 router.post("/newreview/:username/:movie_id", async(req, res) => {
     const { username, movie_id } = req.params;
@@ -48,6 +65,25 @@ router.post("/newreview/:username/:movie_id", async(req, res) => {
     });
 
     await review.save();
+});
+
+router.put("/updatereview/:username/:movie_id", async(req, res) => {
+    const { username, movie_id } = req.params;
+    const { reviewPara, rating } = req.body;
+
+    await Review.findOneAndReplace(
+        { username, movie_id },
+        { reviewPara, rating },
+        { new: true }
+    );
+});
+
+router.delete("/deletereview/:username/:movie_id", async(req, res) => {
+    const { username, movie_id } = req.params;
+
+    await Review.findOneAndDelete(
+        { username, movie_id }
+    );
 });
 
 export default router;
