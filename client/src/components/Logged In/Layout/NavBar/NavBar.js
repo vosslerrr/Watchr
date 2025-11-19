@@ -77,7 +77,7 @@ function NavBar(){
                             <div id="profile-name">{username}</div>
                         </div>
                         <Link to={`/${username}`}>Profile</Link>
-                        <a href="/settings">Settings</a>
+                        <a href="/">Settings</a>
                         <a onClick={(e) => {
                             localStorage.removeItem("token");
                             window.location.href='/';

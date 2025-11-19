@@ -35,7 +35,7 @@ router.get("/upcoming", async (req, res) => {
     res.json(data);
 });
 
-router.get("/:movie_id/details", async (req, res) => {
+router.get("/details/:movie_id", async (req, res) => {
     const { movie_id } = req.params;
     const response = axios.get(
         `https://api.themoviedb.org/3/movie/${movie_id}`,
@@ -54,7 +54,7 @@ router.get("/:movie_id/details", async (req, res) => {
     res.json(data);
 });
 
-router.get("/:movie_id/credits", async (req, res) => {
+router.get("/credits/:movie_id", async (req, res) => {
     const { movie_id } = req.params;
     const response = axios.get(
         `https://api.themoviedb.org/3/movie/${movie_id}/credits`,

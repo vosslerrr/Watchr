@@ -9,12 +9,12 @@ export async function getUpcomingMovies() {
 }
 
 export async function getMovieDetails(movie_id){
-    const res = await fetch(`http://localhost:5000/routes/tmdb/${movie_id}/details`);
+    const res = await fetch(`http://localhost:5000/routes/tmdb/details/${movie_id}`);
     return res.json();
 }
 
 export async function getMovieCredits(movie_id){
-    const res = await fetch(`http://localhost:5000/routes/tmdb/${movie_id}/credits`);
+    const res = await fetch(`http://localhost:5000/routes/tmdb/credits/${movie_id}`);
     return res.json();
 }
 
@@ -37,6 +37,6 @@ export async function registerUser(username, password){
 }
 
 export async function getUserDetails(username){
-    const res = await fetch(`http://localhost:5000/routes/user/${username}/details`);
+    const res = await fetch(`http://localhost:5000/routes/user/details/${username}`);
     return res.json();
 }
