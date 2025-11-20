@@ -3,15 +3,15 @@ body{
 }
 
 .outWelcomeHeader{
+    text-align: center;
     margin-top: 70px;
     margin-bottom: 40px;
 }
 
 #outWelcomeMessage{
-    
-    left: 32%;
+    text-align: center;
     color: var(--text);
-    font-size: 35px;
+    font-size: 30px;
 }
 
 #outWelcomeMessage a{

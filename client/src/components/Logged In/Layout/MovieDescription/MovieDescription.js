@@ -68,6 +68,14 @@ function MovieDescription() {
         row.scrollLeft = Math.min(row.scrollLeft + row.clientWidth, maxScroll);
     };
 
+    const closePopup = () => {
+        setPopupOpen(false);
+        setReviewData({
+            reviewPara: "",
+            rating: "10"
+        });
+    };
+
     return (
         <div className="movieWrapper">
             <div className="moviePage">
@@ -86,6 +94,13 @@ function MovieDescription() {
                     <div className="userReviewWrapper">
                         <a href ="#" id="review-Button"onClick={() => setPopupOpen(true)}>Rate/Review</a>
                         <div className={popupOpen ? "review-Overlay open" : "review-Overlay"}>
+                            <button
+                            type="button"
+                            id="exitButton"
+                            onClick={closePopup}
+                            >
+                                x    
+                            </button>
                             <form className="reviewConent">
                                 <span className="popupTitle">You Watched: </span>
                                 <span className="popupMovieTitle">{movieTitle}</span>
@@ -99,17 +114,18 @@ function MovieDescription() {
                                     value={reviewPara} 
                                     onChange={onChange}>
                                 </textarea>
-                                <input 
-                                    type="number"
-                                    id="ratingInput"
-                                    name="rating"
-                                    min="0.5"
-                                    max="10"
-                                    step="0.5"
-                                    value={rating}
-                                    onChange={onChange}
-                                    required
-                                />
+                                <span id="ratingLabel">Rating:</span>
+                                    <input 
+                                        type="number"
+                                        id="ratingInput"
+                                        name="rating"
+                                        min="0.5"
+                                        max="10"
+                                        step="0.5"
+                                        value={rating}
+                                        onChange={onChange}
+                                        required
+                                    />
                                 <button 
                                     id="save-Review" 
                                     type="submit">
