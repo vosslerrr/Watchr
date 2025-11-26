@@ -76,7 +76,7 @@ function NavBar(){
                             <div id="avatar-small"></div>
                             <div id="profile-name">{username}</div>
                         </div>
-                        <Link to={`/${username}`}>Profile</Link>
+                        <Link to={`/user/${username}`}>Profile</Link>
                         <a href="/">Settings</a>
                         <a onClick={(e) => {
                             localStorage.removeItem("token");

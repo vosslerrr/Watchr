@@ -12,6 +12,14 @@ router.get("/details/:username", async(req, res) => {
     res.send(user);
 });
 
+router.get("/reviews/:username", async(req, res) => {
+    const { username } = req.params;
+
+    let reviews = await Review.findOne({ username });
+
+    res.send(reviews);
+});
+
 router.post("/unfollow/:follower/:target", async(req, res) => {
     const { follower, target } = req.params;
 
