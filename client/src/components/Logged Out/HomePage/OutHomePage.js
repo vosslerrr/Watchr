@@ -1,5 +1,5 @@
 import NavBar from '../Layout/NavBar/NavBar';
-import WelcomeMessage from '../Layout/WelcomMessage/WelcomeMessage';
+import WelcomeMessage from '../Layout/WelcomeMessage/WelcomeMessage';
 import PopularMovies from '../../Layout/PopularMovies/PopularMovies';
 import UpcomingMovies from '../../Layout/UpcomingMovies/UpcomingMovies';
 

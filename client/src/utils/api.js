@@ -40,3 +40,12 @@ export async function getUserDetails(username){
     const res = await fetch(`http://localhost:5000/routes/user/details/${username}`);
     return res.json();
 }
+
+export async function postUserReview(username, movie_id, reviewPara, rating){
+    const res = await fetch(`http://localhost:5000/routes/user/newreview/${username}/${movie_id}`, {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reviewPara, rating })
+    });
+    return res.json();
+}
