@@ -17,6 +17,10 @@ router.get("/reviews/:username", async(req, res) => {
 
     let reviews = await Review.findOne({ username });
 
+    if(reviews == null){
+        return res.json({ msg: "No user reviews" });
+    }
+    
     res.send(reviews);
 });
 
