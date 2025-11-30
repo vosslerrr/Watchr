@@ -21,7 +21,7 @@ function UserInfo(){
 
     return(
         <div className="UserInfo">
-            <img id="avatar" src="DOG.png" />
+            <img id="avatar" src="/user-default.png" />
             <span id="username">{username}</span>
             <span className="avgRating">
                 <span id="avgNum">9.5</span>

@@ -6,7 +6,7 @@ function FriendReviews(){
 
     return(
         <div className="welcomeHeader">
-            <span id="welcomeMessage">Welcome Back <Link to={`/${username}`}>{username}</Link></span>
+            <span id="welcomeMessage">Welcome Back <Link to={`/user/${username}`}>{username}</Link></span>
         </div>
     );
 }

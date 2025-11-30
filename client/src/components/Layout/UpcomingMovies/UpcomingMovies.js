@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import './upcomingMovies.css';
 import { getMovieDetails, getUpcomingMovies } from '../../../utils/api'; //change later
+import { Link } from "react-router-dom";
 
 function UpcomingMovies(){
     const [movies, setMovies] = useState([]);
@@ -50,9 +51,7 @@ function UpcomingMovies(){
                             return(
                                 poster ? (
                                     <div id="movie1" key={m.id}>
-                                        <a href={`https://themoviedb.org/movie/${details[index].id}`}>
-                                            <img src={`https://image.tmdb.org/t/p/w500${poster}`}/>
-                                        </a>
+                                        <Link to={`/movie/${details[index].id}`}><img src={`https://image.tmdb.org/t/p/w500${details[index].poster_path}`}/></Link>
                                     </div>
                                 ) : null
                             );
