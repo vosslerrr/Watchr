@@ -191,6 +191,13 @@
     transform: scale(0.98)
 }
 
+#ratingLabel{
+    position: absolute;
+    left: 970px;
+    top: 609px;
+    font-size: 30px;
+}
+
 #ratingInput{
     position: absolute;
     top: 609px;
@@ -218,6 +225,21 @@
 
 #ratingInput:active{
     transform: none;
+}
+
+#exitButton{
+    position: absolute;
+    left:1318px;    /*might have to change amounts*/
+    top: 234px;     /*might have to change amounts*/
+    background-color: transparent;
+    border: none;
+    color: white;
+    opacity: 0.5;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    
+    cursor: pointer;
 }
 
 .castRowWrapper {

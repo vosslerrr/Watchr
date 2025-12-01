@@ -68,6 +68,14 @@ function MovieDescription() {
         row.scrollLeft = Math.min(row.scrollLeft + row.clientWidth, maxScroll);
     };
 
+    const closePopup = () => {
+        setPopupOpen(false);
+        setReviewData({
+            reviewPara: "",
+            rating: "10"
+        });
+    };
+
     return (
         <div className="movieWrapper">
             <div className="moviePage">
