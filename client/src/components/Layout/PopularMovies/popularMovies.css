@@ -1,7 +1,3 @@
-html, body{
-    font-family: 'Trebuchet MS';
-}
-
 .popularMoviesSection{
     background: var(--bgBody);
 }

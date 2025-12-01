@@ -101,7 +101,7 @@ function MovieDescription() {
                             >
                                 x    
                             </button>
-                            <form className="reviewConent">
+                            <form className="reviewConent" onSubmit={onSubmit}>
                                 <span className="popupTitle">You Watched: </span>
                                 <span className="popupMovieTitle">{movieTitle}</span>
                                 <span className="popupDate"> ({date.slice(0,4)})</span>
@@ -126,11 +126,7 @@ function MovieDescription() {
                                         onChange={onChange}
                                         required
                                     />
-                                <button 
-                                    id="save-Review" 
-                                    type="submit">
-                                        Watchd
-                                    </button>
+                                <button id="save-Review" type="submit">Watchd</button>
                             </form>
                             
                         </div>
