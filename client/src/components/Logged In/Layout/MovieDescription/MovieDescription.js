@@ -106,6 +106,12 @@ function MovieDescription() {
                         </a>
 
                         <div className={popupOpen ? "review-Overlay open" : "review-Overlay"}>
+                            <button
+                            type="button"
+                            id="exitButton"
+                            onClick={closePopup}>
+                                x
+                            </button>
                             <form className="reviewConent" onSubmit={onSubmit}>
 
                                 <span className="popupTitle">You Watched: </span>

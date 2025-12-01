@@ -229,8 +229,8 @@
 
 #exitButton{
     position: absolute;
-    left:1318px;    /*might have to change amounts*/
-    top: 234px;     /*might have to change amounts*/
+    left:1325px;    /*might have to change amounts*/
+    top: 245px;     /*might have to change amounts*/
     background-color: transparent;
     border: none;
     color: white;
