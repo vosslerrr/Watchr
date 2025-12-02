@@ -9,7 +9,8 @@ function UserInfo(){
     const [numFollowing, setNumFollowing] = useState('');
     const [ratings, setRatings] = useState(0);
     const [count, setCount] = useState(0);
-    const [popupOpen, setPopupOpen] = useState(false);
+    const [editpopupOpen, setEditPopupOpen] = useState(false);
+    const [avatarpopupOpen, setAvatarPopupOpen] = useState(false);
     const [newusername, setNewUsername] = useState('');
     
     useEffect(() => {
@@ -33,8 +34,8 @@ function UserInfo(){
         load();
     }, []);
 
-    const closePopup = () => {
-        setPopupOpen(false);
+    const closeEditPopup = () => {
+        setEditPopupOpen(false);
         setNewUsername('');
     };
 
@@ -55,16 +56,23 @@ function UserInfo(){
 
     return(
         <div className="UserInfo">
-            <img id="avatar" src="/user-default.png" />
+            <a href="#" id="changeAvatar" onClick={() => setAvatarPopupOpen(true)}>
+                <img id="avatar" src="/user-default.png" />
+            </a>
+
+            <div className={avatarpopupOpen ? "change-avatar-open" : "change-avatar"}>
+                
+            </div>
+
             <div className="usernameLayout">
                 <span id="username">{username}</span>
-                <a href="#" id="editIcon" onClick={() => setPopupOpen(true)}>
+                <a href="#" id="editIcon" onClick={() => setEditPopupOpen(true)}>
                     <img src="/edit-icon.png"></img>
                 </a>
             </div>
 
-            <div className={popupOpen ? "edit-username-open" : "edit-username"}>
-                <button type="button" id="exitButtonUsername" onClick={closePopup}>x</button>
+            <div className={editpopupOpen ? "edit-username-open" : "edit-username"}>
+                <button type="button" id="exitButtonUsername" onClick={closeEditPopup}>x</button>
                 <form className="newUsernameForm" onSubmit={onSubmit}>
                     <input type="text" name="newusername" value={newusername} onChange={onChange} required></input>
                     <input type="submit"></input>

@@ -8,8 +8,14 @@
     display: flex;
 }
 
-#avatar{
+#changeAvatar{
     margin: 50px 0 0 50px;
+    width: 154px;
+    height: 154px;
+    border-radius: 100px;
+}
+
+#avatar{
     height: 150px;
     width: 150px;
     border-radius: 100px;
@@ -21,7 +27,6 @@
 
 #avatar:hover{
     border-color: white;
-    cursor: pointer;
 }
 
 #username{

@@ -1,6 +1,7 @@
 import express from "express";
 import User from "../models/User.js";
-import Review from "../models/Review.js"
+import Review from "../models/Review.js";
+import { put } from "@vercel/blob";
 
 const router = express.Router();
 
@@ -24,7 +25,7 @@ router.get("/reviews/:username", async(req, res) => {
     res.send(reviews);
 });
 
-router.post("/unfollow/:follower/:target", async(req, res) => {
+router.put("/unfollow/:follower/:target", async(req, res) => {
     const { follower, target } = req.params;
 
     const followerUser = await User.findOne({ username: follower });
@@ -41,7 +42,7 @@ router.post("/unfollow/:follower/:target", async(req, res) => {
     );
 });
 
-router.post("/follow/:follower/:target", async(req, res) => {
+router.put("/follow/:follower/:target", async(req, res) => {
     const { follower, target } = req.params;
 
     const followerUser = await User.findOne({ username: follower });
@@ -56,27 +57,6 @@ router.post("/follow/:follower/:target", async(req, res) => {
         { _id: followerUser._id },
         { $addToSet: { following: targetUser._id } }
     );
-});
-
-router.post("/newreview/:username/:movie_id", async(req, res) => {
-    const { username, movie_id } = req.params;
-    const { reviewPara, rating } = req.body;
-
-    const existingReview = await Review.findOne({ username, movie_id });
-
-    if(existingReview)
-    {
-        return res.json({ msg: `Movie has already been reviewed by ${username}` });
-    }
-
-    const review = new Review({
-        username,
-        movie_id,
-        reviewPara,
-        rating
-    });
-
-    await review.save();
 });
 
 router.put("/updatereview/:username/:movie_id", async(req, res) => {
@@ -111,6 +91,41 @@ router.put("/updateusername/:username/:newusername", async(req, res) => {
     );
 
     return res.json({ success: true });
+});
+
+router.post("/uploadavatar/:username", async(req, res) => {
+    const { username } = req.params;
+    const file = req.file.avatar;
+
+    const blob = await put(`avatars/${username}`, file.data, {
+        access: "public"
+    });
+
+    await User.updateOne(
+        { username },
+        { $set: { avatarURL: blob.url }}
+    );
+});
+
+router.post("/newreview/:username/:movie_id", async(req, res) => {
+    const { username, movie_id } = req.params;
+    const { reviewPara, rating } = req.body;
+
+    const existingReview = await Review.findOne({ username, movie_id });
+
+    if(existingReview)
+    {
+        return res.json({ msg: `Movie has already been reviewed by ${username}` });
+    }
+
+    const review = new Review({
+        username,
+        movie_id,
+        reviewPara,
+        rating
+    });
+
+    await review.save();
 });
 
 router.delete("/deletereview/:username/:movie_id", async(req, res) => {
