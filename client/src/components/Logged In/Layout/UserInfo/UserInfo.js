@@ -1,6 +1,6 @@
 import "./UserInfo.css"
 import React, { useState, useEffect } from 'react';
-import { getUserDetails } from "../../../../utils/api";
+import { getUserDetails } from "../../../../utils/EC2api";
 import { useParams } from "react-router-dom";
 
 function UserInfo(){
