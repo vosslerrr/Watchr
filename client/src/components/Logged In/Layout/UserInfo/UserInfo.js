@@ -1,6 +1,6 @@
 import "./UserInfo.css"
 import React, { useState, useEffect } from 'react';
-import { getUserDetails, getUserReviews } from "../../../../utils/api";
+import { getUserDetails, getUserReviews, putNewUsername } from "../../../../utils/api";
 import { useParams } from "react-router-dom";
 
 function UserInfo(){
@@ -35,20 +35,26 @@ function UserInfo(){
     return(
         <div className="UserInfo">
             <img id="avatar" src="/user-default.png" />
-            <span id="username">{username}</span>
-            <span className="avgRating">
-                <span id="avgNum">{(ratings/count).toFixed(2)}</span>
-                <img src="/rating-star.png"></img>
+            <div className="usernameLayout">
+                <span id="username">{username}</span>
+                <img id="editIcon" src="/edit-icon.png"></img>
+            </div>
+
+            <div className="avgRating">
+                <span id="avgNum">{(ratings/count).toFixed(2)}<img src="/rating-star.png"></img></span>
                 <span id="avgText">Avg Rating</span>   
-            </span>
-            <span className="followers">
+            </div>
+
+            <div className="followers">
                 <span id="numFollowers">{numFollowers}</span>
                 <span id="textFollowers">Followers</span>
-            </span>
-            <span className="following">
+            </div>
+
+            <div className="following">
                 <span id="numFollowing">{numFollowing}</span>
                 <span id="textFollowing">Following</span>
-            </span>
+            </div>
+            
         </div>
     );
 }

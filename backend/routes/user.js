@@ -90,6 +90,22 @@ router.put("/updatereview/:username/:movie_id", async(req, res) => {
     );
 });
 
+router.put("/updateusername/:username/:newusername", async(req, res) => {
+    const { username, newusername } = req.params;
+
+    const existingUsername = await User.findOne(username);
+
+    if(existingUsername){
+        return res.json({ msg: "Username taken." });
+    }
+
+    await User.findOneAndReplace(
+        { username },
+        { newusername },
+        { new: true }
+    );
+});
+
 router.delete("/deletereview/:username/:movie_id", async(req, res) => {
     const { username, movie_id } = req.params;
 
