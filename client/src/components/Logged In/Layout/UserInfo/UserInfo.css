@@ -1,6 +1,5 @@
 .UserInfo{
     background-color:#1E1E1E;
-    font-family: 'Trebuchet MS';
     font-size: 25px;
     color: white;
     margin: 50px 250px 50px 250px;
@@ -29,14 +28,48 @@
     margin: 0 0 0 20px;
 }
 
-#editIcon{
+#editIcon img{
     margin: 125px 0 0 10px;
     width: 25px;
     height: 25px;
 }
 
+.edit-username{
+    display: none;
+}
+
+.edit-username-open{
+    position: relative;
+    left: 50px;
+    top:75px;
+}
+
+.newUsernameForm{
+    background: var(--bgBody);
+    padding: 25px;
+    border-radius: 12px;
+}
+
+#exitButtonUsername{
+    position: relative;
+    top: 27px;
+    left: 255px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    opacity: 0.6;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#leftSide{
+    position: absolute;
+    left: 1100px;
+    display: flex;
+}
+
 .avgRating{
-    margin: 77px 0 0 500px;
+    margin: 77px 0 0 0;
     padding: 0 10px 0 0;
     height: 100px;
     display: flex;

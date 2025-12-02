@@ -83,9 +83,9 @@ router.put("/updatereview/:username/:movie_id", async(req, res) => {
     const { username, movie_id } = req.params;
     const { reviewPara, rating } = req.body;
 
-    await Review.findOneAndReplace(
+    await Review.findOneAndUpdate(
         { username, movie_id },
-        { reviewPara, rating },
+        { $set: { reviewPara: reviewPara, rating: rating } },
         { new: true }
     );
 });
@@ -93,17 +93,24 @@ router.put("/updatereview/:username/:movie_id", async(req, res) => {
 router.put("/updateusername/:username/:newusername", async(req, res) => {
     const { username, newusername } = req.params;
 
-    const existingUsername = await User.findOne(username);
+    const existingUsername = await User.findOne({ newusername });
 
     if(existingUsername){
         return res.json({ msg: "Username taken." });
     }
 
-    await User.findOneAndReplace(
+    await User.findOneAndUpdate(
         { username },
-        { newusername },
+        { $set: { username: newusername } },
         { new: true }
     );
+
+    await Review.updateMany(
+        { username: username },
+        { $set: { username: newusername }}
+    );
+
+    return res.json({ success: true });
 });
 
 router.delete("/deletereview/:username/:movie_id", async(req, res) => {

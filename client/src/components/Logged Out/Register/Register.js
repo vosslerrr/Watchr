@@ -17,13 +17,11 @@ function Register(){
         e.preventDefault();
         const res = await registerUser(username, password);
         
-        if(res.msg == null)
-        { 
-            localStorage.setItem('token', res.token);
-            localStorage.setItem('username', username);
-            window.location.href = '/';
-        }
-        else{ setMessage(res.msg); }
+        if(res.msg){ return setMessage(res.msg); }
+
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('username', username);
+        window.location.href = '/';
     };
 
     return (

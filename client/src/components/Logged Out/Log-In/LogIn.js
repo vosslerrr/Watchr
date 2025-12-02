@@ -17,13 +17,11 @@ function LogIn(){
         e.preventDefault();
         const res = await logInUser(username, password);
         
-        if(res.msg == null)
-        {
-            localStorage.setItem('token', res.token);
-            localStorage.setItem('username', username);
-            window.location.href = '/';
-        }
-        else{ setMessage(res.msg); }
+        if(res.msg == null){ setMessage(res.msg); }
+
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('username', username);
+        window.location.href = '/';
     };
 
     return (
