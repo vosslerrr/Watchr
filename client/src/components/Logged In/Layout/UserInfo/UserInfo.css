@@ -42,9 +42,16 @@
     border-color: white;
 }
 
+.avgRating img{
+    position: relative;
+    bottom: 30px;
+    left: 85px;
+    width: 30px;
+}
+
 #avgNum{
     position: relative;
-    left: 60px;
+    left: 80px;
     bottom: 35px;
 }
 

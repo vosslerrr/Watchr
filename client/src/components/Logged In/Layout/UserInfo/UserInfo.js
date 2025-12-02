@@ -1,6 +1,6 @@
 import "./UserInfo.css"
 import React, { useState, useEffect } from 'react';
-import { getUserDetails } from "../../../../utils/EC2api";
+import { getUserDetails } from "../../../../utils/api";
 import { useParams } from "react-router-dom";
 
 function UserInfo(){
@@ -25,6 +25,7 @@ function UserInfo(){
             <span id="username">{username}</span>
             <span className="avgRating">
                 <span id="avgNum">9.5</span>
+                <img src="/rating-star.png"></img>
                 <span id="avgText">Avg Rating</span>   
             </span>
             <span className="followers">

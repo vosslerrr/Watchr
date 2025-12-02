@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import './popularMovies.css';
-import { getMovieDetails, getPopularMovies } from '../../../utils/EC2api';
+import { getMovieDetails, getPopularMovies } from '../../../utils/api';
 import { Link } from 'react-router-dom';
 
 function PopularMovies(){
