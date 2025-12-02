@@ -9,7 +9,6 @@ function LoggedInRoutes(){
             <Route path="/" element={<Home />} />
             <Route path="/movie/:movieId" element={<MoviePage />} />
             <Route path="/user/:username" element={<ProfilePage />} />
-            <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
     );
 }

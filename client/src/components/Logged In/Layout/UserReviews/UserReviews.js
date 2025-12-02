@@ -2,6 +2,7 @@ import "./userReviews.css";
 import { getUserReviews, getMovieDetails } from '../../../../utils/api' 
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 
 function UserReviews(){
     const { username } = useParams();
@@ -35,16 +36,29 @@ function UserReviews(){
             </div>
 
             <div className="Reviews">
-                {userReviews.map((review, index) => {
+                {userReviews.slice(0, 3).map((review, index) => {
                     return(
                         review ? (
                             <div id="reviewLayout">
-                                <div id="poster"><img src={`https://image.tmdb.org/t/p/w500${details[index]?.poster_path}`}></img></div>
-                                <div id="reviewContent">
-                                    <span id="movieTitle">{details[index]?.original_title} ({details[index]?.release_date.slice(0,4)})</span>
-                                    <span id="reviewPara">{review.reviewPara}</span>
-                                    <span id="rating">{review.rating}</span>
+                                <div id="poster">
+                                    <Link to={`/movie/${review.movie_id}`}>
+                                        <img src={`https://image.tmdb.org/t/p/w500${details[index]?.poster_path}`}></img>
+                                    </Link>
                                 </div>
+
+                                <div id="reviewContent">
+                                    <span id="movieTitle">
+                                        <Link to={`/movie/${review.movie_id}`}>{details[index]?.original_title}</Link>
+                                    </span>
+                                    
+                                    <div id="ratingRow">
+                                        <span id="rating">{review.rating}</span>
+                                        <img id="star" src="/rating-star.png"></img>
+                                    </div>
+
+                                    <span id="reviewPara">"{review.reviewPara}"</span>
+                                </div>
+
                             </div>
                         ) : null (
                             <div id="noReviews">You have no reviews</div>

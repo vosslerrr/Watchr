@@ -30,12 +30,18 @@
 
 #reviewLayout{
     display: flex;
-    max-width: 450px;
+    max-width: 403px;
 }
 
 #poster img{
     width: 150px;
     border-radius: 8px;
+    filter: grayscale(0%);
+    transition: filter 0.2s ease-in-out;
+}
+
+#poster img:hover{
+    filter: grayscale(100%);
 }
 
 #reviewContent{
@@ -47,11 +53,28 @@
     border-left-style: solid;
     padding-left: 5px;
 }
-#movieTitle{
-    font-size: 23px;
+
+#movieTitle a{
+    text-decoration: none;
+    color: inherit;
+}
+
+#movieTitle a:hover{
+    color: var(--goldHover)
+}
+
+#ratingRow{
     border-bottom-style: solid;
+}
+
+#star{
+    margin-left: 5px;
+    width: 20px;
 }
 
 #reviewPara{
     font-size: 20px;
+    font-style: italic;
+    opacity: 0.6;
+    margin-top: 5px;
 }
