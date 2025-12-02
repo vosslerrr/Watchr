@@ -1,6 +1,5 @@
 .UserReviews{
     margin: 0 250px 0 250px; 
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 25px;
     color: white;
 }
@@ -21,4 +20,38 @@
 
 #seeAll:hover{
     color: rgb(148, 148, 148);
+}
+
+.Reviews{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 20px;
+}
+
+#reviewLayout{
+    display: flex;
+    max-width: 450px;
+}
+
+#poster img{
+    width: 150px;
+    border-radius: 8px;
+}
+
+#reviewContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    margin-left: 5px;
+    border-left-style: solid;
+    padding-left: 5px;
+}
+#movieTitle{
+    font-size: 23px;
+    border-bottom-style: solid;
+}
+
+#reviewPara{
+    font-size: 20px;
 }
