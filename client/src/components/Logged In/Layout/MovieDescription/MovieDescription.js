@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import './movieDescription.css';
-import { getMovieDetails, getMovieCredits, postUserReview } from '../../../../utils/api';
+import { getMovieDetails, getMovieCredits, postUserReview } from '../../../../utils/EC2api';
 import { useParams } from "react-router-dom";
 
 
