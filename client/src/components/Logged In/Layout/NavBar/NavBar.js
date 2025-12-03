@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./navBar.css";
 import { useNavigate } from "react-router";
-import { searchMovies, getMovieCredits, searchUsers } from "../../../../utils/EC2api";
+import { searchMovies, getMovieCredits, searchUsers, getUserDetails } from "../../../../utils/api";
 import { Link } from "react-router-dom";
 
 function NavBar() {
@@ -20,6 +20,17 @@ function NavBar() {
 
     const navigate = useNavigate();
     const username = localStorage.getItem("username");
+    const [avatarURL, setAvatarURL] = useState('');
+
+    useEffect(() => {
+        async function load(){
+            const res = await getUserDetails(username);
+
+            setAvatarURL(res.avatarURL);
+        }
+
+        load();
+    }, []);
 
     useEffect(() => {
         const handleClickOutside = (e) => {
@@ -233,7 +244,7 @@ function NavBar() {
                                         onClick={() => goToUser(user.username)}
                                     >
                                         <img
-                                            src={user.avatar || "/user-default.png"}
+                                            src={user.avatarURL}
                                             className="userSearchAvatar"
                                         />
                                         <span className="userSearchName">
@@ -255,7 +266,7 @@ function NavBar() {
                 <div id="log">
                     <button id="logBtn">
                         <span>LOG</span>
-                        <img src="/log-icon.png" alt="" />
+                        <img src="/log-icon.png"/>
                     </button>
                 </div>
 
@@ -268,7 +279,7 @@ function NavBar() {
                             setIsOpen((prev) => !prev);
                         }}
                     >
-                        <img src="/user-default.png" alt="Profile" />
+                        <img src={avatarURL}/>
                     </button>
 
                 {isOpen && (

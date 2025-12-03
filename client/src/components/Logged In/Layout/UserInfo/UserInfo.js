@@ -1,10 +1,11 @@
 import "./UserInfo.css"
 import React, { useState, useEffect } from 'react';
-import { getUserDetails, getUserReviews, putNewUsername } from "../../../../utils/EC2api";
+import { getUserDetails, getUserReviews, putNewUsername } from "../../../../utils/api";
 import { useParams } from "react-router-dom";
 
 function UserInfo(){
     const { username } = useParams();
+    const [avatarURL, setAvatarURL] = useState('');
     const [numFollowers, setNumFollowers] = useState('');
     const [numFollowing, setNumFollowing] = useState('');
     const [ratings, setRatings] = useState(0);
@@ -17,6 +18,7 @@ function UserInfo(){
         async function load(){
             const res = await getUserDetails(username);
 
+            setAvatarURL(res.avatarURL);
             setNumFollowers(res.followers.length);
             setNumFollowing(res.following.length);
 
@@ -57,7 +59,7 @@ function UserInfo(){
     return(
         <div className="UserInfo">
             <a href="#" id="changeAvatar" onClick={() => setAvatarPopupOpen(true)}>
-                <img id="avatar" src="/user-default.png" />
+                <img id="avatar" src={avatarURL}/>
             </a>
 
             <div className={avatarpopupOpen ? "change-avatar-open" : "change-avatar"}>

@@ -146,12 +146,12 @@ router.get("/search/:currentUser/:query", async (req, res) => {
         username: { $regex: query, $options: "i" },
         username: { $ne: currentUser }
     })
-    .select("username avatar followers") 
+    .select("username avatarURL followers") 
     .limit(5);
 
     const results = users.map(u => ({
         username: u.username,
-        avatar: u.avatar,
+        avatarURL: u.avatarURL,
         isFollowing: u.followers.includes(user._id)
     }));
 
