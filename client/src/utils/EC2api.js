@@ -68,3 +68,11 @@ export async function searchUsers(currentUser, query) {
     const res = await fetch(`${VERCEL_API}/routes/user/search/${currentUser}/${query}`);
     return res.json();
 }
+export async function putNewUsername(username, newusername){
+    const res = await fetch(`${VERCEL_API}/routes/user/updateusername/${username}/${newusername}`, {
+        method: "PUT",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, newusername })
+    });
+    return res.json();
+}
