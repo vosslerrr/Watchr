@@ -48,7 +48,6 @@
     outline:none;
     flex-grow: 1;
     font-family: 'Trebuchet MS';
-    background: none;        /* ← removes all background images */
 }
 
 #outNavLogo{
