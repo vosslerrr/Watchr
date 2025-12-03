@@ -115,7 +115,6 @@
     width: 220px;
     border-radius: 8px;
     margin-top: 10px;
-    
 }
 
 .popupMovieTitle{
@@ -143,7 +142,6 @@
     line-height: normal;  
     vertical-align: top;   
     resize: none;
-    
 }
 
 #reviewBox::-webkit-scrollbar {
@@ -163,9 +161,8 @@
 
 #reviewBox::-webkit-scrollbar-thumb:hover {
     background: #525252cc;
-    
-    
 }
+
 #reviewBox:focus{
     outline: none;
 }
@@ -184,7 +181,6 @@
 
 #save-Review:hover{
     background-color: var(--goldHover);
-    
 }
 
 #save-Review:active{
@@ -210,15 +206,15 @@
     pointer-events: auto;
     caret-color: transparent;
     user-select: none;
-    border-radius: 8px;
-    
+    border-radius: 8px;  
 }
+
 #ratingInput::-webkit-inner-spin-button,
 #ratingInput::-webkit-outer-spin-button {
     opacity: 1;
     pointer-events: all;
-
 }
+
 #ratingInput:focus{
     outline: none;
 }
@@ -238,7 +234,6 @@
     width: 40px;
     height: 40px;
     font-size: 30px;
-    
     cursor: pointer;
 }
 
@@ -258,12 +253,12 @@
     padding-bottom: 70px;
     scroll-behavior: smooth;
 }
+
 #castName, #castMovieName{
     display: block;
     max-width: 100%;
     flex-direction: column;
     text-align: center;
-    
 }
 
 .castLeft, .castRight {

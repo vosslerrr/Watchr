@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './register.css';
-import { registerUser } from '../../../utils/api'; //change back to EC2
+import { registerUser } from '../../../utils/api';
 
 function Register(){
     const [formData, setFormData] = useState({
@@ -17,13 +17,11 @@ function Register(){
         e.preventDefault();
         const res = await registerUser(username, password);
         
-        if(res.msg == null)
-        { 
-            localStorage.setItem('token', res.token);
-            localStorage.setItem('username', username);
-            window.location.href = '/';
-        }
-        else{ setMessage(res.msg); }
+        if(res.msg){ return setMessage(res.msg); }
+
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('username', username);
+        window.location.href = '/';
     };
 
     return (

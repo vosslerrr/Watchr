@@ -68,3 +68,12 @@ export async function getUserReviews(username){
     const res = await fetch(`http://localhost:5000/routes/user/reviews/${username}`);
     return res.json();
 }
+
+export async function putNewUsername(username, newusername){
+    const res = await fetch(`http://localhost:5000/routes/user/updateusername/${username}/${newusername}`, {
+        method: "PUT",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, newusername })
+    });
+    return res.json();
+}

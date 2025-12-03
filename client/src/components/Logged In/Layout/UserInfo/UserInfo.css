@@ -1,17 +1,21 @@
 .UserInfo{
     background-color:#1E1E1E;
-    font-family: 'Trebuchet MS';
     font-size: 25px;
     color: white;
     margin: 50px 250px 50px 250px;
     height: 250px;
     width: 1350px;
+    display: flex;
+}
+
+#changeAvatar{
+    margin: 50px 0 0 50px;
+    width: 154px;
+    height: 154px;
+    border-radius: 100px;
 }
 
 #avatar{
-    position: relative;
-    top: 50px;
-    left: 50px;
     height: 150px;
     width: 150px;
     border-radius: 100px;
@@ -23,69 +27,99 @@
 
 #avatar:hover{
     border-color: white;
-    cursor: pointer;
 }
 
 #username{
+    margin: 0 0 0 20px;
+}
+
+#editIcon img{
+    margin: 125px 0 0 10px;
+    width: 25px;
+    height: 25px;
+}
+
+.edit-username{
+    display: none;
+}
+
+.edit-username-open{
     position: relative;
-    left: 75px;
-    bottom: 15px;
+    left: 50px;
+    top:75px;
+}
+
+.newUsernameForm{
+    background: var(--bgBody);
+    padding: 25px;
+    border-radius: 12px;
+}
+
+#exitButtonUsername{
+    position: relative;
+    top: 27px;
+    left: 255px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    opacity: 0.6;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#leftSide{
+    position: absolute;
+    left: 1100px;
+    display: flex;
 }
 
 .avgRating{
-    position: relative;
-    padding-top: 50px;
-    padding-bottom: 20px;
-    left: 600px;
+    margin: 77px 0 0 0;
+    padding: 0 10px 0 0;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     border-right-style: solid;
-    border-right-width: 2px;
-    border-color: white;
+}
+
+.avgRating img{
+    position: relative;
+    left: 5px;
+    bottom: 2px;
+    width: 30px;
 }
 
 #avgNum{
-    position: relative;
-    left: 60px;
-    bottom: 35px;
-}
-
-#avgText{
-    position: relative;
-    right: 15px;
+    display: flex;
+    justify-content: center;
 }
 
 .followers{
-    position: relative;
-    padding-top: 50px;
-    padding-bottom: 20px;
-    left: 605px;
+    margin: 77px 0 0 10px;
+    padding: 0 10px 0 0;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     border-right-style: solid;
-    border-right-width: 2px;
-    border-color: white;
 }
 
 #numFollowers{
-    position: relative;
-    left: 50px;
-    bottom: 35px;
+    display: flex;
+    justify-content: center;
 }
 
-#textFollowers{
-    position: relative;
-    right: 15px;
-}
 
 .following{
-    position: relative;
-    left: 610px;
+    margin: 77px 0 0 10px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #numFollowing{
-    position: relative;
-    left: 50px;
-    bottom: 35px;
-}
-
-#textFollowing{
-    position: relative;
-    right: 15px;
+    display: flex;
+    justify-content: center;
 }

@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vercel/blob": "^2.0.0",
     "axios": "^1.13.1",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
