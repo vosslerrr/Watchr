@@ -9,7 +9,6 @@ function LoggedOutRoutes(){
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<LogIn />} />
             <Route path="/register" element={<Register />} />
-            <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
     );
 }

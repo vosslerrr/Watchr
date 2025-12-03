@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./navBar.css";
 import { useNavigate } from "react-router";
-import { searchMovies, getCredits, searchUsers } from "../../../../utils/api";
+import { searchMovies, getMovieCredits, searchUsers } from "../../../../utils/api";
+import { Link } from "react-router-dom";
 
 function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -73,7 +74,7 @@ function NavBar() {
 
             const withDirectors = await Promise.all(
                 topFive.map(async (movie) => {
-                    const credits = await getCredits(movie.id);
+                    const credits = await getMovieCredits(movie.id);
                     const directorObj = credits.crew?.find((p) => p.job === "Director");
 
                     return {
@@ -124,7 +125,7 @@ function NavBar() {
     const goToMovie = (id) => {
         setResults([]);
         setQuery("");
-        navigate(`/${id}`);
+        navigate(`/movie/${id}`);
     };
 
     const goToUser = (username) => {
@@ -270,27 +271,20 @@ function NavBar() {
                         <img src="/user-default.png" alt="Profile" />
                     </button>
 
-                    {isOpen && (
-                        <div id="profile-menu">
-                            <div id="profile-header">
-                                <div id="avatar-small"></div>
-                                <div id="profile-name">Username</div>
-                            </div>
-
-                            <a href="/profile">Profile</a>
-                            <a href="/settings">Settings</a>
-
-                            <a
-                                onClick={() => {
-                                    localStorage.removeItem("token");
-                                    window.location.href = "/";
-                                }}
-                                id="logoutButton"
-                            >
-                                Sign Out
-                            </a>
+                {isOpen && (
+                    <div id="profile-menu">
+                        <div id="profile-header">
+                            <div id="avatar-small"></div>
+                            <div id="profile-name">{username}</div>
                         </div>
-                    )}
+                        <Link to={`/user/${username}`}>Profile</Link>
+                        <a href="/">Settings</a>
+                        <a onClick={(e) => {
+                            localStorage.removeItem("token");
+                            window.location.href='/';
+                        }} id="logoutButton">Sign Out</a>
+                    </div>
+                )}
                 </div>
             </div>
         </div>

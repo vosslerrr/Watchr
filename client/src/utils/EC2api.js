@@ -11,7 +11,12 @@ export async function getUpcomingMovies() {
 }
 
 export async function getMovieDetails(movie_id){
-    const res = await fetch(`${VERCEL_API}/routes/tmdb/${movie_id}/details`);
+    const res = await fetch(`${VERCEL_API}/routes/tmdb/details/${movie_id}`);
+    return res.json();
+}
+
+export async function getMovieCredits(movie_id){
+    const res = await fetch(`${VERCEL_API}/routes/tmdb/credits/${movie_id}`);
     return res.json();
 }
 
@@ -30,5 +35,24 @@ export async function registerUser(username, password){
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
     });
+    return res.json();
+}
+
+export async function getUserDetails(username){
+    const res = await fetch(`${VERCEL_API}/routes/user/details/${username}`);
+    return res.json();
+}
+
+export async function postUserReview(username, movie_id, reviewPara, rating){
+    const res = await fetch(`${VERCEL_API}/routes/user/newreview/${username}/${movie_id}`, {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reviewPara, rating })
+    });
+    return res.json();
+}
+
+export async function getUserReviews(username){
+    const res = await fetch(`${VERCEL_API}/routes/user/reviews/${username}`);
     return res.json();
 }

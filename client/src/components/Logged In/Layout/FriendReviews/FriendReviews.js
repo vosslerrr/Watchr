@@ -1,12 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
 import './friendReviews.css';
+import { Link } from "react-router-dom";
 
 function FriendReviews(){
     const username = localStorage.getItem("username");
     
     return(
         <div className="welcomeHeader">
-            <span id="welcomeMessage" >Welcome Back <a href="/profile">{username}</a>, here is what your friends have been watching</span>
+            <span id="welcomeMessage">Welcome Back <Link to={`/user/${username}`}>{username}</Link></span>
         </div>
     );
 }

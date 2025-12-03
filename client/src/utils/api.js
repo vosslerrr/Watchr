@@ -9,12 +9,12 @@ export async function getUpcomingMovies() {
 }
 
 export async function getMovieDetails(movie_id){
-    const res = await fetch(`http://localhost:5000/routes/tmdb/${movie_id}/details`);
+    const res = await fetch(`http://localhost:5000/routes/tmdb/details/${movie_id}`);
     return res.json();
 }
 
-export async function getCredits(movie_id) {
-    const res = await fetch(`http://localhost:5000/routes/tmdb/${movie_id}/credits`);
+export async function getMovieCredits(movie_id){
+    const res = await fetch(`http://localhost:5000/routes/tmdb/credits/${movie_id}`);
     return res.json();
 }
 
@@ -33,6 +33,11 @@ export async function registerUser(username, password){
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
     });
+    return res.json();
+}
+
+export async function getUserDetails(username){
+    const res = await fetch(`http://localhost:5000/routes/user/details/${username}`);
     return res.json();
 }
 
@@ -57,5 +62,9 @@ export async function searchUsers(currentUser, query) {
     const res = await fetch(
         `http://localhost:5000/routes/user/search/${currentUser}/${query}`
     );
+    return res.json();
+}
+export async function getUserReviews(username){
+    const res = await fetch(`http://localhost:5000/routes/user/reviews/${username}`);
     return res.json();
 }

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function PopularMovies(){
     const [movies, setMovies] = useState([]);
     const [details, setDetails] = useState([]);
-  
+
     useEffect(() => {
         getPopularMovies()
             .then(data => setMovies(data.results));
@@ -36,7 +36,6 @@ function PopularMovies(){
                 <div className="popularHeader">
                     <h2 className="popularTitle">Popular Movies</h2>
                     <a href="/movies" className="seeAll">SEE ALL</a>
-                    
                 </div>
                 <div className="movieBar">
                     <div id="left">
@@ -44,14 +43,18 @@ function PopularMovies(){
                             <img src="/left-arrow.png"></img>
                         </button>
                     </div>
-                    <div id="popularMovies" ref={popularMoviesRef}>    
-                        {movies.map((m, index) => (
-                            <div id="movie1" key={m.id}>
-                                {details[index]?.poster_path?.[0] && (
-                                <Link to={`/${details[index].id}`}><img src={`https://image.tmdb.org/t/p/w500${details[index].poster_path}`}/></Link>
-                                )}
-                            </div>
-                        ))}   
+                    <div id="popularMovies" ref={popularMoviesRef}>
+                        {movies.map((m, index) => {
+                            const poster = details[index]?.poster_path;
+
+                            return(
+                                poster ? (
+                                    <div id="movie1" key={m.id}>
+                                        <Link to={`/movie/${details[index].id}`}><img src={`https://image.tmdb.org/t/p/w500${details[index].poster_path}`}/></Link>
+                                    </div>
+                                ) : null
+                            );
+                        })}
                     </div>
                     <div id="right">
                         <button id="popularMoviesRight" onClick={scrollRight}>
@@ -62,4 +65,5 @@ function PopularMovies(){
             </section>
     );
 }
+
 export default PopularMovies;

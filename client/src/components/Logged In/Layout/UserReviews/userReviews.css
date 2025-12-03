@@ -1,6 +1,5 @@
 .UserReviews{
     margin: 0 250px 0 250px; 
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 25px;
     color: white;
 }
@@ -21,4 +20,61 @@
 
 #seeAll:hover{
     color: rgb(148, 148, 148);
+}
+
+.Reviews{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 20px;
+}
+
+#reviewLayout{
+    display: flex;
+    max-width: 403px;
+}
+
+#poster img{
+    width: 150px;
+    border-radius: 8px;
+    filter: grayscale(0%);
+    transition: filter 0.2s ease-in-out;
+}
+
+#poster img:hover{
+    filter: grayscale(100%);
+}
+
+#reviewContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    margin-left: 5px;
+    border-left-style: solid;
+    padding-left: 5px;
+}
+
+#movieTitle a{
+    text-decoration: none;
+    color: inherit;
+}
+
+#movieTitle a:hover{
+    color: var(--goldHover)
+}
+
+#ratingRow{
+    border-bottom-style: solid;
+}
+
+#star{
+    margin-left: 5px;
+    width: 20px;
+}
+
+#reviewPara{
+    font-size: 20px;
+    font-style: italic;
+    opacity: 0.6;
+    margin-top: 5px;
 }

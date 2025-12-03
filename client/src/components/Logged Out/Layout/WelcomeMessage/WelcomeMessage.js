@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import './friendReviews.css';
+import './welcomeMessage.css';
 
-function FriendReviews(){
+function WelcomeMessage(){
     return(
         <div className="outWelcomeHeader">
             <span id="outWelcomeMessage"><a href="/login">Sign In/Register</a> to See Your Friend's Reviews</span>
@@ -9,4 +9,4 @@ function FriendReviews(){
     );
 }
 
-export default FriendReviews;
+export default WelcomeMessage;

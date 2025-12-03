@@ -7,9 +7,8 @@ function LoggedInRoutes(){
     return(
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path='/:movieId' element={<MoviePage />} />
-            <Route path="*" element={<h1>404 Not Found</h1>} />
+            <Route path="/movie/:movieId" element={<MoviePage />} />
+            <Route path="/user/:username" element={<ProfilePage />} />
         </Routes>
     );
 }

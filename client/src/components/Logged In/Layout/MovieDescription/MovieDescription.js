@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import './movieDescription.css';
-import { getMovieDetails, getCredits, postUserReview } from '../../../../utils/api';
+import { getMovieDetails, getMovieCredits, postUserReview } from '../../../../utils/api';
 import { useParams } from "react-router-dom";
 
 function MovieDescription() {
@@ -17,24 +17,21 @@ function MovieDescription() {
     const username = localStorage.getItem("username");
 
     const [reviewData, setReviewData] = useState({
-        reviewPara: '',
-        rating: '10'
-    });
-
+            reviewPara: '',
+            rating: '10'
+        });
     const { reviewPara, rating } = reviewData;
+    const onChange = e => setReviewData({ ...reviewData, [e.target.name]: e.target.value });
 
-    const onChange = e =>
-        setReviewData({ ...reviewData, [e.target.name]: e.target.value });
-
-    const onSubmit = async (e) => {
+    const onSubmit = async e => {
         e.preventDefault();
-
         await postUserReview(username, movieId, reviewPara, rating);
 
         setReviewData({
-            reviewPara: "",
-            rating: "10"
+            reviewPara:"",
+            rating:"10"
         });
+        
     };
 
     useEffect(() => {
@@ -47,7 +44,8 @@ function MovieDescription() {
         }
 
         async function loadCredits() {
-            const res = await getCredits(movieId);
+            const res = await getMovieCredits(movieId);
+
             setCast(res.cast);
             const directorData = res.crew.find(p => p.job === "Director");
             setDirector(directorData?.name || "Not Listed");
@@ -109,48 +107,38 @@ function MovieDescription() {
                             <button
                             type="button"
                             id="exitButton"
-                            onClick={closePopup}>
-                                x
+                            onClick={closePopup}
+                            >
+                                x    
                             </button>
                             <form className="reviewConent" onSubmit={onSubmit}>
-
                                 <span className="popupTitle">You Watched: </span>
                                 <span className="popupMovieTitle">{movieTitle}</span>
-                                <span className="popupDate"> ({date.slice(0, 4)})</span>
-                                <hr />
-
-                                <img id="popupImage"
-                                    src={`https://image.tmdb.org/t/p/w500${poster}`} />
-
-                                <textarea
+                                <span className="popupDate"> ({date.slice(0,4)})</span>
+                                <hr></hr>
+                                <img id="popupImage"src={`https://image.tmdb.org/t/p/w500${poster}`} />
+                                <textarea 
                                     id="reviewBox"
                                     name="reviewPara"
-                                    placeholder="Add A Review"
-                                    value={reviewPara}
-                                    onChange={onChange}
-                                />
-
-                                <input
-                                    type="number"
-                                    id="ratingInput"
-                                    name="rating"
-                                    min="0.5"
-                                    max="10"
-                                    step="0.5"
-                                    value={rating}
-                                    onChange={onChange}
-                                    required
-                                />
-
-                                <button
-                                    id="save-Review"
-                                    type="submit"
-                                    onClick={() => setPopupOpen(false)}
-                                >
-                                    Watched
-                                </button>
-
+                                    placeholder="Add A Review" 
+                                    value={reviewPara} 
+                                    onChange={onChange}>
+                                </textarea>
+                                <span id="ratingLabel">Rating:</span>
+                                    <input 
+                                        type="number"
+                                        id="ratingInput"
+                                        name="rating"
+                                        min="0.5"
+                                        max="10"
+                                        step="0.5"
+                                        value={rating}
+                                        onChange={onChange}
+                                        required
+                                    />
+                                <button id="save-Review" type="submit">Watchd</button>
                             </form>
+                            
                         </div>
                     </div>
 
@@ -164,15 +152,17 @@ function MovieDescription() {
                         <div className="castRow" ref={getCreditsRef}>
                             <span id="castSpan">Cast</span>
 
-                            {cast.map((c) => {
-                                const profile = c?.profile_path;
-                                return profile ? (
-                                    <div id="cast1" key={c.id}>
-                                        <img src={`https://image.tmdb.org/t/p/w500${profile}`} />
-                                        <span id="castName">{c.name}</span>
-                                        <span id="castMovieName">{c.character}</span>
-                                    </div>
-                                ) : null;
+                            {cast.map((c, index) => {
+                                const profile = cast[index]?.profile_path;
+                                return (
+                                    profile ? (
+                                        <div id="cast1" key={c.id}>
+                                                <img src={`https://image.tmdb.org/t/p/w500${profile}`} />
+                                                <span id="castName">{c.name}</span>
+                                                <span id="castMovieName">{c.character}</span>
+                                        </div>
+                                    ) : null
+                                );
                             })}
                         </div>
 
@@ -180,7 +170,6 @@ function MovieDescription() {
                             <img src="/right-arrow.png" />
                         </button>
                     </div>
-
                 </div>
             </div>
         </div>
