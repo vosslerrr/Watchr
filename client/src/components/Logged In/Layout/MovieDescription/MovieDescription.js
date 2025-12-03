@@ -55,7 +55,7 @@ function MovieDescription() {
 
         loadCredits();
         loadDetails();
-    }, []);
+    }, [movieId]);
 
     const scrollLeft = () => {
         const row = getCreditsRef.current;
