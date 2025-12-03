@@ -5,7 +5,7 @@
     --altText: black;
     --bgBody: #2B2B2B;
     --bgGold: #FFD700;
-    --goldHover: #ffd900da;
+    --goldHover: #e0b300;
     --bgText: #BFBFBF;
 }
 
@@ -14,8 +14,7 @@ body{
 }
 
 .navBar{
-    margin: 0;
-    padding: 0;
+ 
     height: 100px;
     width: 100%;
     background-color: #1E1E1E;
@@ -57,22 +56,20 @@ body{
     position: relative;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    
 }
 
-#search-input{
-    width : 100%;
-    padding: 10px 12px;
-    height: 100%;
-    border:3px solid var(--border);
-    border-radius:25px;
-    outline:none;
+#search-input {
+    width: 100%;
+    padding: 10px 140px 10px 12px; /* leave room for the pill */
+    border: 3px solid var(--border);
+    border-radius: 25px;
+    outline: none;
     flex-grow: 1;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-image: url('../../../../../public/search-glass.png');
-    background-repeat: no-repeat;
-    background-size: 30px 30px;
-    background-position: right;
+    font-family: 'Trebuchet MS';
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1; /* <-- pill must sit above input */
 }
 
 #navLogo{
@@ -141,7 +138,7 @@ body{
 
 #menu:hover #dropbtn{
     border-radius: 20px 20px 0 0;
-    background-color: #ffd900da;
+    background-color: var(--goldHover);
 }
 
 #menu:hover #dropdown-content #watchlistOption{
@@ -253,4 +250,172 @@ body{
 #profile-name{
   color: var(--text);
   font-weight: 600;
+}
+#logoutButton{
+    cursor: pointer;
+}
+
+/*search bar css changes*/
+#searchDropdown {
+    position: absolute;
+    top: 55px;
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--bg);  
+    border: 1px solid var(--border);   
+    border-radius: 10px;
+    z-index: 999;
+    padding: 10px 0;
+}
+
+.searchItem {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: var(--text);                
+}
+
+.searchItem:hover {
+    background-color: var(--bgBody); 
+}
+
+.searchPoster {
+    width: 50px;
+    height: 75px;
+    border-radius: 6px;
+    object-fit: cover;
+    border: 1px transparent;
+}
+
+.searchTitle {
+    color: var(--text);                
+    font-size: 18px;
+}
+
+.searchDate {
+    color: var(--text);              
+    opacity: 0.5;
+}
+
+.searchDirector {
+    color: var(--text);             
+    opacity: 0.5;
+    font-style: italic;
+}
+
+.searchModeSelector {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    height: 36px;
+    padding: 0 14px;
+    
+    background: var(--bgGold);
+
+    border: none;
+
+    border-left: none;
+    border-top: 3px solid var(--border);
+    border-right: 3px solid var(--border);
+    border-bottom: 3px solid var(--border);
+
+    border-radius: 0 25px 25px 0;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+
+    color: black;
+    font-size: 14px;
+    font-family: 'Trebuchet MS';
+    font-weight: 500;
+
+    z-index: 3;
+}
+
+.searchModeSelector:hover {
+    background: var(--goldHover) !important;
+}
+
+.searchModeDropdown {
+    position: absolute;
+    right: 0px;
+    top: 55px;
+    background: #1E1E1E;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    width: 120px;
+    z-index: 1000;
+    padding: 5px 0;
+}
+
+.searchModeDropdown div {
+    padding: 8px 12px;
+    color: var(--text);
+    cursor: pointer;
+    font-family: 'Trebuchet MS';
+}
+
+.searchModeDropdown div:hover {
+    background: #2f2f2f;
+}
+
+
+#search-input {
+    padding-right: 90px !important;
+}
+
+.userSearchItem {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #333;
+}
+
+.userSearchItem:hover {
+    background-color: #2f2f2f;
+}
+
+.userSearchAvatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.userSearchName {
+    color: var(--text);
+    font-size: 18px;
+    font-family: 'Trebuchet MS';
+    flex-grow: 1;
+}
+
+.followingTag {
+    color: var(--bgGold);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.notFollowingTag {
+    color: #999;
+    font-size: 14px;
+    font-style: italic;
+}
+.searchModeSelector {
+    user-select: none;
+}
+
+.searchModeSelector:focus {
+    outline: none;
+}
+
+.searchModeSelector:active {
+    outline: none;
 }

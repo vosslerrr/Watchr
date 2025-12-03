@@ -1,4 +1,4 @@
-import NavBar from "../Layout/NavBar/NavBar"
+import NavBar from "../Layout/NavBar/NavBar";
 import MovieDescription from "../Layout/MovieDescription/MovieDescription";
 
 

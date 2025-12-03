@@ -35,6 +35,29 @@ router.get("/upcoming", async (req, res) => {
     res.json(data);
 });
 
+router.get("/search/:query", async (req, res) => {
+    const { query } = req.params;
+
+    const response = await axios.get(
+        "https://api.themoviedb.org/3/search/movie",
+        {
+            params: {
+                query: query,
+                include_adult: false,
+                language: "en-US",
+                region: "US",
+                page: 1
+            },
+            headers: {
+                accept: "application/json",
+                Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`
+            }
+        }
+    );
+
+    res.json(response.data.results || []);
+});
+
 router.get("/details/:movie_id", async (req, res) => {
     const { movie_id } = req.params;
     const response = axios.get(

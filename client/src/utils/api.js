@@ -50,6 +50,20 @@ export async function postUserReview(username, movie_id, reviewPara, rating){
     return res.json();
 }
 
+export async function searchMovies(query) { 
+    if(!query) return [];
+    const res = await fetch(`http://localhost:5000/routes/tmdb/search/${query}`);
+    const data = await res.json();
+    return data;
+}
+
+export async function searchUsers(currentUser, query) { 
+    if (!query) return [];
+    const res = await fetch(
+        `http://localhost:5000/routes/user/search/${currentUser}/${query}`
+    );
+    return res.json();
+}
 export async function getUserReviews(username){
     const res = await fetch(`http://localhost:5000/routes/user/reviews/${username}`);
     return res.json();

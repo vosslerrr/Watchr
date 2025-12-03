@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function PopularMovies(){
     const [movies, setMovies] = useState([]);
     const [details, setDetails] = useState([]);
-  
+
     useEffect(() => {
         getPopularMovies()
             .then(data => setMovies(data.results));
@@ -35,7 +35,7 @@ function PopularMovies(){
             <section className="popularMoviesSection">
                 <div className="popularHeader">
                     <h2 className="popularTitle">Popular Movies</h2>
-                    <a href="/movies" className="seeAll">SEE ALL</a>           
+                    <a href="/movies" className="seeAll">SEE ALL</a>
                 </div>
                 <div className="movieBar">
                     <div id="left">
@@ -43,7 +43,7 @@ function PopularMovies(){
                             <img src="/left-arrow.png"></img>
                         </button>
                     </div>
-                    <div id="popularMovies" ref={popularMoviesRef}>    
+                    <div id="popularMovies" ref={popularMoviesRef}>
                         {movies.map((m, index) => {
                             const poster = details[index]?.poster_path;
 
@@ -54,7 +54,7 @@ function PopularMovies(){
                                     </div>
                                 ) : null
                             );
-                        })}   
+                        })}
                     </div>
                     <div id="right">
                         <button id="popularMoviesRight" onClick={scrollRight}>

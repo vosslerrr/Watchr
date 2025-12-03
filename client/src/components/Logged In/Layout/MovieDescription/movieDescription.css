@@ -83,6 +83,7 @@
     color: var(--bgGold);
     font-weight: 700;
     font-size: 1.5em;
+    opacity: 1;
 }
 
 #review-Button:hover{
@@ -224,8 +225,8 @@
 
 #exitButton{
     position: absolute;
-    left:1318px;
-    top: 234px;
+    left:1325px;    /*might have to change amounts*/
+    top: 245px;     /*might have to change amounts*/
     background-color: transparent;
     border: none;
     color: white;

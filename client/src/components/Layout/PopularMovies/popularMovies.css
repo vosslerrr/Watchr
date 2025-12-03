@@ -55,6 +55,9 @@
 #popularMovies{
     justify-content: flex-start;
     display: flex;
+    align-items: flex-start;
+    flex-shrink: 1;
+    flex-wrap: nowrap;
     height: 400px;
     gap: 33px;
     overflow-x: auto;

@@ -112,7 +112,6 @@ router.post("/newreview/:username/:movie_id", async(req, res) => {
     const { reviewPara, rating } = req.body;
 
     const existingReview = await Review.findOne({ username, movie_id });
-
     if(existingReview)
     {
         return res.json({ msg: `Movie has already been reviewed by ${username}` });
@@ -134,6 +133,29 @@ router.delete("/deletereview/:username/:movie_id", async(req, res) => {
     await Review.findOneAndDelete(
         { username, movie_id }
     );
+});
+
+router.get("/search/:currentUser/:query", async (req, res) => {
+    const { currentUser, query } = req.params;
+    
+    const user = await User.findOne({ username: currentUser });
+
+    if (!user) return res.json([]);
+
+    const users = await User.find({
+        username: { $regex: query, $options: "i" },
+        username: { $ne: currentUser }
+    })
+    .select("username avatar followers") 
+    .limit(5);
+
+    const results = users.map(u => ({
+        username: u.username,
+        avatar: u.avatar,
+        isFollowing: u.followers.includes(user._id)
+    }));
+
+    res.json(results);
 });
 
 export default router;

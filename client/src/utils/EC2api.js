@@ -57,6 +57,17 @@ export async function getUserReviews(username){
     return res.json();
 }
 
+export async function searchMovies(query) { 
+    if(!query) return [];
+    const res = await fetch(`${VERCEL_API}/routes/tmdb/search/${query}`);
+    return res.json();
+}
+
+export async function searchUsers(currentUser, query) { 
+    if (!query) return [];
+    const res = await fetch(`${VERCEL_API}/routes/user/search/${currentUser}/${query}`);
+    return res.json();
+}
 export async function putNewUsername(username, newusername){
     const res = await fetch(`${VERCEL_API}/routes/user/updateusername/${username}/${newusername}`, {
         method: "PUT",

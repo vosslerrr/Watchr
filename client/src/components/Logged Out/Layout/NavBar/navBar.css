@@ -48,9 +48,6 @@
     outline:none;
     flex-grow: 1;
     font-family: 'Trebuchet MS';
-    background-repeat: no-repeat;
-    background-size: 30px 30px;
-    background-position: right;
 }
 
 #outNavLogo{

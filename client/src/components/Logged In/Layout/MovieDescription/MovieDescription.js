@@ -3,7 +3,6 @@ import './movieDescription.css';
 import { getMovieDetails, getMovieCredits, postUserReview } from '../../../../utils/EC2api';
 import { useParams } from "react-router-dom";
 
-
 function MovieDescription() {
 
     const { movieId } = useParams();
@@ -38,7 +37,6 @@ function MovieDescription() {
     useEffect(() => {
         async function loadDetails() {
             const res = await getMovieDetails(movieId);
-
             setMovieTitle(res.original_title);
             setPoster(res.poster_path);
             setDetails(res.overview);
@@ -55,7 +53,7 @@ function MovieDescription() {
 
         loadCredits();
         loadDetails();
-    }, []);
+    }, [movieId]);
 
     const scrollLeft = () => {
         const row = getCreditsRef.current;
@@ -88,11 +86,23 @@ function MovieDescription() {
                         <h1 className="movieTitle">{movieTitle}</h1>
                         <h3 className="movieDate">{date.slice(0, 4)}</h3>
                     </div>
+
                     <a>Directed by {director}</a>
                     <h2 className="overviewRow">Overview</h2>
-                
+
                     <div className="userReviewWrapper">
-                        <a href ="#" id="review-Button"onClick={() => setPopupOpen(true)}>Rate/Review</a>
+                        <a
+                            href="#"
+                            id="review-Button"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                setPopupOpen(true);
+                            }}
+                        >
+                            Rate/Review
+                        </a>
+
                         <div className={popupOpen ? "review-Overlay open" : "review-Overlay"}>
                             <button
                             type="button"
