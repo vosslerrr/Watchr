@@ -15,6 +15,63 @@
     border-radius: 100px;
 }
 
+.change-avatar, .change-avatar-open{
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.7);
+    z-index: 9999;
+}
+
+.change-avatar{
+    display: none;
+}
+
+.newAvatarForm{
+    background: var(--bgBody);
+    width: 400px;
+    height: 300px;
+    border-radius: 12px;
+    z-index: 10000;
+}
+
+#avatarSubmit{
+    position: relative;
+    left: 75px;
+    top: 45px;
+}
+
+#avatarFile{
+    position: relative;
+    left: 20px;
+    top: 45px;
+}
+
+#popupAvatar{
+    position: relative;
+    left: 100px;
+    top: 30px;
+    width: 200px;
+    height: 200px;
+    border-style: solid;
+    border-radius: 100px;
+}
+
+#exitButtonAvatar{
+    position: relative;
+    bottom: 135px;
+    left: 390px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    opacity: 0.6;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10001;
+}
+
 #avatar{
     height: 150px;
     width: 150px;

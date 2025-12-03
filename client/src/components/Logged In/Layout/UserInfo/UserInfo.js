@@ -11,14 +11,17 @@ function UserInfo(){
     const [ratings, setRatings] = useState(0);
     const [count, setCount] = useState(0);
     const [editpopupOpen, setEditPopupOpen] = useState(false);
-    const [avatarpopupOpen, setAvatarPopupOpen] = useState(false);
     const [newusername, setNewUsername] = useState('');
+    const [avatarpopupOpen, setAvatarPopupOpen] = useState(false);
+    const [currAvatar, setCurrAvatar] = useState('');
+    const [newAvatar, setNewAvatar] = useState('');
     
     useEffect(() => {
         async function load(){
             const res = await getUserDetails(username);
 
             setAvatarURL(res.avatarURL);
+            setCurrAvatar(res.avatarURL);
             setNumFollowers(res.followers.length);
             setNumFollowing(res.following.length);
 
@@ -41,9 +44,15 @@ function UserInfo(){
         setNewUsername('');
     };
 
+    const closeAvatarPopup = () => {
+        setAvatarPopupOpen(false);
+        setNewAvatar('');
+        setCurrAvatar(avatarURL);
+    };
+
     const onChange = e => setNewUsername(e.target.value);
 
-    const onSubmit = async e => {
+    const onSubmitUsername = async e => {
         e.preventDefault();
 
         if(username == newusername){ return window.alert("Same username."); }
@@ -56,15 +65,15 @@ function UserInfo(){
         window.location.href = '/'; 
     };
 
+    const onSubmitAvatar = async e => {
+        e.preventDefault();
+    };
+
     return(
         <div className="UserInfo">
             <a href="#" id="changeAvatar" onClick={() => setAvatarPopupOpen(true)}>
                 <img id="avatar" src={avatarURL}/>
             </a>
-
-            <div className={avatarpopupOpen ? "change-avatar-open" : "change-avatar"}>
-                
-            </div>
 
             <div className="usernameLayout">
                 <span id="username">{username}</span>
@@ -72,12 +81,21 @@ function UserInfo(){
                     <img src="/edit-icon.png"></img>
                 </a>
             </div>
-
+            
             <div className={editpopupOpen ? "edit-username-open" : "edit-username"}>
                 <button type="button" id="exitButtonUsername" onClick={closeEditPopup}>x</button>
-                <form className="newUsernameForm" onSubmit={onSubmit}>
+                <form className="newUsernameForm" onSubmit={onSubmitUsername}>
                     <input type="text" name="newusername" value={newusername} onChange={onChange} required></input>
                     <input type="submit"></input>
+                </form>
+            </div>
+     
+            <div className={avatarpopupOpen ? "change-avatar-open" : "change-avatar"}>
+                <button type="button" id="exitButtonAvatar" onClick={closeAvatarPopup}>x</button>
+                <form className="newAvatarForm" onSubmit={onSubmitAvatar}>
+                    <img id="popupAvatar" src={currAvatar}></img>
+                    <input type="file" name="avatarFile" id="avatarFile" value={newAvatar} required></input>
+                    <input type="submit" id="avatarSubmit"></input>
                 </form>
             </div>
 
