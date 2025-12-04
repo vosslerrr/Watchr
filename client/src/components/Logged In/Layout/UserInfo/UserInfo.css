@@ -180,3 +180,96 @@
     display: flex;
     justify-content: center;
 }
+
+/*=====================================================================
+=======================NOT-CURRENT USER================================
+=======================================================================
+*/
+
+.currUserInfo{
+    background-color:#1E1E1E;
+    font-size: 25px;
+    color: white;
+    margin: 50px 250px 50px 250px;
+    height: 250px;
+    width: 1350px;
+    display: flex;
+}
+
+#currchangeAvatar{
+    margin: 50px 0 0 50px;
+    width: 154px;
+    height: 154px;
+    border-radius: 100px;
+}
+
+#curravatar{
+    height: 150px;
+    width: 150px;
+    border-radius: 100px;
+    border-style: solid;
+    border-width: 2px;
+    color: transparent;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.currusernameLayout{
+    margin: 125px 0 0 20px;
+}
+
+#currleftSide{
+    position: absolute;
+    left: 1100px;
+    display: flex;
+}
+
+.curravgRating{
+    margin: 77px 0 0 0;
+    padding: 0 10px 0 0;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right-style: solid;
+}
+
+.curravgRating img{
+    position: relative;
+    left: 5px;
+    bottom: 2px;
+    width: 30px;
+}
+
+#curravgNum{
+    display: flex;
+    justify-content: center;
+}
+
+.currfollowers{
+    margin: 77px 0 0 10px;
+    padding: 0 10px 0 0;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right-style: solid;
+}
+
+#currnumFollowers{
+    display: flex;
+    justify-content: center;
+}
+
+
+.currfollowing{
+    margin: 77px 0 0 10px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#currnumFollowing{
+    display: flex;
+    justify-content: center;
+}

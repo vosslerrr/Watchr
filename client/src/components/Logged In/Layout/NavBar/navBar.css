@@ -229,6 +229,7 @@ body{
 
 #profile-menu a:hover{
   background: var(--bgBody);
+  cursor: pointer;
 }
 
 #profile-header{
