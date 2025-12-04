@@ -88,3 +88,21 @@ export async function postNewAvatar(username, file){
     });
     return res.json();
 }
+
+export async function putNewFollower(follower, target){
+    const res = await fetch(`http://localhost:5000/routes/user/follow/${follower}/${target}`,{
+        method: "PUT",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ follower, target })
+    });
+    return res.json();
+}
+
+export async function putRemoveFollower(follower, target){
+    const res = await fetch(`http://localhost:5000/routes/user/unfollow/${follower}/${target}`,{
+        method: "PUT",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ follower, target })
+    });
+    return res.json();
+}

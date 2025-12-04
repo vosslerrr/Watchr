@@ -1,6 +1,6 @@
 import "./UserInfo.css"
 import React, { useState, useEffect } from 'react';
-import { getUserDetails, getUserReviews, postNewAvatar, putNewUsername } from "../../../../utils/api";
+import { getUserDetails, getUserReviews, postNewAvatar, putNewUsername, putNewFollower, putRemoveFollower } from "../../../../utils/api";
 import { useParams } from "react-router-dom";
 
 function UserInfo(){
@@ -16,15 +16,19 @@ function UserInfo(){
     const [currAvatar, setCurrAvatar] = useState(null);
     const [newAvatar, setNewAvatar] = useState(null);
     const [currUser, setCurrUser] = useState(true);
+    const [isFollowing, setIsFollowing] = useState(false);
     
     useEffect(() => {
         async function load(){
             const res = await getUserDetails(username);
+            const loggedInUserDetails = await getUserDetails(localStorage.getItem("username"));
 
             setAvatarURL(res.avatarURL);
             setCurrAvatar(res.avatarURL);
             setNumFollowers(res.followers.length);
             setNumFollowing(res.following.length);
+
+            if(res.followers.includes(loggedInUserDetails._id)){ setIsFollowing(true); }
 
             const reviews = await getUserReviews(username);
 
@@ -85,6 +89,16 @@ function UserInfo(){
 
         window.location.reload();
     };
+
+    const followUser = async (target) => {
+        await putNewFollower(localStorage.getItem("username"), target);
+        window.location.reload();
+    }
+
+    const unfollowUser = async (target) => {
+        await putRemoveFollower(localStorage.getItem("username"), target);
+        window.location.reload();
+    }
 
     return(
         <>
@@ -147,12 +161,21 @@ function UserInfo(){
 
                 <div className="currusernameLayout">
                     <span id="currusername">{username}</span>
+                    {isFollowing ? (
+                        <a onClick={(e) => {unfollowUser(username)}}>
+                            <img id="unfollowButton" src="/unfollowButton.png"></img>
+                        </a> 
+                    ) : (
+                        <a onClick={(e) => {followUser(username)}}>
+                            <img id="followButton" src="/followButton.png"></img>
+                        </a>
+                    )}
                 </div>
 
                 <div id="currleftSide">
                     <div className="curravgRating">
                         <span id="curravgNum">
-                            {(ratings/count).toFixed(2)}
+                            {((ratings/count) || 0).toFixed(2)}
                             <img src="/rating-star.png"></img>
                         </span>
                         <span id="curravgText">Avg Rating</span>   

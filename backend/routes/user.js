@@ -42,6 +42,8 @@ router.put("/unfollow/:follower/:target", async(req, res) => {
         { _id: followerUser._id },
         { $pull: { following: targetUser._id } }
     );
+
+    return res.json({ success: true });
 });
 
 router.put("/follow/:follower/:target", async(req, res) => {
@@ -59,6 +61,8 @@ router.put("/follow/:follower/:target", async(req, res) => {
         { _id: followerUser._id },
         { $addToSet: { following: targetUser._id } }
     );
+    
+    return res.json({ success: true });
 });
 
 router.put("/updatereview/:username/:movie_id", async(req, res) => {
