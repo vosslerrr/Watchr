@@ -1,6 +1,6 @@
 import "./UserInfo.css"
 import React, { useState, useEffect } from 'react';
-import { getUserDetails, getUserReviews, putNewUsername } from "../../../../utils/api";
+import { getUserDetails, getUserReviews, postNewAvatar, putNewUsername } from "../../../../utils/api";
 import { useParams } from "react-router-dom";
 
 function UserInfo(){
@@ -13,8 +13,8 @@ function UserInfo(){
     const [editpopupOpen, setEditPopupOpen] = useState(false);
     const [newusername, setNewUsername] = useState('');
     const [avatarpopupOpen, setAvatarPopupOpen] = useState(false);
-    const [currAvatar, setCurrAvatar] = useState('');
-    const [newAvatar, setNewAvatar] = useState('');
+    const [currAvatar, setCurrAvatar] = useState(null);
+    const [newAvatar, setNewAvatar] = useState(null);
     
     useEffect(() => {
         async function load(){
@@ -50,7 +50,12 @@ function UserInfo(){
         setCurrAvatar(avatarURL);
     };
 
-    const onChange = e => setNewUsername(e.target.value);
+    const onEditChange = e => setNewUsername(e.target.value);
+
+    const onAvatarChange = e => {
+        setNewAvatar(e.target.files[0]); 
+        setCurrAvatar(URL.createObjectURL(e.target.files[0]));
+    };
 
     const onSubmitUsername = async e => {
         e.preventDefault();
@@ -62,11 +67,20 @@ function UserInfo(){
         if(res.msg){ return window.alert("Username taken"); }
 
         localStorage.setItem('username', newusername);
-        window.location.href = '/'; 
+        window.location.reload(); 
     };
 
     const onSubmitAvatar = async e => {
         e.preventDefault();
+
+        if (!newAvatar) return alert("No file selected.");
+
+        await postNewAvatar(username, newAvatar);
+
+        setNewAvatar(null);
+        document.getElementById("avatarFile").value = "";
+
+        window.location.reload();
     };
 
     return(
@@ -85,7 +99,7 @@ function UserInfo(){
             <div className={editpopupOpen ? "edit-username-open" : "edit-username"}>
                 <button type="button" id="exitButtonUsername" onClick={closeEditPopup}>x</button>
                 <form className="newUsernameForm" onSubmit={onSubmitUsername}>
-                    <input type="text" name="newusername" value={newusername} onChange={onChange} required></input>
+                    <input type="text" name="newusername" value={newusername} onChange={onEditChange} required></input>
                     <input type="submit"></input>
                 </form>
             </div>
@@ -94,7 +108,7 @@ function UserInfo(){
                 <button type="button" id="exitButtonAvatar" onClick={closeAvatarPopup}>x</button>
                 <form className="newAvatarForm" onSubmit={onSubmitAvatar}>
                     <img id="popupAvatar" src={currAvatar}></img>
-                    <input type="file" name="avatarFile" id="avatarFile" value={newAvatar} required></input>
+                    <input type="file" name="avatar" id="avatarFile" accept="image/*" onChange={onAvatarChange} required></input>
                     <input type="submit" id="avatarSubmit"></input>
                 </form>
             </div>

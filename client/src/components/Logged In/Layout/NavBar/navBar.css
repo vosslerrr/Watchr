@@ -193,9 +193,7 @@ body{
 }
 
 #profBtn img{
-    position: relative;
-    top: 3.5px;
-    width: 120%;
+    width: 145%;
     object-fit: contain;
     background: transparent;
 }
@@ -246,6 +244,11 @@ body{
   height: 26px;
   border-radius: 50%;
   background: var(--bgGold);
+  overflow: hidden;
+}
+
+#avatar-small img{
+    width: 100%;
 }
 
 #profile-name{

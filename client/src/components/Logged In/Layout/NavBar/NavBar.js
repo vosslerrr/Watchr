@@ -285,7 +285,6 @@ function NavBar() {
                 {isOpen && (
                     <div id="profile-menu">
                         <div id="profile-header">
-                            <div id="avatar-small"></div>
                             <div id="profile-name">{username}</div>
                         </div>
                         <Link to={`/user/${username}`}>Profile</Link>

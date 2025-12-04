@@ -2,8 +2,10 @@ import express from "express";
 import User from "../models/User.js";
 import Review from "../models/Review.js";
 import { put } from "@vercel/blob";
+import multer from "multer";
 
 const router = express.Router();
+const upload = multer();
 
 router.get("/details/:username", async(req, res) => {
     const { username } = req.params;
@@ -93,18 +95,23 @@ router.put("/updateusername/:username/:newusername", async(req, res) => {
     return res.json({ success: true });
 });
 
-router.post("/uploadavatar/:username", async(req, res) => {
+router.post("/uploadavatar/:username", upload.single("avatar"), async (req, res) => {
     const { username } = req.params;
-    const file = req.file.avatar;
+    const file = req.file;
 
-    const blob = await put(`avatars/${username}`, file.data, {
-        access: "public"
+    const blob = await put(`avatars/${username}/${file.originalname}`, file.buffer, {
+        access: "public",
+        allowOverwrite: true
     });
 
+    const finalUrl = `${blob.url}?v=${Date.now()}`;
+
     await User.updateOne(
-        { username },
-        { $set: { avatarURL: blob.url }}
+        { username }, 
+        { $set: { avatarURL: finalUrl } }
     );
+
+    res.json({ success: true, url: finalUrl });
 });
 
 router.post("/newreview/:username/:movie_id", async(req, res) => {
