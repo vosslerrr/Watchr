@@ -1,10 +1,6 @@
 import "./UserInfo.css"
 import React, { useState, useEffect } from 'react';
-<<<<<<< HEAD
-import { getUserDetails, getUserReviews, putNewUsername } from "../../../../utils/api";
-=======
-import { getUserDetails, getUserReviews, postNewAvatar, putNewUsername, putNewFollower, putRemoveFollower } from "../../../../utils/api";
->>>>>>> vossler-branch
+import { getUserDetails, getUserReviews, postNewAvatar, putNewUsername, putNewFollower, putRemoveFollower } from "../../../../utils/EC2api";
 import { useParams } from "react-router-dom";
 
 function UserInfo(){
