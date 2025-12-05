@@ -76,3 +76,32 @@ export async function putNewUsername(username, newusername){
     });
     return res.json();
 }
+
+export async function postNewAvatar(username, file){
+    const formData = new FormData();
+    formData.append("avatar", file);
+
+    const res = await fetch(`${VERCEL_API}/routes/user/uploadavatar/${username}`, {
+        method: "POST",
+        body: formData
+    });
+    return res.json();
+}
+
+export async function putNewFollower(follower, target){
+    const res = await fetch(`${VERCEL_API}/routes/user/follow/${follower}/${target}`,{
+        method: "PUT",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ follower, target })
+    });
+    return res.json();
+}
+
+export async function putRemoveFollower(follower, target){
+    const res = await fetch(`${VERCEL_API}/routes/user/unfollow/${follower}/${target}`,{
+        method: "PUT",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ follower, target })
+    });
+    return res.json();
+}
