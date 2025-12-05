@@ -2,8 +2,10 @@ import express from "express";
 import User from "../models/User.js";
 import Review from "../models/Review.js";
 import { put } from "@vercel/blob";
+import multer from "multer";
 
 const router = express.Router();
+const upload = multer();
 
 router.get("/details/:username", async(req, res) => {
     const { username } = req.params;
@@ -40,6 +42,8 @@ router.put("/unfollow/:follower/:target", async(req, res) => {
         { _id: followerUser._id },
         { $pull: { following: targetUser._id } }
     );
+
+    return res.json({ success: true });
 });
 
 router.put("/follow/:follower/:target", async(req, res) => {
@@ -57,6 +61,8 @@ router.put("/follow/:follower/:target", async(req, res) => {
         { _id: followerUser._id },
         { $addToSet: { following: targetUser._id } }
     );
+    
+    return res.json({ success: true });
 });
 
 router.put("/updatereview/:username/:movie_id", async(req, res) => {
@@ -93,18 +99,23 @@ router.put("/updateusername/:username/:newusername", async(req, res) => {
     return res.json({ success: true });
 });
 
-router.post("/uploadavatar/:username", async(req, res) => {
+router.post("/uploadavatar/:username", upload.single("avatar"), async (req, res) => {
     const { username } = req.params;
-    const file = req.file.avatar;
+    const file = req.file;
 
-    const blob = await put(`avatars/${username}`, file.data, {
-        access: "public"
+    const blob = await put(`avatars/${username}/${file.originalname}`, file.buffer, {
+        access: "public",
+        allowOverwrite: true
     });
 
+    const finalUrl = `${blob.url}?v=${Date.now()}`;
+
     await User.updateOne(
-        { username },
-        { $set: { avatarURL: blob.url }}
+        { username }, 
+        { $set: { avatarURL: finalUrl } }
     );
+
+    res.json({ success: true, url: finalUrl });
 });
 
 router.post("/newreview/:username/:movie_id", async(req, res) => {
@@ -146,12 +157,12 @@ router.get("/search/:currentUser/:query", async (req, res) => {
         username: { $regex: query, $options: "i" },
         username: { $ne: currentUser }
     })
-    .select("username avatar followers") 
+    .select("username avatarURL followers") 
     .limit(5);
 
     const results = users.map(u => ({
         username: u.username,
-        avatar: u.avatar,
+        avatarURL: u.avatarURL,
         isFollowing: u.followers.includes(user._id)
     }));
 

@@ -96,7 +96,7 @@ body{
     border-radius:20px;
     font-size: 20px;
     border: none;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS';
 }
 
 #menu{
@@ -158,7 +158,7 @@ body{
     border-radius:25px;
     font-size: 20px;
     border: none;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS';
     cursor: pointer;
 }
 
@@ -193,8 +193,7 @@ body{
 }
 
 #profBtn img{
-    width: 120%;
-    height: 120%;
+    width: 145%;
     object-fit: contain;
     background: transparent;
 }
@@ -230,6 +229,7 @@ body{
 
 #profile-menu a:hover{
   background: var(--bgBody);
+  cursor: pointer;
 }
 
 #profile-header{
@@ -245,6 +245,11 @@ body{
   height: 26px;
   border-radius: 50%;
   background: var(--bgGold);
+  overflow: hidden;
+}
+
+#avatar-small img{
+    width: 100%;
 }
 
 #profile-name{

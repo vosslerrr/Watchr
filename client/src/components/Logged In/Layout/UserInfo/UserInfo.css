@@ -15,6 +15,63 @@
     border-radius: 100px;
 }
 
+.change-avatar, .change-avatar-open{
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.7);
+    z-index: 9999;
+}
+
+.change-avatar{
+    display: none;
+}
+
+.newAvatarForm{
+    background: var(--bgBody);
+    width: 400px;
+    height: 300px;
+    border-radius: 12px;
+    z-index: 10000;
+}
+
+#avatarSubmit{
+    position: relative;
+    left: 75px;
+    top: 45px;
+}
+
+#avatarFile{
+    position: relative;
+    left: 20px;
+    top: 45px;
+}
+
+#popupAvatar{
+    position: relative;
+    left: 100px;
+    top: 30px;
+    width: 200px;
+    height: 200px;
+    border-style: solid;
+    border-radius: 100px;
+}
+
+#exitButtonAvatar{
+    position: relative;
+    bottom: 135px;
+    left: 390px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    opacity: 0.6;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10001;
+}
+
 #avatar{
     height: 150px;
     width: 150px;
@@ -120,6 +177,117 @@
 }
 
 #numFollowing{
+    display: flex;
+    justify-content: center;
+}
+
+/*=====================================================================
+=======================NOT-CURRENT USER================================
+=======================================================================
+*/
+
+.currUserInfo{
+    background-color:#1E1E1E;
+    font-size: 25px;
+    color: white;
+    margin: 50px 250px 50px 250px;
+    height: 250px;
+    width: 1350px;
+    display: flex;
+}
+
+#currchangeAvatar{
+    margin: 50px 0 0 50px;
+    width: 154px;
+    height: 154px;
+    border-radius: 100px;
+}
+
+#curravatar{
+    height: 150px;
+    width: 150px;
+    border-radius: 100px;
+    border-style: solid;
+    border-width: 2px;
+    color: transparent;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.currusernameLayout{
+    margin: 125px 0 0 20px;
+}
+
+#followButton{
+    position: relative;
+    left: 5px;
+    top: 3px;
+    width: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#unfollowButton{
+    position: relative;
+    left: 5px;
+    top: 3px;
+    width: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#currleftSide{
+    position: absolute;
+    left: 1100px;
+    display: flex;
+}
+
+.curravgRating{
+    margin: 77px 0 0 0;
+    padding: 0 10px 0 0;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right-style: solid;
+}
+
+.curravgRating img{
+    position: relative;
+    left: 5px;
+    bottom: 2px;
+    width: 30px;
+}
+
+#curravgNum{
+    display: flex;
+    justify-content: center;
+}
+
+.currfollowers{
+    margin: 77px 0 0 10px;
+    padding: 0 10px 0 0;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right-style: solid;
+}
+
+#currnumFollowers{
+    display: flex;
+    justify-content: center;
+}
+
+
+.currfollowing{
+    margin: 77px 0 0 10px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#currnumFollowing{
     display: flex;
     justify-content: center;
 }

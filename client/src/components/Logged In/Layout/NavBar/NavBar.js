@@ -1,7 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./navBar.css";
 import { useNavigate } from "react-router";
+<<<<<<< HEAD
 import { searchMovies, getMovieCredits, searchUsers } from "../../../../utils/api";
+=======
+import { searchMovies, getMovieCredits, searchUsers, getUserDetails } from "../../../../utils/api";
+>>>>>>> vossler-branch
 import { Link } from "react-router-dom";
 
 function NavBar() {
@@ -20,6 +24,17 @@ function NavBar() {
 
     const navigate = useNavigate();
     const username = localStorage.getItem("username");
+    const [avatarURL, setAvatarURL] = useState('');
+
+    useEffect(() => {
+        async function load(){
+            const res = await getUserDetails(username);
+
+            setAvatarURL(res.avatarURL);
+        }
+
+        load();
+    }, []);
 
     useEffect(() => {
         const handleClickOutside = (e) => {
@@ -132,7 +147,13 @@ function NavBar() {
         setResults([]);
         setQuery("");
         navigate(`/user/${username}`);
+        window.location.reload();
     };
+
+    const goToProfile = () => {
+        navigate(`/user/${username}`)
+        window.location.reload();
+    }
 
     return (
         <div className="navBar">
@@ -233,7 +254,7 @@ function NavBar() {
                                         onClick={() => goToUser(user.username)}
                                     >
                                         <img
-                                            src={user.avatar || "/user-default.png"}
+                                            src={user.avatarURL}
                                             className="userSearchAvatar"
                                         />
                                         <span className="userSearchName">
@@ -255,7 +276,7 @@ function NavBar() {
                 <div id="log">
                     <button id="logBtn">
                         <span>LOG</span>
-                        <img src="/log-icon.png" alt="" />
+                        <img src="/log-icon.png"/>
                     </button>
                 </div>
 
@@ -268,16 +289,15 @@ function NavBar() {
                             setIsOpen((prev) => !prev);
                         }}
                     >
-                        <img src="/user-default.png" alt="Profile" />
+                        <img src={avatarURL}/>
                     </button>
 
                 {isOpen && (
                     <div id="profile-menu">
                         <div id="profile-header">
-                            <div id="avatar-small"></div>
                             <div id="profile-name">{username}</div>
                         </div>
-                        <Link to={`/user/${username}`}>Profile</Link>
+                        <a onClick={(e) => { goToProfile(); }}>Profile</a>
                         <a href="/">Settings</a>
                         <a onClick={(e) => {
                             localStorage.removeItem("token");

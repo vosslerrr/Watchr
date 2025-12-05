@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import './movieDescription.css';
-import { getMovieDetails, getMovieCredits, postUserReview } from '../../../../utils/api';
+import { getMovieDetails, getMovieCredits, postUserReview, getUserReviews } from '../../../../utils/api';
 import { useParams } from "react-router-dom";
 
 function MovieDescription() {
@@ -15,6 +15,9 @@ function MovieDescription() {
     const getCreditsRef = useRef(null);
     const [popupOpen, setPopupOpen] = useState(false);
     const username = localStorage.getItem("username");
+    const [hasReview, setHasReview] = useState(false);
+    const [userRating, setUserRating] = useState(0);
+    const [userReview, setUserReview] = useState('');
 
     const [reviewData, setReviewData] = useState({
             reviewPara: '',
@@ -51,8 +54,21 @@ function MovieDescription() {
             setDirector(directorData?.name || "Not Listed");
         }
 
+        async function loadUserReview(){
+            const res = await getUserReviews(username);
+
+            res.map(element => {
+                if(element.movie_id == movieId){
+                    setHasReview(true);
+                    setUserRating(element.rating);
+                    setUserReview(element.reviewPara);
+                }
+            });
+        }
+
         loadCredits();
         loadDetails();
+        loadUserReview();
     }, [movieId]);
 
     const scrollLeft = () => {
@@ -88,61 +104,82 @@ function MovieDescription() {
                     </div>
 
                     <a>Directed by {director}</a>
-                    <h2 className="overviewRow">Overview</h2>
 
-                    <div className="userReviewWrapper">
-                        <a
-                            href="#"
-                            id="review-Button"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                setPopupOpen(true);
-                            }}
-                        >
-                            Rate/Review
-                        </a>
-
-                        <div className={popupOpen ? "review-Overlay open" : "review-Overlay"}>
-                            <button
-                            type="button"
-                            id="exitButton"
-                            onClick={closePopup}
-                            >
-                                x    
-                            </button>
-                            <form className="reviewConent" onSubmit={onSubmit}>
-                                <span className="popupTitle">You Watched: </span>
-                                <span className="popupMovieTitle">{movieTitle}</span>
-                                <span className="popupDate"> ({date.slice(0,4)})</span>
-                                <hr></hr>
-                                <img id="popupImage"src={`https://image.tmdb.org/t/p/w500${poster}`} />
-                                <textarea 
-                                    id="reviewBox"
-                                    name="reviewPara"
-                                    placeholder="Add A Review" 
-                                    value={reviewPara} 
-                                    onChange={onChange}>
-                                </textarea>
-                                <span id="ratingLabel">Rating:</span>
-                                    <input 
-                                        type="number"
-                                        id="ratingInput"
-                                        name="rating"
-                                        min="0.5"
-                                        max="10"
-                                        step="0.5"
-                                        value={rating}
-                                        onChange={onChange}
-                                        required
-                                    />
-                                <button id="save-Review" type="submit">Watchd</button>
-                            </form>
-                            
+                    <div className="overview-userReview">
+                        <div className="overview">
+                            <span id="overviewRow">Overview</span>
+                            <span id="movieDetails">{details}</span>
                         </div>
-                    </div>
+                        
+                        {hasReview ? (
+                            <div className="userReviewLayout">
+                                <div id="tempwrapper">
+                                    <span id="userReviewHeader">Your Review</span>
 
-                    <span id="movieDetails">{details}</span>
+                                    <div id="userRatingRow">
+                                        <span id="userRating">{userRating}</span>
+                                        <img id="userStar" src="/rating-star.png"></img>
+                                    </div>
+                                </div>
+
+                                <div id="userReviewPara">"{userReview}"</div>
+
+                            </div>
+                        ) : (
+                            <div className="userReviewWrapper">
+                                <a
+                                    href="#"
+                                    id="review-Button"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        setPopupOpen(true);
+                                    }}
+                                >
+                                    Rate/Review
+                                </a>
+
+                                <div className={popupOpen ? "review-Overlay open" : "review-Overlay"}>
+                                    <button
+                                    type="button"
+                                    id="exitButton"
+                                    onClick={closePopup}
+                                    >
+                                        x    
+                                    </button>
+                                    <form className="reviewConent" onSubmit={onSubmit}>
+                                        <span className="popupTitle">You Watched: </span>
+                                        <span className="popupMovieTitle">{movieTitle}</span>
+                                        <span className="popupDate"> ({date.slice(0,4)})</span>
+                                        <hr></hr>
+                                        <img id="popupImage"src={`https://image.tmdb.org/t/p/w500${poster}`} />
+                                        <textarea 
+                                            id="reviewBox"
+                                            name="reviewPara"
+                                            placeholder="Add A Review" 
+                                            value={reviewPara} 
+                                            onChange={onChange}>
+                                        </textarea>
+                                        <span id="ratingLabel">Rating:</span>
+                                            <input 
+                                                type="number"
+                                                id="ratingInput"
+                                                name="rating"
+                                                min="0.5"
+                                                max="10"
+                                                step="0.5"
+                                                value={rating}
+                                                onChange={onChange}
+                                                required
+                                            />
+                                        <button id="save-Review" type="submit">Watchd</button>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                    
 
                     <div className="castRowWrapper">
                         <button className="castLeft" onClick={scrollLeft}>
