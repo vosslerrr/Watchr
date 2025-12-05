@@ -1,149 +1,242 @@
-.outNavBar{
+:root{
+    --bg: #1E1E1E;
+    --text: white;
+    --border: black;
+    --altText: black;
+    --bgBody: #2B2B2B;
+    --bgGold: #FFD700;
+    --goldHover: #e0b300;
+    --bgText: #BFBFBF;
+}
+
+.outNavBar {
     height: 100px;
-    background-color: #1E1E1E;
-    align-items:center;              
-    flex-shrink: 1;
-    display:flex;
-    justify-content: space-between;
-    align-content: center;
-}
-
-.outLeft{
-   padding-left: 300px;
-}
-
-.outRight{
-    color: var(--text);
-    padding-right: 400px;
-}
-
-.outLeft, .outRight{ 
-    gap: 10px;
-    display:flex;
-    align-items:center;
-}
-
-.outMiddle{
-    flex:1;          
-    display: flex;
-    justify-content: center;
-    min-width:0;    
-}
-
-#outSearchBar{
-    width : 100%;
-    max-width: 800px;
-    padding:10px 12px;
-    display:flex;
-    position: relative;
+    width: 100%;
+    background-color: var(--bg);
     align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-#outsearch-input{
-    padding: 10px 12px;
-    border:3px solid var(--border);
-    border-radius:25px;
-    outline:none;
-    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
     font-family: 'Trebuchet MS';
 }
 
-#outNavLogo{
+.outLeft {
+    padding-left: 300px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.outRight {
+    padding-right: 400px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+}
+
+.outMiddle {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-width: 0;
+}
+
+#outNavLogo {
     width: 160px;
     height: 505px;
     display: flex;
-    align-items: center;     
-    justify-content: center;  
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
-    padding-bottom: 10px;         
+    padding-bottom: 10px;
 }
-#outNavLogo img{
+#outNavLogo img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    display: block;
 }
 
-#outdropbtn{
-    height: 35px;
-    padding: 0 12px;
-    background-color: var(--bgGold);
-    color: var(--altText);
-    border-radius:20px;
-    font-size: 20px;
-    border: none;
-    font-family: 'Trebuchet MS';
-}
-
-#outMenu{
+#outMenu {
     position: relative;
     display: inline-block;
 }
 
-#outdropbtn > span, #outdropbtn > img{
-    vertical-align: middle;
+#outdropbtn {
+    height: 39px;
+    padding: 0 12px;
+    background-color: var(--bgGold);
+    color: var(--altText);
+    border-radius: 20px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
 }
 
-#outdropdown-content{
+#outdropbtn:hover {
+    background-color: var(--goldHover);
+}
+
+#outdropdown-content {
     width: 100%;
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
     background-color: var(--bgGold);
-    z-index: 1;
+    z-index: 5;
 }
 
-#outdropdown-content a{
-    color: var(--altText);
+#outdropdown-content a {
     padding: 12px 16px;
+    color: var(--altText);
     text-decoration: none;
     display: block;
-    
 }
 
-#outdropdown-content a:hover{
+#outdropdown-content a:hover {
     background-color: var(--altText);
     color: var(--text);
 }
 
-#outMenu:hover #outdropdown-content{
-    border-radius: 0px 0px 20px 20px;
+#outMenu:hover #outdropdown-content {
+    border-radius: 0 0 20px 20px;
     display: block;
 }
 
-#outMenu:hover #outdropbtn{
+#outMenu:hover #outdropbtn {
     border-radius: 20px 20px 0 0;
-    background-color: #ffd900da;
 }
 
-#outMenu:hover #outdropdown-content #outWatchlistOption{
+#outMenu:hover #outWatchlistOption {
     border-radius: 0 0 18px 18px;
 }
 
-#outLog{
-    height: 35px;
-    padding: 0 12px;
-    background-color: var(--bgGold);
-    color: black;
-    border-radius:25px;
-    font-size: 20px;
+#outSearchBar {
+    width: 100%;
+    max-width: 800px;
+    padding: 10px 12px;
+    display: flex;
+    position: relative;
+    align-items: center;
 }
 
-#outLog:hover{
+#outsearch-input {
+    width: 100%;
+    padding: 10px 140px 10px 12px;
+    border: 3px solid var(--border);
+    border-radius: 25px;
+    outline: none;
+    flex-grow: 1;
+    font-family: 'Trebuchet MS';
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+.outSearchModeSelector {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 36px;
+    padding: 0 14px;
+    background: var(--bgGold);
+    border-top: 3px solid var(--border);
+    border-right: 3px solid var(--border);
+    border-bottom: 3px solid var(--border);
+    border-radius: 0 25px 25px 0;
+    color: black;
+    font-size: 14px;
+    font-family: 'Trebuchet MS';
+    display: flex;
+    align-items: center;
+    z-index: 3;
+}
+
+.outSearchModeDropdown {
+    position: absolute;
+}
+
+.outSearchModeDropdown div {
+    padding: 8px 12px;
+    color: var(--text);
+    cursor: pointer;
+}
+
+.outSearchModeDropdown div:hover {
+    background: var(--bgBody);
+}
+
+#outsearch-input {
+    padding-right: 90px !important;
+}
+
+#outSearchDropdown {
+    position: absolute;
+    top: 55px;
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    z-index: 999;
+    padding: 10px 0;
+}
+
+.outSearchItem {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: var(--text);
+}
+
+.outSearchItem:hover{
+    background-color: var(--bgBody);
+}
+
+.outSearchPoster {
+    width: 50px;
+    height: 75px;
+    border-radius: 6px;
+    object-fit: cover;
+    border: 1px transparent;
+}
+
+.outSearchTitle {
+    font-size: 18px;
+}
+
+.outSearchDate,
+.outSearchDirector {
+    opacity: 0.5;
+    font-style: italic;
+}
+
+#outLog {
+    display: flex;
+    align-items: center;
+}
+
+#outLogBtn {
+    height: 39px;
+    padding: 0 12px;
+    background-color: var(--bgGold);
+    border-radius: 25px;
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#outLogBtn:hover {
     background-color: var(--goldHover);
 }
 
-#outLog a{
-    position: relative;
-    top: 5px;
-    color: inherit;
-    text-decoration: none;
-}
-
-#outLog img{
-    position: relative;
-    top: 3px;
+#outLogBtn img {
+    height: 20px;
+    width: 20px;
 }
