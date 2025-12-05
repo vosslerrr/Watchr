@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./navBar.css";
 import { useNavigate } from "react-router";
-import { searchMovies, getMovieCredits, searchUsers } from "../../../../utils/EC2api";
+import { searchMovies, getMovieCredits, searchUsers } from "../../../../utils/api";
 import { Link } from "react-router-dom";
 
 function NavBar() {
