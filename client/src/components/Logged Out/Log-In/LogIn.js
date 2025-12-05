@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { logInUser } from '../../../utils/api';
+import { logInUser } from '../../../utils/EC2api';
 import './login.css';
 function LogIn() {
     const [formData, setFormData] = useState({
