@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './register.css';
-import { registerUser } from '../../../utils/api';
+import { registerUser } from '../../../utils/EC2api';
 
 function Register() {
     const [formData, setFormData] = useState({
