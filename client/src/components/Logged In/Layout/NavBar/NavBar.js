@@ -1,11 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./navBar.css";
 import { useNavigate } from "react-router";
-<<<<<<< HEAD
-import { searchMovies, getMovieCredits, searchUsers } from "../../../../utils/api";
-=======
 import { searchMovies, getMovieCredits, searchUsers, getUserDetails } from "../../../../utils/api";
->>>>>>> vossler-branch
 import { Link } from "react-router-dom";
 
 function NavBar() {
