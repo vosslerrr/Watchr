@@ -30,9 +30,10 @@
 
 .movieInfo #movieDetails {
     display: block;
+    margin: 5px 0 0 0;
     max-width: 400px;
     overflow-y: scroll;
-    height: 100px;
+    height: 210px;
     padding-right: 10px;
 }
 
@@ -244,7 +245,7 @@
 
 .castRow {
     display: flex;
-    margin-top: 50px;
+    margin-top: 15px;
     gap: 10px;
     flex-wrap: nowrap;
     max-width: 780px;
@@ -327,4 +328,55 @@
 
 .castRow::-webkit-scrollbar-thumb:hover {
     background: #e2e2e2cc;
+}
+
+.overview-userReview{
+    display: flex;
+}
+
+.overview{
+    height: 250px;
+}
+
+#overviewRow{
+    font-size: 30px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.userReviewLayout{
+    margin: 0 0 0 30px;
+    width: 350px;
+}
+
+#tempwrapper{
+    display: flex;
+    border-bottom-style: solid;
+}
+
+#userReviewHeader{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#userReviewPara{
+    margin: 5px 0 0 0;
+    font-style: italic;
+    opacity: 0.6;
+}
+
+#userRatingRow{
+    margin: 0 0 0 115px;
+}
+
+#userRating{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#userStar{
+    position: relative;
+    left: 5px;
+    top: 3px;
+    width: 25px;
 }
