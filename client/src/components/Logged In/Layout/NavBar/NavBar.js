@@ -143,7 +143,13 @@ function NavBar() {
         setResults([]);
         setQuery("");
         navigate(`/user/${username}`);
+        window.location.reload();
     };
+
+    const goToProfile = () => {
+        navigate(`/user/${username}`)
+        window.location.reload();
+    }
 
     return (
         <div className="navBar">
@@ -285,10 +291,9 @@ function NavBar() {
                 {isOpen && (
                     <div id="profile-menu">
                         <div id="profile-header">
-                            <div id="avatar-small"></div>
                             <div id="profile-name">{username}</div>
                         </div>
-                        <Link to={`/user/${username}`}>Profile</Link>
+                        <a onClick={(e) => { goToProfile(); }}>Profile</a>
                         <a href="/">Settings</a>
                         <a onClick={(e) => {
                             localStorage.removeItem("token");

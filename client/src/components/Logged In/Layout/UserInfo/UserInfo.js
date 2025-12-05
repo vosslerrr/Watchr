@@ -1,6 +1,6 @@
 import "./UserInfo.css"
 import React, { useState, useEffect } from 'react';
-import { getUserDetails, getUserReviews, putNewUsername } from "../../../../utils/EC2api";
+import { getUserDetails, getUserReviews, postNewAvatar, putNewUsername, putNewFollower, putRemoveFollower } from "../../../../utils/EC2api";
 import { useParams } from "react-router-dom";
 
 function UserInfo(){
@@ -13,17 +13,22 @@ function UserInfo(){
     const [editpopupOpen, setEditPopupOpen] = useState(false);
     const [newusername, setNewUsername] = useState('');
     const [avatarpopupOpen, setAvatarPopupOpen] = useState(false);
-    const [currAvatar, setCurrAvatar] = useState('');
-    const [newAvatar, setNewAvatar] = useState('');
+    const [currAvatar, setCurrAvatar] = useState(null);
+    const [newAvatar, setNewAvatar] = useState(null);
+    const [currUser, setCurrUser] = useState(true);
+    const [isFollowing, setIsFollowing] = useState(false);
     
     useEffect(() => {
         async function load(){
             const res = await getUserDetails(username);
+            const loggedInUserDetails = await getUserDetails(localStorage.getItem("username"));
 
             setAvatarURL(res.avatarURL);
             setCurrAvatar(res.avatarURL);
             setNumFollowers(res.followers.length);
             setNumFollowing(res.following.length);
+
+            if(res.followers.includes(loggedInUserDetails._id)){ setIsFollowing(true); }
 
             const reviews = await getUserReviews(username);
 
@@ -34,6 +39,8 @@ function UserInfo(){
 
             setRatings(totalRating);
             setCount(reviews.length);
+
+            if(username != localStorage.getItem("username")){ setCurrUser(false); }
         }
         
         load();
@@ -50,7 +57,12 @@ function UserInfo(){
         setCurrAvatar(avatarURL);
     };
 
-    const onChange = e => setNewUsername(e.target.value);
+    const onEditChange = e => setNewUsername(e.target.value);
+
+    const onAvatarChange = e => {
+        setNewAvatar(e.target.files[0]); 
+        setCurrAvatar(URL.createObjectURL(e.target.files[0]));
+    };
 
     const onSubmitUsername = async e => {
         e.preventDefault();
@@ -62,64 +74,127 @@ function UserInfo(){
         if(res.msg){ return window.alert("Username taken"); }
 
         localStorage.setItem('username', newusername);
-        window.location.href = '/'; 
+        window.location.reload(); 
     };
 
     const onSubmitAvatar = async e => {
         e.preventDefault();
+
+        if (!newAvatar) return alert("No file selected.");
+
+        await postNewAvatar(username, newAvatar);
+
+        setNewAvatar(null);
+        document.getElementById("avatarFile").value = "";
+
+        window.location.reload();
     };
 
+    const followUser = async (target) => {
+        await putNewFollower(localStorage.getItem("username"), target);
+        window.location.reload();
+    }
+
+    const unfollowUser = async (target) => {
+        await putRemoveFollower(localStorage.getItem("username"), target);
+        window.location.reload();
+    }
+
     return(
-        <div className="UserInfo">
-            <a href="#" id="changeAvatar" onClick={() => setAvatarPopupOpen(true)}>
-                <img id="avatar" src={avatarURL}/>
-            </a>
-
-            <div className="usernameLayout">
-                <span id="username">{username}</span>
-                <a href="#" id="editIcon" onClick={() => setEditPopupOpen(true)}>
-                    <img src="/edit-icon.png"></img>
+        <>
+        {currUser ? (
+            <div className="UserInfo">
+                <a href="#" id="changeAvatar" onClick={() => setAvatarPopupOpen(true)}>
+                    <img id="avatar" src={avatarURL}/>
                 </a>
-            </div>
-            
-            <div className={editpopupOpen ? "edit-username-open" : "edit-username"}>
-                <button type="button" id="exitButtonUsername" onClick={closeEditPopup}>x</button>
-                <form className="newUsernameForm" onSubmit={onSubmitUsername}>
-                    <input type="text" name="newusername" value={newusername} onChange={onChange} required></input>
-                    <input type="submit"></input>
-                </form>
-            </div>
-     
-            <div className={avatarpopupOpen ? "change-avatar-open" : "change-avatar"}>
-                <button type="button" id="exitButtonAvatar" onClick={closeAvatarPopup}>x</button>
-                <form className="newAvatarForm" onSubmit={onSubmitAvatar}>
-                    <img id="popupAvatar" src={currAvatar}></img>
-                    <input type="file" name="avatarFile" id="avatarFile" value={newAvatar} required></input>
-                    <input type="submit" id="avatarSubmit"></input>
-                </form>
-            </div>
 
-            <div id="leftSide">
-                <div className="avgRating">
-                    <span id="avgNum">
-                        {(ratings/count).toFixed(2)}
-                        <img src="/rating-star.png"></img>
-                    </span>
-                    <span id="avgText">Avg Rating</span>   
+                <div className="usernameLayout">
+                    <span id="username">{username}</span>
+                    <a href="#" id="editIcon" onClick={() => setEditPopupOpen(true)}>
+                        <img src="/edit-icon.png"></img>
+                    </a>
+                </div>
+                
+                <div className={editpopupOpen ? "edit-username-open" : "edit-username"}>
+                    <button type="button" id="exitButtonUsername" onClick={closeEditPopup}>x</button>
+                    <form className="newUsernameForm" onSubmit={onSubmitUsername}>
+                        <input type="text" name="newusername" value={newusername} onChange={onEditChange} required></input>
+                        <input type="submit"></input>
+                    </form>
+                </div>
+        
+                <div className={avatarpopupOpen ? "change-avatar-open" : "change-avatar"}>
+                    <button type="button" id="exitButtonAvatar" onClick={closeAvatarPopup}>x</button>
+                    <form className="newAvatarForm" onSubmit={onSubmitAvatar}>
+                        <img id="popupAvatar" src={currAvatar}></img>
+                        <input type="file" name="avatar" id="avatarFile" accept="image/*" onChange={onAvatarChange} required></input>
+                        <input type="submit" id="avatarSubmit"></input>
+                    </form>
                 </div>
 
-                <div className="followers">
-                    <span id="numFollowers">{numFollowers}</span>
-                    <span id="textFollowers">Followers</span>
+                <div id="leftSide">
+                    <div className="avgRating">
+                        <span id="avgNum">
+                            {(ratings/count).toFixed(2)}
+                            <img src="/rating-star.png"></img>
+                        </span>
+                        <span id="avgText">Avg Rating</span>   
+                    </div>
+
+                    <div className="followers">
+                        <span id="numFollowers">{numFollowers}</span>
+                        <span id="textFollowers">Followers</span>
+                    </div>
+
+                    <div className="following">
+                        <span id="numFollowing">{numFollowing}</span>
+                        <span id="textFollowing">Following</span>
+                    </div>
+                </div>
+                
+            </div>
+        ) : (
+            <div className="currUserInfo">
+                <a id="currchangeAvatar">
+                    <img id="curravatar" src={avatarURL}/>
+                </a>
+
+                <div className="currusernameLayout">
+                    <span id="currusername">{username}</span>
+                    {isFollowing ? (
+                        <a onClick={(e) => {unfollowUser(username)}}>
+                            <img id="unfollowButton" src="/unfollowButton.png"></img>
+                        </a> 
+                    ) : (
+                        <a onClick={(e) => {followUser(username)}}>
+                            <img id="followButton" src="/followButton.png"></img>
+                        </a>
+                    )}
                 </div>
 
-                <div className="following">
-                    <span id="numFollowing">{numFollowing}</span>
-                    <span id="textFollowing">Following</span>
+                <div id="currleftSide">
+                    <div className="curravgRating">
+                        <span id="curravgNum">
+                            {((ratings/count) || 0).toFixed(2)}
+                            <img src="/rating-star.png"></img>
+                        </span>
+                        <span id="curravgText">Avg Rating</span>   
+                    </div>
+
+                    <div className="currfollowers">
+                        <span id="currnumFollowers">{numFollowers}</span>
+                        <span id="currtextFollowers">Followers</span>
+                    </div>
+
+                    <div className="currfollowing">
+                        <span id="currnumFollowing">{numFollowing}</span>
+                        <span id="currtextFollowing">Following</span>
+                    </div>
                 </div>
+                        
             </div>
-            
-        </div>
+        )}
+        </>  
     );
 }
 
