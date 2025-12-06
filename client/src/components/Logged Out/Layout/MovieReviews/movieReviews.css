@@ -1,0 +1,67 @@
+#recentHeader{
+    margin: 0 300px 0 300px;
+    padding: 0 0 10px 0;
+    border-bottom-style: solid;
+}
+
+.recentReviews{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 5px 300px 0 300px;
+}
+
+#noReviews{
+    margin: 50px 0 0 0;
+    height: 300px;
+    width: 1300px;
+    text-align: center;
+    font-size: 40px;
+}
+
+#recentReviewLayout{
+    max-width: 300px;
+    height: 300px;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    white-space: normal;
+    background-color: var(--bg);
+    border-radius: 10px;
+    margin: 10px 0 10px 0;
+}
+
+#reviewUser{
+    display: flex;
+    align-items: center;
+    padding: 0 0 5px 0;
+    border-bottom-style: solid;
+}
+
+#outreviewAvatar{
+    width: 50px;
+    max-height: 47px;
+    border-radius: 50%;
+}
+
+#outreviewUsername{
+    margin: 0 0 0 10px;
+    overflow-x: auto;
+    font-size: 30px;
+}
+
+#reviewRating{
+    margin-left: auto;
+    font-size: 30px;
+}
+
+#reviewStar{
+    width: 30px;
+}
+
+#recentPara{
+    margin: 5px 5px 0 5px;
+    font-style: italic;
+    font-size: 20px;
+    opacity: 0.6;
+}
