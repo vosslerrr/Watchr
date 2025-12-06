@@ -106,3 +106,8 @@ export async function putRemoveFollower(follower, target){
     });
     return res.json();
 }
+
+export async function getMovieReviews(movie_id){
+    const res = await fetch(`http://localhost:5000/routes/review/recent/${movie_id}`);
+    return res.json();
+}

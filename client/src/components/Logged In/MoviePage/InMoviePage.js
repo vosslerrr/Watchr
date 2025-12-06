@@ -1,5 +1,6 @@
 import NavBar from "../Layout/NavBar/NavBar";
 import MovieDescription from "../Layout/MovieDescription/MovieDescription";
+import MovieReviews from "../Layout/MovieReviews/MovieReviews";
 
 
 function InMoviePage() {
@@ -7,6 +8,7 @@ function InMoviePage() {
     <div>
       <NavBar />
       <MovieDescription />
+      <MovieReviews />
     </div>
   );
 }
