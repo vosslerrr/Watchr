@@ -39,6 +39,7 @@
 }
 
 #noFRReviews{
+    display: flex;
     text-align: center;
 }
 
