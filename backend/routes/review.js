@@ -19,18 +19,19 @@ router.get("/recent/:movie_id", async(req, res) => {
 router.get("/friends/:username", async(req, res) => {
     const { username } = req.params;
 
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ username }).populate("following", "username");
 
-    const followingIDs = user.following;
+    const followingUsernames = user.following.map(f => f.username);
 
-    if(followingIDs.length === 0){
+    if(followingUsernames.length === 0){
         return res.json({ reviews: []});
     }
 
     const reviews = await Review.find({
-        userID: { $in: followingIDs }
+        username: { $in: followingUsernames }
     })
-    .sort({ createdAt: -1 });
+    .sort({ createdAt: -1 })
+    .limit(3);
 
     res.json(reviews);
 })

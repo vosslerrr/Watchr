@@ -38,9 +38,9 @@ function MovieReviews(){
         }
 
         loadAvatars();
-    }, [usernames])
+    }, [usernames]);
 
-    const goToProfile = (username) => navigate(`/user/${username}`)
+    const goToProfile = (username) => navigate(`/user/${username}`);
 
 
     return(

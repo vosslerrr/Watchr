@@ -60,7 +60,7 @@
 }
 
 #movieTitle a:hover{
-    color: var(--goldHover)
+    color: var(--goldHover);
 }
 
 #ratingRow{
