@@ -35,7 +35,7 @@ function UpcomingMovies(){
             <section className="upcomingMoviesSection">
                 <div className="upcomingHeader">
                     <h2 className="upcomingTitle">Upcoming Movies</h2>
-                    <a href="/movies" className="seeAllupcoming">SEE ALL</a>
+                    <a href="/upcomingmovies" className="seeAllupcoming">SEE ALL</a>
                     
                 </div>
                 <div className="upcomingMovieBar">
@@ -50,7 +50,7 @@ function UpcomingMovies(){
 
                             return(
                                 poster ? (
-                                    <div id="movie1" key={m.id}>
+                                    <div id="upcomingMoviePosters" key={m.id}>
                                         <Link to={`/movie/${details[index].id}`}><img src={`https://image.tmdb.org/t/p/w500${details[index].poster_path}`}/></Link>
                                     </div>
                                 ) : null

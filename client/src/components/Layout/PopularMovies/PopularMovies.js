@@ -35,7 +35,7 @@ function PopularMovies(){
             <section className="popularMoviesSection">
                 <div className="popularHeader">
                     <h2 className="popularTitle">Popular Movies</h2>
-                    <a href="/movies" className="seeAll">SEE ALL</a>
+                    <a href="/popularmovies" className="seeAll">SEE ALL</a>
                 </div>
                 <div className="movieBar">
                     <div id="left">
@@ -49,7 +49,7 @@ function PopularMovies(){
 
                             return(
                                 poster ? (
-                                    <div id="movie1" key={m.id}>
+                                    <div id="popularMoviePosters" key={m.id}>
                                         <Link to={`/movie/${details[index].id}`}><img src={`https://image.tmdb.org/t/p/w500${details[index].poster_path}`}/></Link>
                                     </div>
                                 ) : null

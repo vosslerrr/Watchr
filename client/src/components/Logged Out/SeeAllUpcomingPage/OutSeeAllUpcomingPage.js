@@ -1,5 +1,5 @@
 import NavBar from "../Layout/NavBar/NavBar";
-import SeeAllUpcoming from "../../Layout/SeeAllPopular/SeeAllUpcoming";
+import SeeAllUpcoming from "../../Layout/SeeAllUpcoming/SeeAllUpcoming";
 
 
 function OutSeeAllUpcomingPage() {

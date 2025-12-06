@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import './movieDescription.css';
-import { getMovieDetails, getMovieCredits, postUserReview, getUserReviews } from '../../../../utils/EC2api';
+import { getMovieDetails, getMovieCredits, postUserReview, getUserReviews } from '../../../../utils/api';
 import { useParams } from "react-router-dom";
 
 function MovieDescription() {
@@ -20,9 +20,9 @@ function MovieDescription() {
     const [userReview, setUserReview] = useState('');
 
     const [reviewData, setReviewData] = useState({
-            reviewPara: '',
-            rating: '10'
-        });
+        reviewPara: '',
+        rating: '10'
+    });
     const { reviewPara, rating } = reviewData;
     const onChange = e => setReviewData({ ...reviewData, [e.target.name]: e.target.value });
 
@@ -31,10 +31,10 @@ function MovieDescription() {
         await postUserReview(username, movieId, reviewPara, rating);
 
         setReviewData({
-            reviewPara:"",
-            rating:"10"
+            reviewPara: "",
+            rating: "10"
         });
-        
+
     };
 
     useEffect(() => {
@@ -54,11 +54,11 @@ function MovieDescription() {
             setDirector(directorData?.name || "Not Listed");
         }
 
-        async function loadUserReview(){
+        async function loadUserReview() {
             const res = await getUserReviews(username);
 
             res.map(element => {
-                if(element.movie_id == movieId){
+                if (element.movie_id == movieId) {
                     setHasReview(true);
                     setUserRating(element.rating);
                     setUserReview(element.reviewPara);
@@ -94,7 +94,13 @@ function MovieDescription() {
         <div className="movieWrapper">
             <div className="moviePage">
                 <div className="moviePoster">
-                    <img id="movieImage" src={`https://image.tmdb.org/t/p/w500${poster}`} />
+                    {poster && (
+                        <img
+                            id="movieImage"
+                            src={`https://image.tmdb.org/t/p/w500${poster}`}
+                            alt="Movie Poster"
+                        />
+                    )}
                 </div>
 
                 <div className="movieInfo">
@@ -110,7 +116,7 @@ function MovieDescription() {
                             <span id="overviewRow">Overview</span>
                             <span id="movieDetails">{details}</span>
                         </div>
-                        
+
                         {hasReview ? (
                             <div className="userReviewLayout">
                                 <div id="tempwrapper">
@@ -141,45 +147,45 @@ function MovieDescription() {
 
                                 <div className={popupOpen ? "review-Overlay open" : "review-Overlay"}>
                                     <button
-                                    type="button"
-                                    id="exitButton"
-                                    onClick={closePopup}
+                                        type="button"
+                                        id="exitButton"
+                                        onClick={closePopup}
                                     >
-                                        x    
+                                        x
                                     </button>
                                     <form className="reviewConent" onSubmit={onSubmit}>
                                         <span className="popupTitle">You Watched: </span>
                                         <span className="popupMovieTitle">{movieTitle}</span>
-                                        <span className="popupDate"> ({date.slice(0,4)})</span>
+                                        <span className="popupDate"> ({date.slice(0, 4)})</span>
                                         <hr></hr>
-                                        <img id="popupImage"src={`https://image.tmdb.org/t/p/w500${poster}`} />
-                                        <textarea 
+                                        <img id="popupImage" src={`https://image.tmdb.org/t/p/w500${poster}`} />
+                                        <textarea
                                             id="reviewBox"
                                             name="reviewPara"
-                                            placeholder="Add A Review" 
-                                            value={reviewPara} 
+                                            placeholder="Add A Review"
+                                            value={reviewPara}
                                             onChange={onChange}>
                                         </textarea>
                                         <span id="ratingLabel">Rating:</span>
-                                            <input 
-                                                type="number"
-                                                id="ratingInput"
-                                                name="rating"
-                                                min="0.5"
-                                                max="10"
-                                                step="0.5"
-                                                value={rating}
-                                                onChange={onChange}
-                                                required
-                                            />
+                                        <input
+                                            type="number"
+                                            id="ratingInput"
+                                            name="rating"
+                                            min="0.5"
+                                            max="10"
+                                            step="0.5"
+                                            value={rating}
+                                            onChange={onChange}
+                                            required
+                                        />
                                         <button id="save-Review" type="submit">Watchd</button>
                                     </form>
-                                    
+
                                 </div>
                             </div>
                         )}
                     </div>
-                    
+
 
                     <div className="castRowWrapper">
                         <button className="castLeft" onClick={scrollLeft}>
@@ -194,9 +200,9 @@ function MovieDescription() {
                                 return (
                                     profile ? (
                                         <div id="cast1" key={c.id}>
-                                                <img src={`https://image.tmdb.org/t/p/w500${profile}`} />
-                                                <span id="castName">{c.name}</span>
-                                                <span id="castMovieName">{c.character}</span>
+                                            <img src={`https://image.tmdb.org/t/p/w500${profile}`} />
+                                            <span id="castName">{c.name}</span>
+                                            <span id="castMovieName">{c.character}</span>
                                         </div>
                                     ) : null
                                 );

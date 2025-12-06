@@ -64,14 +64,14 @@
     scroll-behavior: smooth;
 }
 
-#popularMovies > #movie1 img{
+#popularMovies > #popularMoviePosters img{
     max-width: 220px;
     display: block;
     object-fit: contain;
     filter: grayscale(0%);
 }
 
-#popularMovies > #movie1 img:hover{
+#popularMovies > #popularMoviePosters img:hover{
     filter: grayscale(100%);
 }
 
