@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./navBar.css";
 import { useNavigate } from "react-router";
-import { searchMovies, getMovieCredits, searchUsers, getUserDetails } from "../../../../utils/api";
-import { Link } from "react-router-dom";
+import { searchMovies, getMovieCredits, searchUsers, getUserDetails } from "../../../../utils/EC2api";
 
 function NavBar() {
     const [isOpen, setIsOpen] = useState(false);

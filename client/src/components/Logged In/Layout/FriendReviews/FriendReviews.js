@@ -1,6 +1,6 @@
 import './friendReviews.css';
 import { Link } from "react-router-dom";
-import { getFriendReviews, getMovieDetails, getUserDetails } from '../../../../utils/api';
+import { getFriendReviews, getMovieDetails, getUserDetails } from '../../../../utils/EC2api';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 
