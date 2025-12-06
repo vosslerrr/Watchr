@@ -51,7 +51,7 @@ function MovieReviews(){
             {reviews.length === 0 ? (
                 <div id="noReviews">No recent reviews</div>
             ) : (
-                reviews.slice(0, 9).map((review, index) =>(
+                reviews.slice(0, 12).map((review, index) =>(
                     <div id="recentReviewLayout">
                         <div id="reviewUser">
                             <img id="reviewAvatar" src={userAvatars[index]} onClick={() => goToProfile(review.username)}></img>

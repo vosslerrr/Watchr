@@ -362,6 +362,7 @@
 #userReviewPara{
     margin: 5px 5px 0 5px;
     max-width: 345px;
+    max-height: 250px;
     overflow-y: auto;
     overflow-x: hidden;
     word-wrap: break-word;

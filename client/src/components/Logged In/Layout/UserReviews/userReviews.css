@@ -75,6 +75,12 @@
 #reviewPara{
     font-size: 20px;
     font-style: italic;
+    overflow-y: auto;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    white-space: normal;
+    max-height: 165px;
+    max-width: 225px;
     opacity: 0.6;
     margin-top: 5px;
 }
