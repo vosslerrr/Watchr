@@ -111,3 +111,8 @@ export async function getMovieReviews(movie_id){
     const res = await fetch(`http://localhost:5000/routes/review/recent/${movie_id}`);
     return res.json();
 }
+
+export async function getFriendReviews(username){
+    const res = await fetch(`http://localhost:5000/routes/review/friends/${username}`);
+    return res.json();
+}

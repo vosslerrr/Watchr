@@ -18,7 +18,7 @@ router.get("/details/:username", async(req, res) => {
 router.get("/reviews/:username", async(req, res) => {
     const { username } = req.params;
 
-    let reviews = await Review.find({ username });
+    let reviews = await Review.find({ username }).sort({ createdAt: -1 });
 
     if(reviews == null){
         return res.json({ msg: "No user reviews" });
