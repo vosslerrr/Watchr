@@ -48,7 +48,7 @@ function UserReviews(){
 
                                 <div id="reviewContent">
                                     <span id="movieTitle">
-                                        <Link to={`/movie/${review.movie_id}`}>{details[index]?.original_title}</Link>
+                                        <Link to={`/movie/${review.movie_id}`}>{details[index]?.title}</Link>
                                     </span>
                                     
                                     <div id="ratingRow">

@@ -28,19 +28,21 @@ function MovieDescription() {
 
     const onSubmit = async e => {
         e.preventDefault();
+        
         await postUserReview(username, movieId, reviewPara, rating);
+
+        window.location.reload();
 
         setReviewData({
             reviewPara:"",
             rating:"10"
         });
-        
     };
 
     useEffect(() => {
         async function loadDetails() {
             const res = await getMovieDetails(movieId);
-            setMovieTitle(res.original_title);
+            setMovieTitle(res.title);
             setPoster(res.poster_path);
             setDetails(res.overview);
             setDate(res.release_date);

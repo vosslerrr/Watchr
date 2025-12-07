@@ -51,7 +51,7 @@ function AllReviews(){
                             
                             <div className="ARReviewContent">
                                 <span className="ARMovieTitle">
-                                    <Link to={`/movie/${review.movie_id}`}>{details[index]?.original_title}</Link>
+                                    <Link to={`/movie/${review.movie_id}`}>{details[index]?.title}</Link>
                                 </span>
 
                                 <div className="ARRatingRow">

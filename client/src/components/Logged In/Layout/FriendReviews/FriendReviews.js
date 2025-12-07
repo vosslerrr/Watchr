@@ -59,7 +59,7 @@ function FriendReviews(){
         async function loadTitles(){
             const titlePromises = movieIds.map(async (id) => {
                 const res = await getMovieDetails(id);
-                return res.original_title;
+                return res.title;
             });
 
             const titleArray = await Promise.all(titlePromises);

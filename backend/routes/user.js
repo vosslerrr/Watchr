@@ -156,6 +156,8 @@ router.post("/newreview/:username/:movie_id", async(req, res) => {
     });
 
     await review.save();
+
+    return res.json({ success: true });
 });
 
 router.delete("/deletereview/:username/:movie_id", async(req, res) => {
