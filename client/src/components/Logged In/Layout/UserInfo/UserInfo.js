@@ -2,9 +2,11 @@ import "./UserInfo.css"
 import React, { useState, useEffect } from 'react';
 import { getUserDetails, getUserReviews, postNewAvatar, putNewUsername, putNewFollower, putRemoveFollower } from "../../../../utils/api";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 function UserInfo(){
     const { username } = useParams();
+    const navigate = useNavigate();
     const [avatarURL, setAvatarURL] = useState('');
     const [numFollowers, setNumFollowers] = useState('');
     const [numFollowing, setNumFollowing] = useState('');
@@ -100,6 +102,9 @@ function UserInfo(){
         window.location.reload();
     }
 
+    const goToFollower = () => navigate(`/user/${username}/followers`);
+    const goToFollowing = () => navigate(`/user/${username}/following`);
+
     return(
         <>
         {currUser ? (
@@ -135,20 +140,20 @@ function UserInfo(){
                 <div id="leftSide">
                     <div className="avgRating">
                         <span id="avgNum">
-                            {(ratings/count).toFixed(2)}
+                            {((ratings/count) || 0).toFixed(2)}
                             <img src="/rating-star.png"></img>
                         </span>
                         <span id="avgText">Avg Rating</span>   
                     </div>
 
                     <div className="followers">
-                        <span id="numFollowers">{numFollowers}</span>
-                        <span id="textFollowers">Followers</span>
+                        <span id="numFollowers" onClick={() => goToFollower()}>{numFollowers}</span>
+                        <span id="textFollowers" onClick={() => goToFollower()}>Followers</span>
                     </div>
 
                     <div className="following">
-                        <span id="numFollowing">{numFollowing}</span>
-                        <span id="textFollowing">Following</span>
+                        <span id="numFollowing" onClick={() => goToFollowing()}>{numFollowing}</span>
+                        <span id="textFollowing" onClick={() => goToFollowing()}>Following</span>
                     </div>
                 </div>
                 
@@ -182,13 +187,13 @@ function UserInfo(){
                     </div>
 
                     <div className="currfollowers">
-                        <span id="currnumFollowers">{numFollowers}</span>
-                        <span id="currtextFollowers">Followers</span>
+                        <span id="currnumFollowers" onClick={() => goToFollower()}>{numFollowers}</span>
+                        <span id="currtextFollowers" onClick={() => goToFollower()}>Followers</span>
                     </div>
 
                     <div className="currfollowing">
-                        <span id="currnumFollowing">{numFollowing}</span>
-                        <span id="currtextFollowing">Following</span>
+                        <span id="currnumFollowing" onClick={() => goToFollowing()}>{numFollowing}</span>
+                        <span id="currtextFollowing" onClick={() => goToFollowing()}>Following</span>
                     </div>
                 </div>
                         

@@ -21,8 +21,13 @@ router.get("/popular", async (req, res) => {
 });
 
 router.get("/upcoming", async (req, res) => {
+    const today = new Date().toISOString().split("T")[0]; 
+    const future = new Date();
+    future.setDate(future.getDate() + 60);
+    const futureDate = future.toISOString().split("T")[0];
+
     const response = axios.get(
-        "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&with_original_language=en&region=US&sort_by=popularity.desc&with_release_type=2&primary_release_date.gte=2025-12-01&primary_release_date.lte=2026-02-01",
+        `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&with_original_language=en&region=US&sort_by=popularity.desc&with_release_type=2&primary_release_date.gte=${today}&primary_release_date.lte=${futureDate}`,
         {
             headers: {
                 accept: "application/json",

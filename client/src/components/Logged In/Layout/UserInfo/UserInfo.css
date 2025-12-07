@@ -94,6 +94,11 @@
     margin: 125px 0 0 10px;
     width: 25px;
     height: 25px;
+    transition: filter 0.2s ease;
+}
+
+#editIcon img:hover{
+    filter: invert(59%) sepia(66%) saturate(1442%) hue-rotate(15deg) brightness(105%) contrast(103%);
 }
 
 .edit-username{
@@ -167,7 +172,6 @@
     justify-content: center;
 }
 
-
 .following{
     margin: 77px 0 0 10px;
     height: 100px;
@@ -179,6 +183,10 @@
 #numFollowing{
     display: flex;
     justify-content: center;
+}
+
+.following, .followers{
+    cursor: pointer;
 }
 
 /*=====================================================================
@@ -278,7 +286,6 @@
     justify-content: center;
 }
 
-
 .currfollowing{
     margin: 77px 0 0 10px;
     height: 100px;
@@ -290,4 +297,8 @@
 #currnumFollowing{
     display: flex;
     justify-content: center;
+}
+
+.currfollowers, .currfollowing{
+    cursor: pointer;
 }

@@ -106,3 +106,46 @@ export async function putRemoveFollower(follower, target){
     });
     return res.json();
 }
+
+export async function getMovieReviews(movie_id){
+    const res = await fetch(`http://localhost:5000/routes/review/recent/${movie_id}`);
+    return res.json();
+}
+
+export async function getFriendReviews(username){
+    const res = await fetch(`http://localhost:5000/routes/review/friends/${username}`);
+    return res.json();
+}
+
+export async function getFollowingUsers(username){
+    const res = await fetch(`http://localhost:5000/routes/user/following/${username}`);
+    return res.json();
+}
+
+export async function getFollowerUsers(username){
+    const res = await fetch(`http://localhost:5000/routes/user/followers/${username}`);
+    return res.json();
+}
+
+export async function deleteUserAccount(username){
+    const res = await fetch(`http://localhost:5000/routes/user/delete/${username}`,{
+        method: "DELETE"
+    })
+    return res.json();
+}
+
+export async function deleteUserReview(username, movie_id){
+    const res = await fetch(`http://localhost:5000/routes/user/deletereview/${username}/${movie_id}`,{
+        method: "DELETE"
+    })
+    return res.json();
+}
+
+export async function editUserReview(username, movie_id, reviewPara, rating){
+    const res = await fetch(`http://localhost:5000/routes/user/updatereview/${username}/${movie_id}`,{
+        method: "PUT",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reviewPara, rating })
+    })
+    return res.json();
+}

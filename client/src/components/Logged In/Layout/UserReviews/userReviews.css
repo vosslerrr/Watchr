@@ -5,20 +5,20 @@
 }
 
 .Header{
+    display: flex;
     font-size: 20px;
     padding-bottom: 5px;
     width: 1350px;
     border-bottom-style: solid;
 }
 
-#seeAll{
-    position: relative;
-    left: 1150px;
+#URSeeAll{
+    margin-left: auto;
     color: inherit;
     text-decoration: none;
 }
 
-#seeAll:hover{
+#URSeeAll:hover{
     color: rgb(148, 148, 148);
 }
 
@@ -34,7 +34,7 @@
 }
 
 #poster img{
-    width: 150px;
+    width: 180px;
     border-radius: 8px;
     filter: grayscale(0%);
     transition: filter 0.2s ease-in-out;
@@ -60,7 +60,7 @@
 }
 
 #movieTitle a:hover{
-    color: var(--goldHover)
+    color: var(--goldHover);
 }
 
 #ratingRow{
@@ -73,8 +73,214 @@
 }
 
 #reviewPara{
-    font-size: 20px;
+    font-size: 16px;
     font-style: italic;
+    overflow-y: auto;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    white-space: normal;
+    max-height: 165px;
+    max-width: 240px;
     opacity: 0.6;
     margin-top: 5px;
+}
+
+#reviewPara::-webkit-scrollbar {
+    height: 8px;
+}
+
+#reviewPara::-webkit-scrollbar-track {
+    border-radius: 4px;
+}
+
+#reviewPara::-webkit-scrollbar-thumb {
+    background: #e2e2e288;
+    border-radius: 4px;
+}
+
+#reviewPara::-webkit-scrollbar-thumb:hover {
+    background: #e2e2e2cc;
+}
+
+#URedit-delete{
+    display: flex;
+    margin: 5px 0 0 0;
+    gap: 5px;
+    justify-content: flex-end;
+}
+
+#UReditIcon{
+    width: 25px;
+    height: 25px;
+    transition: filter 0.2s ease;
+}
+
+#UReditIcon:hover{
+    cursor: pointer;
+    filter: invert(59%) sepia(66%) saturate(1442%) hue-rotate(15deg) brightness(105%) contrast(103%);
+}
+
+#URdeleteIcon{
+    width: 25px;
+    height: 25px;
+    transition: filter 0.2s ease;
+    filter: hue-rotate(354deg);
+}
+
+#URdeleteIcon:hover{
+    cursor: pointer;
+    filter: invert(22%) sepia(96%) saturate(7480%) brightness(90%) contrast(105%);
+}
+
+.editReview-overlay,
+.editReview-overlay-open{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.editReview-overlay{
+    display: none;
+}
+
+.editReview-overlay-open{
+    display: flex;
+}
+
+.ERreviewContent{
+    position: relative;
+    background: var(--bgBody);
+    padding: 20px;
+    border-radius: 12px;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ERpopupBody {
+    display: flex;
+    gap: 20px;
+}
+
+.ERpopupImage{
+    width: 220px;
+    border-radius: 8px;
+}
+
+.ERpopupMovieTitle{
+    color: var(--bgGold);
+}
+
+.ERpopupDate{
+    opacity: 0.7;
+}
+
+.ERpopupTitle,
+.ERpopupMovieTitle,
+.ERpopupDate{
+    display: inline;
+}
+
+.ERreviewBox{
+    width: 100%;
+    height: 310px;
+    resize: none;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.ERreviewBox::-webkit-scrollbar {
+    width: 8px;
+    height: 2px;
+}
+
+.ERreviewBox::-webkit-scrollbar-track {
+    border-radius: 4px;
+}
+
+.ERreviewBox::-webkit-scrollbar-thumb {
+    background: #646464;
+    border-radius: 4px;
+    cursor: auto;
+}
+
+.ERreviewBox::-webkit-scrollbar-thumb:hover {
+    background: #525252cc;
+}
+
+.ERreviewBox:focus{
+    outline: none;
+}
+
+.ERsave-Review{
+    height: 45px;
+    width: 150px;
+    font-size: 22px;
+    cursor: pointer;
+    background: var(--bgGold);
+    border-radius: 8px;
+}
+
+.ERsave-Review:hover{
+    background-color: var(--goldHover);
+}
+
+.ERsave-Review:active{
+    transform: scale(0.98)
+}
+
+.ERratingRow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.ERratingLabel{
+    font-size: 30px;
+}
+
+.ERratingInput{
+    width: 50px;
+    text-align: center;
+    height: 44px;
+    font-size: 20px;
+    color: black;
+    pointer-events: auto;
+    caret-color: transparent;
+    user-select: none;
+    border-radius: 8px;
+}
+
+.ERratingInput::-webkit-inner-spin-button,
+.ERratingInput::-webkit-outer-spin-button {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.ERratingInput:focus{
+    outline: none;
+}
+
+.ERratingInput:active{
+    transform: none;
+}
+
+.ERexitButton{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    opacity: 0.5;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    cursor: pointer;
 }

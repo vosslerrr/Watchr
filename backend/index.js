@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import tmdbRoutes from "./routes/tmdb.js";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/user.js";
+import reviewRoutes from "./routes/review.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -19,5 +20,6 @@ mongoose.connect(process.env.MONGO_URI)
 app.use("/routes/tmdb", tmdbRoutes);
 app.use("/routes/auth", authRoutes);
 app.use("/routes/user", userRoutes);
+app.use("/routes/review", reviewRoutes);
 
 app.listen(5000, "0.0.0.0", () => console.log("Server running at port 5000"));

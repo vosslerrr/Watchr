@@ -1,8 +1,13 @@
 import "./navBar.css"
 import { useNavigate } from "react-router";
+<<<<<<< HEAD
 import { searchMovies, getMovieCredits, searchUsers } from "../../../../utils/api";
 import { Link } from "react-router-dom";
+=======
+import { searchMovies, getMovieCredits, searchUsers } from "../../../../utils/EC2api";
+>>>>>>> main
 import React, { useState, useRef, useEffect } from "react";
+
 function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
     const profRef = useRef(null);

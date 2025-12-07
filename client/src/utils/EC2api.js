@@ -76,3 +76,75 @@ export async function putNewUsername(username, newusername){
     });
     return res.json();
 }
+
+export async function postNewAvatar(username, file){
+    const formData = new FormData();
+    formData.append("avatar", file);
+
+    const res = await fetch(`${VERCEL_API}/routes/user/uploadavatar/${username}`, {
+        method: "POST",
+        body: formData
+    });
+    return res.json();
+}
+
+export async function putNewFollower(follower, target){
+    const res = await fetch(`${VERCEL_API}/routes/user/follow/${follower}/${target}`,{
+        method: "PUT",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ follower, target })
+    });
+    return res.json();
+}
+
+export async function putRemoveFollower(follower, target){
+    const res = await fetch(`${VERCEL_API}/routes/user/unfollow/${follower}/${target}`,{
+        method: "PUT",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ follower, target })
+    });
+    return res.json();
+}
+
+export async function getMovieReviews(movie_id){
+    const res = await fetch(`${VERCEL_API}/routes/review/recent/${movie_id}`);
+    return res.json();
+}
+
+export async function getFriendReviews(username){
+    const res = await fetch(`${VERCEL_API}/routes/review/friends/${username}`);
+    return res.json();
+}
+
+export async function getFollowingUsers(username){
+    const res = await fetch(`${VERCEL_API}/routes/user/following/${username}`);
+    return res.json();
+}
+
+export async function getFollowerUsers(username){
+    const res = await fetch(`${VERCEL_API}/routes/user/followers/${username}`);
+    return res.json();
+}
+
+export async function deleteUserAccount(username){
+    const res = await fetch(`${VERCEL_API}/routes/user/delete/${username}`,{
+        method: "DELETE"
+    })
+    return res.json();
+}
+
+export async function deleteUserReview(username, movie_id){
+    const res = await fetch(`${VERCEL_API}/routes/user/deletereview/${username}/${movie_id}`,{
+        method: "DELETE"
+    })
+    return res.json();
+}
+
+export async function editUserReview(username, movie_id, reviewPara, rating){
+    const res = await fetch(`${VERCEL_API}/routes/user/updatereview/${username}/${movie_id}`,{
+        method: "PUT",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reviewPara, rating })
+    })
+    return res.json();
+}

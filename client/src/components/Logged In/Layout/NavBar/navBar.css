@@ -141,7 +141,7 @@ body{
     background-color: var(--goldHover);
 }
 
-#menu:hover #dropdown-content #watchlistOption{
+#menu:hover #dropdown-content #moviesOption{
     border-radius: 0 0 18px 18px;
 }
 

@@ -18,7 +18,7 @@ router.get("/details/:username", async (req, res) => {
 router.get("/reviews/:username", async (req, res) => {
     const { username } = req.params;
 
-    let reviews = await Review.find({ username });
+    let reviews = await Review.find({ username }).sort({ createdAt: -1 });
 
     if (reviews == null) {
         return res.json({ msg: "No user reviews" });
@@ -27,7 +27,27 @@ router.get("/reviews/:username", async (req, res) => {
     res.send(reviews);
 });
 
-router.put("/unfollow/:follower/:target", async (req, res) => {
+router.get("/following/:username", async(req, res) => {
+    const { username } = req.params;
+
+    const user = await User.findOne({ username }).populate("following", "username");
+
+    const followingUsernames = user.following.map(f => f.username);
+
+    res.send(followingUsernames);
+});
+
+router.get("/followers/:username", async(req, res) => {
+    const { username } = req.params;
+
+    const user = await User.findOne({ username }).populate("followers", "username");
+
+    const followerUsernames = user.followers.map(f => f.username);
+
+    res.send(followerUsernames);
+});
+
+router.put("/unfollow/:follower/:target", async(req, res) => {
     const { follower, target } = req.params;
 
     const followerUser = await User.findOne({ username: follower });
@@ -74,6 +94,8 @@ router.put("/updatereview/:username/:movie_id", async (req, res) => {
         { $set: { reviewPara: reviewPara, rating: rating } },
         { new: true }
     );
+
+    return res.json({ success: true });
 });
 
 router.put("/updateusername/:username/:newusername", async (req, res) => {
@@ -135,6 +157,8 @@ router.post("/newreview/:username/:movie_id", async (req, res) => {
     });
 
     await review.save();
+
+    res.json({ success: true });
 });
 
 router.delete("/deletereview/:username/:movie_id", async (req, res) => {
@@ -143,6 +167,8 @@ router.delete("/deletereview/:username/:movie_id", async (req, res) => {
     await Review.findOneAndDelete(
         { username, movie_id }
     );
+
+    return res.json({ success: true });
 });
 
 router.get("/search/:currentUser/:query", async (req, res) => {
@@ -172,6 +198,16 @@ router.get("/search/:currentUser/:query", async (req, res) => {
     }));
 
     res.json(results);
+});
+
+router.delete("/delete/:username", async (req, res) => {
+    const { username } = req.params;
+
+    await User.deleteOne({ username: username});
+
+    await Review.deleteMany({ username: username });
+
+    res.json({ success: true});
 });
 
 export default router;

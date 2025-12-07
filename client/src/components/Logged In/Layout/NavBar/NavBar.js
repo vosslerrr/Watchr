@@ -159,7 +159,6 @@ function NavBar() {
     }
 
     return (
-        <>
             <div className="navBar">
                 <div className="left">
                     <div id="navLogo">
@@ -173,8 +172,8 @@ function NavBar() {
                         </button>
                         <div id="dropdown-content">
                             <a href="/">Home</a>
-                            <a href="/movies">Movies</a>
-                            <a href="/watchlist" id="watchlistOption">Watchlist</a>
+                            <a href="/movies">Popular Movies</a>
+                            <a href="/watchlist" id="watchlistOption">Upcoming Movies</a>
                         </div>
                     </div>
                 </div>
@@ -277,13 +276,6 @@ function NavBar() {
                 </div>
 
                 <div className="right">
-                    <div id="log">
-                        <button id="logBtn">
-                            <span>LOG</span>
-                            <img src="/log-icon.png" />
-                        </button>
-                    </div>
-
                     <div id="profile" ref={profRef}>
                         <button
                             id="profBtn"
@@ -302,7 +294,7 @@ function NavBar() {
                                     <div id="profile-name">{username}</div>
                                 </div>
                                 <a onClick={(e) => { goToProfile(); }}>Profile</a>
-                                <a href="/">Settings</a>
+                                <Link to={`/user/${username}/settings`}>Settings</Link>
                                 <a onClick={(e) => {
                                     localStorage.removeItem("token");
                                     window.location.href = '/';
@@ -312,7 +304,6 @@ function NavBar() {
                     </div>
                 </div>
             </div>
-        </>
     );
 }
 

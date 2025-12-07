@@ -1,0 +1,72 @@
+#ARHeader{
+    margin: 20px 400px 0 300px;
+    padding: 0 0 10px 0;
+    border-bottom-style: solid; 
+}
+
+.ARReviews{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 20px 400px 0 300px;
+    gap: 20px;
+}
+
+.ARReviewLayout{
+    display: flex;
+    background-color: var(--bg);
+    border-radius: 10px;
+    max-height: 225px;
+}
+
+.ARPoster img{
+    width: 150px;
+    border-radius: 8px;
+    filter: grayscale(0%);
+    transition: filter 0.2s ease-in-out;
+}
+
+.ARPoster img:hover{
+    filter: grayscale(100%);
+}
+
+.ARReviewContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    margin: 0 0 0 5px;
+    border-left-style: solid;
+    padding: 0 0 0 5px;
+}
+
+.ARMovieTitle a{
+    font-size: 20px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.ARMovieTitle a:hover{
+    color: var(--goldHover);
+}
+
+.ARRatingRow{
+    border-bottom-style: solid;
+}
+
+.ARStar{
+    margin: 0 0 0 5px;
+    width: 20px;
+}
+
+.ARReviewPara{
+    font-size: 20px;
+    font-style: italic;
+    overflow-y: auto;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    white-space: normal;
+    max-height: 165px;
+    max-width: 225px;
+    opacity: 0.6;
+    margin: 5px 0 0 0;
+}

@@ -1,10 +1,10 @@
-import "./userReviews.css";
-import { getUserReviews, getMovieDetails, deleteUserReview, editUserReview } from '../../../../utils/EC2api' 
-import { useParams } from "react-router";
+import './allReviews.css'
+import { getUserReviews, getMovieDetails, deleteUserReview, editUserReview } from '../../../../utils/EC2api'
 import { useState, useEffect } from "react";
+import { useParams } from "react-router";
 import { Link } from 'react-router-dom';
 
-function UserReviews(){
+function AllReviews(){
     const { username } = useParams();
     const currUser = localStorage.getItem("username");
     const [userReviews, setUserReviews] = useState([]);
@@ -56,33 +56,36 @@ function UserReviews(){
     };
 
     return(
-        <div className="UserReviews">
-            <div className="Header">
-                <span id="reviewHeader">Recent Reviews</span>
-                <Link id="URSeeAll" to={`/user/${username}/reviews`}>SEE ALL</Link>
-            </div>
+        <div className="AllReviews">
+            <h2 id="ARHeader">Recent Reviews</h2>
 
-            <div className="Reviews">
-                {userReviews.length !== 0 ? (
-                    userReviews.slice(0, 3).map((review, index) => (
-                        <div id="reviewLayout">
-                            <div id="poster">
+            <div className="ARReviews">
+                {userReviews.length === 0 ? (
+                    username === currUser ? (
+                        <div id="ARNoReviews">You have no reviews</div>
+                    ) : (
+                        <div id="ARNoReviews">This user has no reviews</div>
+                    )
+                ) : (
+                    userReviews.map((review, index) => (
+                        <div className="ARReviewLayout">
+                            <div className="ARPoster">
                                 <Link to={`/movie/${review.movie_id}`}>
                                     <img src={`https://image.tmdb.org/t/p/w500${details[index]?.poster_path}`}></img>
                                 </Link>
                             </div>
-
-                            <div id="reviewContent">
-                                <span id="movieTitle">
+                            
+                            <div className="ARReviewContent">
+                                <span className="ARMovieTitle">
                                     <Link to={`/movie/${review.movie_id}`}>{details[index]?.title}</Link>
                                 </span>
-                                
-                                <div id="ratingRow">
-                                    <span id="rating">{review.rating}</span>
-                                    <img id="star" src="/rating-star.png"></img>
+
+                                <div className="ARRatingRow">
+                                    <span className="ARRating">{review.rating}</span>
+                                    <img className="ARStar" src="/rating-star.png"></img>
                                 </div>
 
-                                <span id="reviewPara">"{review.reviewPara}"</span>
+                                <span className="ARReviewPara">"{review.reviewPara}"</span>
 
                                 {username === currUser ? (
                                     <div className="edit-Review">
@@ -143,16 +146,11 @@ function UserReviews(){
                                 ) : null}
                             </div>
                         </div>
-                ))) : (
-                    username === currUser ? (
-                        <div id="noReviews">You have no reviews</div>
-                    ) : (
-                        <div id="noReviews">This user has no reviews</div>
                     )
-                )}
+                ))}
             </div>
         </div>
     );
 }
 
-export default UserReviews;
+export default AllReviews;
