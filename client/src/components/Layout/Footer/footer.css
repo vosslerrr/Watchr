@@ -1,0 +1,25 @@
+.footer {
+    width: 100%;
+    background-color: var(--bg);
+    color: var(--text);
+    padding: 70px 40px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.footer span {
+    opacity: 0.7;
+}
+.footer-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.footer-icon {
+    font-size: 24px;
+    color: white;
+    opacity: 0.7;
+}

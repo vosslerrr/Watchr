@@ -51,7 +51,14 @@ function UpcomingMovies(){
                             return(
                                 poster ? (
                                     <div id="upcomingMoviePosters" key={m.id}>
-                                        <Link to={`/movie/${details[index].id}`}><img src={`https://image.tmdb.org/t/p/w500${details[index].poster_path}`}/></Link>
+                                        <Link to={`/movie/${details[index].id}`}>
+                                        <img src={`https://image.tmdb.org/t/p/w500${details[index].poster_path}`}/>
+                                        
+                                        <div id="upcomingMoviesOverlay">
+                                            <h3>{details[index].title}</h3>
+                                            <p>{details[index].release_date?.slice(0,4)}</p>
+                                        </div>
+                                        </Link>
                                     </div>
                                 ) : null
                             );

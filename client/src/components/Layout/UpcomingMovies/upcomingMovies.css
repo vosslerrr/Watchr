@@ -56,17 +56,12 @@
     justify-content: flex-start;
     display: flex;
     align-items: flex-start;
-    padding-top: 100px;
     flex-shrink: 1;
     flex-wrap: nowrap;
     height: 400px;
     gap: 33px;
     overflow-x: auto;
-    overflow-y: hidden;
     scroll-behavior: smooth;
-    scrollbar-width: none;
-    white-space: nowrap;
-    padding-top: 0;
 }
 
 #upcomingMovies > #upcomingMoviePosters img{
@@ -95,4 +90,37 @@
     background-color: var(--bgBody);
     border:none;
     cursor: pointer;
+}
+
+#upcomingMoviePosters {
+    position: relative;
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+   
+}
+
+#upcomingMoviesOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.65);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 0 20px;          
+    box-sizing: border-box;
+}
+
+#upcomingMoviePosters:hover #upcomingMoviesOverlay  {
+    opacity: 1;
 }

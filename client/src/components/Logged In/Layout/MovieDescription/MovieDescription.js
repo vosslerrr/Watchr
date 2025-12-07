@@ -30,12 +30,18 @@ function MovieDescription() {
         e.preventDefault();
         await postUserReview(username, movieId, reviewPara, rating);
 
+        setHasReview(true);
+        setUserRating(rating);
+        setUserReview(reviewPara);
+
         setReviewData({
             reviewPara: "",
             rating: "10"
         });
 
+        setPopupOpen(false);
     };
+
 
     useEffect(() => {
         async function loadDetails() {

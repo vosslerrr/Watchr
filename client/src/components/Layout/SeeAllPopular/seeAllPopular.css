@@ -33,7 +33,7 @@
 #seeAllPopularMoviePosters {
     position: relative;
     width: 300px;
-    height: auto;
+    height: 450px;
     border-radius: 8px;
     overflow: hidden;
 }
@@ -55,6 +55,8 @@
     font-size: 1.4rem;
     opacity: 0;
     transition: opacity 0.3s ease;
+    padding: 0 20px;          
+    box-sizing: border-box;
 }
 
 #seeAllPopularMoviePosters:hover #seeAllPopularOverlay {
