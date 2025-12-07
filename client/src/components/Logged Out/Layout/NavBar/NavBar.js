@@ -147,8 +147,7 @@ function NavBar() {
                     </button>
                     <div id="outdropdown-content">
                         <a href="/">Home</a>
-                        <a href="/movies">Movies</a>
-                        <a href="/watchlist" id="outWatchlistOption">Watchlist</a>
+                        <a href="/movies" id="outmoviesOption">Movies</a>
                     </div>
                 </div>
             </div>
@@ -211,12 +210,6 @@ function NavBar() {
                                 ))}
                         </div>
                     )}
-                </div>
-            </div>
-
-            <div className="outRight">
-                <div id="outLog">
-                    <a href="/login" id="outLogBtn"><img src="/log-icon.png" /> LOG</a>
                 </div>
             </div>
         </div>
