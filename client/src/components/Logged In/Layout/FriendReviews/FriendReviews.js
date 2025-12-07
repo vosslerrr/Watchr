@@ -17,7 +17,7 @@ function FriendReviews(){
     useEffect(() =>{
         async function loadReviews(){
             const res = await getFriendReviews(username);
-
+            
             const tempFriends = res.map(review => review.username);
             const tempIds = res.map(review => review.movie_id);
 
@@ -59,7 +59,7 @@ function FriendReviews(){
         async function loadTitles(){
             const titlePromises = movieIds.map(async (id) => {
                 const res = await getMovieDetails(id);
-                return res.original_title;
+                return res.title;
             });
 
             const titleArray = await Promise.all(titlePromises);

@@ -94,6 +94,8 @@ router.put("/updatereview/:username/:movie_id", async(req, res) => {
         { $set: { reviewPara: reviewPara, rating: rating } },
         { new: true }
     );
+
+    return res.json({ success: true });
 });
 
 router.put("/updateusername/:username/:newusername", async(req, res) => {
@@ -156,6 +158,8 @@ router.post("/newreview/:username/:movie_id", async(req, res) => {
     });
 
     await review.save();
+
+    res.json({ success: true });
 });
 
 router.delete("/deletereview/:username/:movie_id", async(req, res) => {
@@ -164,6 +168,8 @@ router.delete("/deletereview/:username/:movie_id", async(req, res) => {
     await Review.findOneAndDelete(
         { username, movie_id }
     );
+
+    return res.json({ success: true });
 });
 
 router.get("/search/:currentUser/:query", async (req, res) => {
@@ -187,6 +193,16 @@ router.get("/search/:currentUser/:query", async (req, res) => {
     }));
 
     res.json(results);
+});
+
+router.delete("/delete/:username", async (req, res) => {
+    const { username } = req.params;
+
+    await User.deleteOne({ username: username});
+
+    await Review.deleteMany({ username: username });
+
+    res.json({ success: true});
 });
 
 export default router;

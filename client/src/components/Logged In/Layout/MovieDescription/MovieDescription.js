@@ -28,19 +28,21 @@ function MovieDescription() {
 
     const onSubmit = async e => {
         e.preventDefault();
+        
         await postUserReview(username, movieId, reviewPara, rating);
+
+        window.location.reload();
 
         setReviewData({
             reviewPara:"",
             rating:"10"
         });
-        
     };
 
     useEffect(() => {
         async function loadDetails() {
             const res = await getMovieDetails(movieId);
-            setMovieTitle(res.original_title);
+            setMovieTitle(res.title);
             setPoster(res.poster_path);
             setDetails(res.overview);
             setDate(res.release_date);
@@ -70,17 +72,6 @@ function MovieDescription() {
         loadDetails();
         loadUserReview();
     }, [movieId]);
-
-    const scrollLeft = () => {
-        const row = getCreditsRef.current;
-        row.scrollLeft = Math.max(row.scrollLeft - row.clientWidth, 0);
-    };
-
-    const scrollRight = () => {
-        const row = getCreditsRef.current;
-        const maxScroll = row.scrollWidth - row.clientWidth;
-        row.scrollLeft = Math.min(row.scrollLeft + row.clientWidth, maxScroll);
-    };
 
     const closePopup = () => {
         setPopupOpen(false);
@@ -182,10 +173,6 @@ function MovieDescription() {
                     
 
                     <div className="castRowWrapper">
-                        <button className="castLeft" onClick={scrollLeft}>
-                            <img src="/left-arrow.png" />
-                        </button>
-
                         <div className="castRow" ref={getCreditsRef}>
                             <span id="castSpan">Cast</span>
 
@@ -202,10 +189,6 @@ function MovieDescription() {
                                 );
                             })}
                         </div>
-
-                        <button className="castRight" onClick={scrollRight}>
-                            <img src="/right-arrow.png" />
-                        </button>
                     </div>
                 </div>
             </div>

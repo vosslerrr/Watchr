@@ -94,6 +94,11 @@
     margin: 125px 0 0 10px;
     width: 25px;
     height: 25px;
+    transition: filter 0.2s ease;
+}
+
+#editIcon img:hover{
+    filter: invert(59%) sepia(66%) saturate(1442%) hue-rotate(15deg) brightness(105%) contrast(103%);
 }
 
 .edit-username{

@@ -17,7 +17,7 @@ function MovieDescription() {
     useEffect(() => {
         async function loadDetails() {
             const res = await getMovieDetails(movieId);
-            setMovieTitle(res.original_title);
+            setMovieTitle(res.title);
             setPoster(res.poster_path);
             setDetails(res.overview);
             setDate(res.release_date);

@@ -3,6 +3,7 @@
 }
 
 #welcomeMessage{
+    margin: 0 auto 0 auto;
     text-align: center;
     color: var(--text);
     font-size: 35px;

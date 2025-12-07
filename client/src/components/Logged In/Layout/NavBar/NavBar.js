@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "./navBar.css";
 import { useNavigate } from "react-router";
 import { searchMovies, getMovieCredits, searchUsers, getUserDetails } from "../../../../utils/EC2api";
+import { Link } from "react-router-dom";
 
 function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -164,8 +165,7 @@ function NavBar() {
                     </button>
                     <div id="dropdown-content">
                         <a href="/">Home</a>
-                        <a href="/movies">Movies</a>
-                        <a href="/watchlist" id="watchlistOption">Watchlist</a>
+                        <a href="/movies" id="moviesOption">Movies</a>
                     </div>
                 </div>
             </div>
@@ -292,8 +292,9 @@ function NavBar() {
                         <div id="profile-header">
                             <div id="profile-name">{username}</div>
                         </div>
+
                         <a onClick={(e) => { goToProfile(); }}>Profile</a>
-                        <a href="/">Settings</a>
+                        <Link to={`/user/${username}/settings`}>Settings</Link>
                         <a onClick={(e) => {
                             localStorage.removeItem("token");
                             window.location.href='/';
