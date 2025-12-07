@@ -167,7 +167,6 @@
     justify-content: center;
 }
 
-
 .following{
     margin: 77px 0 0 10px;
     height: 100px;
@@ -179,6 +178,10 @@
 #numFollowing{
     display: flex;
     justify-content: center;
+}
+
+.following, .followers{
+    cursor: pointer;
 }
 
 /*=====================================================================
@@ -278,7 +281,6 @@
     justify-content: center;
 }
 
-
 .currfollowing{
     margin: 77px 0 0 10px;
     height: 100px;
@@ -290,4 +292,8 @@
 #currnumFollowing{
     display: flex;
     justify-content: center;
+}
+
+.currfollowers, .currfollowing{
+    cursor: pointer;
 }

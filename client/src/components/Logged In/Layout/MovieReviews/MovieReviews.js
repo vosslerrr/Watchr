@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import './movieReviews.css';
-import { getMovieReviews, getUserDetails } from '../../../../utils/EC2api'
+import { getMovieReviews, getUserDetails } from '../../../../utils/api'
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router";
 
