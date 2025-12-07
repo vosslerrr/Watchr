@@ -37,6 +37,16 @@ router.get("/following/:username", async(req, res) => {
     res.send(followingUsernames);
 });
 
+router.get("/followers/:username", async(req, res) => {
+    const { username } = req.params;
+
+    const user = await User.findOne({ username }).populate("followers", "username");
+
+    const followerUsernames = user.followers.map(f => f.username);
+
+    res.send(followerUsernames);
+});
+
 router.put("/unfollow/:follower/:target", async(req, res) => {
     const { follower, target } = req.params;
 

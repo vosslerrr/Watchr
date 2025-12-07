@@ -121,3 +121,8 @@ export async function getFollowingUsers(username){
     const res = await fetch(`http://localhost:5000/routes/user/following/${username}`);
     return res.json();
 }
+
+export async function getFollowerUsers(username){
+    const res = await fetch(`http://localhost:5000/routes/user/followers/${username}`);
+    return res.json();
+}
