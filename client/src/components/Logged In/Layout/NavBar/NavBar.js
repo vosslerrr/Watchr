@@ -268,13 +268,6 @@ function NavBar() {
             </div>
 
             <div className="right">
-                <div id="log">
-                    <button id="logBtn">
-                        <span>LOG</span>
-                        <img src="/log-icon.png"/>
-                    </button>
-                </div>
-
                 <div id="profile" ref={profRef}>
                     <button
                         id="profBtn"
