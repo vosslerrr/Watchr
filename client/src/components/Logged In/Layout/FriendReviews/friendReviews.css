@@ -56,11 +56,16 @@
 .FRAvatar{
     width: 50px;
     max-height: 47px;
-    border-radius: 50%; 
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 2px;
+    color: transparent;
+    transition: border-color 0.3s ease-in-out; 
 }
 
 .FRAvatar:hover{
     cursor: pointer;
+    border-color: white;
 }
 
 .FRUsername{
@@ -73,6 +78,7 @@
 
 .FRUsername:hover{
     cursor: pointer;
+    color: var(--bgGold);
 }
 
 .FRReviewLayout{

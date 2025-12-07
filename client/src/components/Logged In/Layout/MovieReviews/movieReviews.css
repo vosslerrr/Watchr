@@ -42,10 +42,15 @@
     width: 50px;
     max-height: 47px;
     border-radius: 50%;
+    border-style: solid;
+    border-width: 2px;
+    color: transparent;
+    transition: border-color 0.3s ease-in-out; 
 }
 
 #reviewAvatar:hover{
     cursor: pointer;
+    border-color: white;
 }
 
 #reviewUsername{
@@ -56,6 +61,7 @@
 
 #reviewUsername:hover{
     cursor: pointer;
+    color: var(--bgGold)
 }
 
 #reviewRating{

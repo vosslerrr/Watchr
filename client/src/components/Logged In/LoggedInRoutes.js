@@ -4,6 +4,7 @@ import ProfilePage from './ProfilePage/InProfilePage';
 import MoviePage from './MoviePage/InMoviePage';
 import FollowersPage from './FollowersPage/FollowersPage';
 import FollowingPage from './FollowingPage/FollowingPage';
+import SeeAllUserReviewsPage from './SeeAllUserReviewsPage/SeeAllUserReviews';
 
 function LoggedInRoutes(){
     return(
@@ -13,6 +14,7 @@ function LoggedInRoutes(){
             <Route path="/user/:username" element={<ProfilePage />} />
             <Route path="/user/:username/followers" element={<FollowersPage />} />
             <Route path="/user/:username/following" element={<FollowingPage />} />
+            <Route path="/user/:username/reviews" element={<SeeAllUserReviewsPage />} />
         </Routes>
     );
 }

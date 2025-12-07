@@ -32,7 +32,7 @@ function UserReviews(){
         <div className="UserReviews">
             <div className="Header">
                 <span id="reviewHeader">Recent Reviews</span>
-                <a id="seeAll" href="/">See All</a>
+                <Link id="URSeeAll" to={`/user/${username}/reviews`}>SEE ALL</Link>
             </div>
 
             <div className="Reviews">
@@ -66,7 +66,6 @@ function UserReviews(){
                     );
                 })}
             </div>
-
         </div>
     );
 }
