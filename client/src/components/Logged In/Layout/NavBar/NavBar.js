@@ -165,8 +165,7 @@ function NavBar() {
                     </button>
                     <div id="dropdown-content">
                         <a href="/">Home</a>
-                        <a href="/movies">Movies</a>
-                        <a href="/watchlist" id="watchlistOption">Watchlist</a>
+                        <a href="/movies" id="moviesOption">Movies</a>
                     </div>
                 </div>
             </div>

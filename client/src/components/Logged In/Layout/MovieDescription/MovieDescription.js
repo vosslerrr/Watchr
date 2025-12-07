@@ -73,17 +73,6 @@ function MovieDescription() {
         loadUserReview();
     }, [movieId]);
 
-    const scrollLeft = () => {
-        const row = getCreditsRef.current;
-        row.scrollLeft = Math.max(row.scrollLeft - row.clientWidth, 0);
-    };
-
-    const scrollRight = () => {
-        const row = getCreditsRef.current;
-        const maxScroll = row.scrollWidth - row.clientWidth;
-        row.scrollLeft = Math.min(row.scrollLeft + row.clientWidth, maxScroll);
-    };
-
     const closePopup = () => {
         setPopupOpen(false);
         setReviewData({
@@ -184,10 +173,6 @@ function MovieDescription() {
                     
 
                     <div className="castRowWrapper">
-                        <button className="castLeft" onClick={scrollLeft}>
-                            <img src="/left-arrow.png" />
-                        </button>
-
                         <div className="castRow" ref={getCreditsRef}>
                             <span id="castSpan">Cast</span>
 
@@ -204,10 +189,6 @@ function MovieDescription() {
                                 );
                             })}
                         </div>
-
-                        <button className="castRight" onClick={scrollRight}>
-                            <img src="/right-arrow.png" />
-                        </button>
                     </div>
                 </div>
             </div>
