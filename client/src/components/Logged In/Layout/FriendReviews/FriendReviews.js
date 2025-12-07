@@ -17,7 +17,7 @@ function FriendReviews(){
     useEffect(() =>{
         async function loadReviews(){
             const res = await getFriendReviews(username);
-
+            
             const tempFriends = res.map(review => review.username);
             const tempIds = res.map(review => review.movie_id);
 

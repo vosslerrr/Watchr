@@ -24,7 +24,7 @@ router.get("/friends/:username", async(req, res) => {
     const followingUsernames = user.following.map(f => f.username);
 
     if(followingUsernames.length === 0){
-        return res.json({ reviews: []});
+        return res.json([]);
     }
 
     const reviews = await Review.find({

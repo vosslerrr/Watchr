@@ -126,3 +126,10 @@ export async function getFollowerUsers(username){
     const res = await fetch(`http://localhost:5000/routes/user/followers/${username}`);
     return res.json();
 }
+
+export async function deleteUserAccount(username){
+    const res = await fetch(`http://localhost:5000/routes/user/delete/${username}`,{
+        method: "DELETE"
+    })
+    return res.json();
+}

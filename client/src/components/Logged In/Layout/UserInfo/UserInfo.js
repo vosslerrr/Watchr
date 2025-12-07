@@ -140,7 +140,7 @@ function UserInfo(){
                 <div id="leftSide">
                     <div className="avgRating">
                         <span id="avgNum">
-                            {(ratings/count).toFixed(2)}
+                            {((ratings/count) || 0).toFixed(2)}
                             <img src="/rating-star.png"></img>
                         </span>
                         <span id="avgText">Avg Rating</span>   
