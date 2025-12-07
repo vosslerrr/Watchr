@@ -27,6 +27,16 @@ router.get("/reviews/:username", async(req, res) => {
     res.send(reviews);
 });
 
+router.get("/following/:username", async(req, res) => {
+    const { username } = req.params;
+
+    const user = await User.findOne({ username }).populate("following", "username");
+
+    const followingUsernames = user.following.map(f => f.username);
+
+    res.send(followingUsernames);
+});
+
 router.put("/unfollow/:follower/:target", async(req, res) => {
     const { follower, target } = req.params;
 

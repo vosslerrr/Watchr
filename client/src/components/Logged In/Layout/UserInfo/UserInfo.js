@@ -2,7 +2,7 @@ import "./UserInfo.css"
 import React, { useState, useEffect } from 'react';
 import { getUserDetails, getUserReviews, postNewAvatar, putNewUsername, putNewFollower, putRemoveFollower } from "../../../../utils/api";
 import { useParams } from "react-router-dom";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 function UserInfo(){
     const { username } = useParams();
