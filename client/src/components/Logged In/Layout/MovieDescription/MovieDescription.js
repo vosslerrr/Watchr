@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import './movieDescription.css';
-import { getMovieDetails, getMovieCredits, postUserReview, getUserReviews } from '../../../../utils/api';
+import { getMovieDetails, getMovieCredits, postUserReview, getUserReviews } from '../../../../utils/EC2api';
 import { useParams } from "react-router-dom";
 
 function MovieDescription() {
