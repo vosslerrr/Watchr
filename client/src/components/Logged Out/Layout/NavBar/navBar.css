@@ -37,7 +37,6 @@
 .outMiddle {
     flex: 1;
     display: flex;
-    justify-content: center;
     min-width: 0;
 }
 
@@ -108,7 +107,7 @@
     background-color: var(--goldHover);
 }
 
-#outMenu:hover #outWatchlistOption {
+#outMenu:hover #outmoviesOption {
     border-radius: 0 0 18px 18px;
 }
 

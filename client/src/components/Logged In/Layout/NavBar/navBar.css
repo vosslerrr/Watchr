@@ -14,7 +14,6 @@ body{
 }
 
 .navBar{
- 
     height: 100px;
     width: 100%;
     background-color: #1E1E1E;
@@ -23,7 +22,7 @@ body{
     display:flex;
     justify-content: space-between;
     align-content: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS';
 }
 
 .left{
