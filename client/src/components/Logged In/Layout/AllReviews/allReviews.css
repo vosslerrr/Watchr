@@ -107,3 +107,24 @@
     filter: grayscale(100%);
     transition: 0.3s ease;
 }
+
+
+
+
+
+.ARReviewPara::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ARReviewPara::-webkit-scrollbar-track {
+    border-radius: 4px;
+}
+
+.ARReviewPara::-webkit-scrollbar-thumb {
+    background: #e2e2e288;
+    border-radius: 4px;
+}
+
+.ARReviewPara::-webkit-scrollbar-thumb:hover {
+    background: #e2e2e2cc;
+}

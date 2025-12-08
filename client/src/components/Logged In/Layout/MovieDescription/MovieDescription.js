@@ -151,7 +151,7 @@ function MovieDescription() {
                                         <textarea
                                             id="reviewBox"
                                             name="reviewPara"
-                                            placeholder="Add A Review"
+                                            placeholder="Add a Review"
                                             value={reviewPara}
                                             onChange={onChange}>
                                         </textarea>

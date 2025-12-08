@@ -73,10 +73,11 @@
     max-width: 240px;
     opacity: 0.6;
     margin-top: 5px;
+    padding-right: 3px;
 }
 
 #reviewPara::-webkit-scrollbar {
-    height: 8px;
+    width: 8px;
 }
 
 #reviewPara::-webkit-scrollbar-track {
@@ -186,7 +187,6 @@
 
 .ERreviewBox::-webkit-scrollbar {
     width: 8px;
-    height: 2px;
 }
 
 .ERreviewBox::-webkit-scrollbar-track {
@@ -194,13 +194,12 @@
 }
 
 .ERreviewBox::-webkit-scrollbar-thumb {
-    background: #646464;
+    background: #e2e2e288;
     border-radius: 4px;
-    cursor: auto;
 }
 
 .ERreviewBox::-webkit-scrollbar-thumb:hover {
-    background: #525252cc;
+    background: #e2e2e2cc;
 }
 
 .ERreviewBox:focus{
