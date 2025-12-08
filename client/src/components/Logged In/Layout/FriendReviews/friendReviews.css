@@ -131,7 +131,7 @@
 }
 
 .FRReviewPara::-webkit-scrollbar {
-    height: 8px;
+    width: 8px;
 }
 
 .FRReviewPara::-webkit-scrollbar-track {
