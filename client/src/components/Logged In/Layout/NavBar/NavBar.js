@@ -240,9 +240,11 @@ function NavBar() {
                                                 className="searchPoster"
                                             />
                                             <span className="searchTitle">{movie.title}</span>
+
                                             <span className="searchDate">
                                                 {movie.release_date?.slice(0, 4)}
                                             </span>
+
                                             <span className="searchDirector">
                                                 Directed By: {movie.director}
                                             </span>
@@ -271,7 +273,6 @@ function NavBar() {
                                         </div>
                                     ))}
                             </div>
-<<<<<<< HEAD
                         )}
                     </div>
                 </div>
@@ -286,105 +287,23 @@ function NavBar() {
                                 setIsOpen((prev) => !prev);
                             }}
                         >
-                            <img src={avatarURL} />
+                            <img src={avatarURL}/>
                         </button>
 
-                        {isOpen && (
-                            <div id="profile-menu">
-                                <div id="profile-header">
-                                    <div id="profile-name">{username}</div>
-                                </div>
-                                <a onClick={(e) => { goToProfile(); }}>Profile</a>
-                                <Link to={`/user/${username}/settings`}>Settings</Link>
-                                <a onClick={(e) => {
-                                    localStorage.removeItem("token");
-                                    window.location.href = '/';
-                                }} id="logoutButton">Sign Out</a>
+                    {isOpen && (
+                        <div id="profile-menu">
+                            <div id="profile-header">
+                                <div id="profile-name">{username}</div>
                             </div>
-                        )}
-=======
+
+                            <a onClick={(e) => { goToProfile(); }}>Profile</a>
+                            <Link to={`/user/${username}/settings`}>Settings</Link>
+                            <a onClick={(e) => {
+                                localStorage.removeItem("token");
+                                window.location.href='/';
+                            }} id="logoutButton">Sign Out</a>
                         </div>
                     )}
-
-                    {results.length > 0 && (
-                        <div id="searchDropdown" ref={dropdownRef}>
-                            {searchMode === "movies" &&
-                                results.map((movie) => (
-                                    <div
-                                        key={movie.id}
-                                        className="searchItem"
-                                        onClick={() => goToMovie(movie.id)}
-                                    >
-                                        <img
-                                            src={
-                                                movie.poster_path
-                                                    ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
-                                                    : "/no-image.png"
-                                            }
-                                            className="searchPoster"
-                                        />
-                                        <span className="searchTitle">{movie.title}</span>
-                                        <span className="searchDate">
-                                            {movie.release_date?.slice(0, 4)}
-                                        </span>
-                                        <span className="searchDirector">
-                                            Directed By: {movie.director}
-                                        </span>
-                                    </div>
-                                ))}
-
-                            {searchMode === "users" &&
-                                results.map((user) => (
-                                    <div
-                                        key={user.username}
-                                        className="userSearchItem"
-                                        onClick={() => goToUser(user.username)}
-                                    >
-                                        <img
-                                            src={user.avatarURL}
-                                            className="userSearchAvatar"
-                                        />
-                                        <span className="userSearchName">
-                                            {user.username}
-                                        </span>
-                                        {user.isFollowing ? (
-                                            <span className="followingTag">Following</span>
-                                        ) : (
-                                            <span className="notFollowingTag">Not Following</span>
-                                        )}
-                                    </div>
-                                ))}
-                        </div>
-                    )}
-                </div>
-            </div>
-
-            <div className="right">
-                <div id="profile" ref={profRef}>
-                    <button
-                        id="profBtn"
-                        type="button"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            setIsOpen((prev) => !prev);
-                        }}
-                    >
-                        <img src={avatarURL}/>
-                    </button>
-
-                {isOpen && (
-                    <div id="profile-menu">
-                        <div id="profile-header">
-                            <div id="profile-name">{username}</div>
-                        </div>
-
-                        <a onClick={(e) => { goToProfile(); }}>Profile</a>
-                        <Link to={`/user/${username}/settings`}>Settings</Link>
-                        <a onClick={(e) => {
-                            localStorage.removeItem("token");
-                            window.location.href='/';
-                        }} id="logoutButton">Sign Out</a>
->>>>>>> main
                     </div>
                 </div>
             </div>
