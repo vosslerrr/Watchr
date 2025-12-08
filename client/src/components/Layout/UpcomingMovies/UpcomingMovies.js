@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import './upcomingMovies.css';
-import { getMovieDetails, getUpcomingMovies } from '../../../utils/EC2api';
+import { getMovieDetails, getUpcomingMovies } from '../../../utils/api';
 import { Link } from "react-router-dom";
 
 function UpcomingMovies(){
@@ -22,12 +22,12 @@ function UpcomingMovies(){
     const upcomingMoviesRef = useRef(null);
     const scrollLeft = () => {
         if(upcomingMoviesRef.current) {
-            upcomingMoviesRef.current.scrollLeft -= 1265;
+            upcomingMoviesRef.current.scrollLeft -= 1255;
         }
     }
     const scrollRight = () => {
         if(upcomingMoviesRef.current) {
-            upcomingMoviesRef.current.scrollLeft += 1265;
+            upcomingMoviesRef.current.scrollLeft += 1255;
         }
     }
 

@@ -1,6 +1,6 @@
 import './settings.css';
 import React, { useState, useEffect } from 'react';
-import { getUserDetails, postNewAvatar, putNewUsername, deleteUserAccount } from "../../../../utils/EC2api"
+import { getUserDetails, postNewAvatar, putNewUsername, deleteUserAccount } from "../../../../utils/api"
 import { useNavigate } from "react-router";
 
 function Settings(){

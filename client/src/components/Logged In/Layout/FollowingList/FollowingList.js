@@ -1,5 +1,5 @@
 import './followingList.css';
-import { getUserDetails, getFollowingUsers } from "../../../../utils/EC2api"
+import { getUserDetails, getFollowingUsers } from "../../../../utils/api"
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';

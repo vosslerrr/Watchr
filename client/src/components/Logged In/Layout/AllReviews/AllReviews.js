@@ -1,5 +1,5 @@
 import './allReviews.css'
-import { getUserReviews, getMovieDetails, deleteUserReview, editUserReview } from '../../../../utils/EC2api'
+import { getUserReviews, getMovieDetails, deleteUserReview, editUserReview } from '../../../../utils/api'
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from 'react-router-dom';
@@ -15,6 +15,7 @@ function AllReviews(){
             rating: '10'
         });
     const { reviewPara, rating } = reviewData;
+
 
     useEffect(() => {
             async function load(){
@@ -73,6 +74,11 @@ function AllReviews(){
                                 <Link to={`/movie/${review.movie_id}`}>
                                     <img src={`https://image.tmdb.org/t/p/w500${details[index]?.poster_path}`}></img>
                                 </Link>
+
+                                <div id="ARPosterOverlay">
+                                    <h3>{details[index]?.title}</h3>
+                                    <p>{details[index]?.release_date?.slice(0, 4)}</p>
+                                </div>
                             </div>
                             
                             <div className="ARReviewContent">

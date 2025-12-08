@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import './popularMovies.css';
-import { getMovieDetails, getPopularMovies } from '../../../utils/EC2api';
+import { getMovieDetails, getPopularMovies } from '../../../utils/api';
 import { Link } from 'react-router-dom';
 
 function PopularMovies(){
@@ -22,12 +22,12 @@ function PopularMovies(){
     const popularMoviesRef = useRef(null);
     const scrollLeft = () => {
         if(popularMoviesRef.current) {
-            popularMoviesRef.current.scrollLeft -= 1265;
+            popularMoviesRef.current.scrollLeft -= 1255;
         }
     }
     const scrollRight = () => {
         if(popularMoviesRef.current) {
-            popularMoviesRef.current.scrollLeft += 1265;
+            popularMoviesRef.current.scrollLeft += 1255;
         }
     }
 

@@ -1,3 +1,6 @@
+.FollowerList{
+    min-height: calc(100vh - 284px); 
+}
 #followerHeader{
     margin: 20px 400px 0 300px;
     padding: 0 0 10px 0;

@@ -92,17 +92,6 @@
     border-radius: 10px;
 }
 
-.FRPoster img{
-    width: 150px;
-    border-radius: 8px;
-    filter: grayscale(0%);
-    transition: filter 0.2s ease-in-out;
-}
-
-.FRPoster img:hover{
-    filter: grayscale(100%);
-}
-
 .FRReviewContent{
     display: flex;
     flex-direction: column;
@@ -156,4 +145,51 @@
 
 .FRReviewPara::-webkit-scrollbar-thumb:hover {
     background: #e2e2e2cc;
+}
+
+
+
+
+.FRPoster img {
+    width: 150px;
+    border-radius: 8px;
+}
+
+.FRPoster {
+    position: relative;
+    width: 150px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#FRPosterOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.65);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    opacity: 0;
+    transition: 0.3s ease;
+    padding: 0 20px;          
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+.FRPoster:hover #FRPosterOverlay {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.FRPoster:hover img {
+    filter: grayscale(100%);
+    transition: 0.3s ease;
 }

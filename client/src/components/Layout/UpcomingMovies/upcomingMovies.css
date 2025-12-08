@@ -65,15 +65,10 @@
 }
 
 #upcomingMovies > #upcomingMoviePosters img{
-    max-width: 220px;
+    max-width: 218px;
     display: block;
     object-fit: contain;
-    filter: grayscale(0%);
-    transition: 0.3 ease;
-}
-
-#upcomingMovies > #upcomingMoviePosters img:hover{
-    filter: grayscale(100%);
+    border-radius: 8px;
 }
 
 #upcomingMovies::-webkit-scrollbar{
@@ -119,8 +114,14 @@
     transition: opacity 0.3s ease;
     padding: 0 20px;          
     box-sizing: border-box;
+    border-radius: 8px;
 }
 
 #upcomingMoviePosters:hover #upcomingMoviesOverlay  {
     opacity: 1;
+}
+
+#upcomingMoviePosters:hover img {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
 }

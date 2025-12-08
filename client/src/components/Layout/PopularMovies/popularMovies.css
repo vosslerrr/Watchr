@@ -65,15 +65,12 @@
 }
 
 #popularMovies > #popularMoviePosters img{
-    max-width: 220px;
+    max-width: 218px;
     display: block;
     object-fit: contain;
-    filter: grayscale(0%);
+    border-radius: 8px;    
 }
 
-#popularMovies > #popularMoviePosters img:hover{
-    filter: grayscale(100%);
-}
 
 #popularMovies::-webkit-scrollbar{
    display: none;
@@ -91,7 +88,7 @@
     cursor: pointer;
 }
 
-#popularMoviePosters {
+#popularMoviePosters{
     position: relative;
     width: 300px;
     height: auto;
@@ -116,11 +113,15 @@
     font-size: 1.4rem;
     opacity: 0;
     transition: opacity 0.3s ease;
-
     padding: 0 20px;          
     box-sizing: border-box;
+    border-radius: 8px;
 }
 
 #popularMoviePosters:hover #popularMoviesOverlay  {
     opacity: 1;
+}
+#popularMoviePosters:hover img {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
 }
