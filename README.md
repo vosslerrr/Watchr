@@ -4,5 +4,14 @@
 
 This website is only configured for a 1920x1080 aspect ratio, any other configurations will cause the website layout to become misaligned. Below are screenshots of what certain pages should look like at the correct aspect ratio.
 
+### Home Page ###
 
+![Home Page screenshot](readme-images/homePage.png)
 
+### Movie Page ###
+
+![Movie Page screenshot](readme-images/moviePage.png)
+
+### Profile Page ###
+
+![Profile Page screenshot](readme-images/profilePage.png)
