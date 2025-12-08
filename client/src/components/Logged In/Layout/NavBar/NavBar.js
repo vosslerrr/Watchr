@@ -23,7 +23,7 @@ function NavBar() {
     const [avatarURL, setAvatarURL] = useState('');
 
     useEffect(() => {
-        async function load(){
+        async function load() {
             const res = await getUserDetails(username);
 
             setAvatarURL(res.avatarURL);
@@ -51,9 +51,16 @@ function NavBar() {
 
             if (searchMode === "users") {
                 const users = await searchUsers(username, query);
-                setResults(users);
+                const q = query.toLowerCase();
+
+                const filtered = users.filter(u =>
+                    u.username.toLowerCase().includes(q)
+                );
+
+                setResults(filtered);
                 return;
             }
+
 
             let movies = await searchMovies(query);
             const q = query.toLowerCase();
@@ -152,65 +159,150 @@ function NavBar() {
     }
 
     return (
-        <div className="navBar">
-            <div className="left">
-                <div id="navLogo">
-                    <a href="/"><img src="/Watchr_LOGO.png" alt="Watchr Logo" /></a>
-                </div>
-
-                <div id="menu">
-                    <button id="dropbtn">
-                        <img src="/hamburger-icon.png" alt="" />
-                        <span> Menu</span>
-                    </button>
-                    <div id="dropdown-content">
-                        <a href="/">Home</a>
-                        <a href="/movies" id="moviesOption">Movies</a>
-                    </div>
-                </div>
-            </div>
-
-            <div className="middle">
-                <div id="searchBar">
-                    <input
-                        ref={inputRef}
-                        type="search"
-                        placeholder={searchMode === "movies" ? "Search Movies" : "Search Users"}
-                        id="search-input"
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        autoComplete="off"
-                    />
-
-                    <div
-                        id="modeSelectorBtn"
-                        className="searchModeSelector"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            setModeDropdownOpen((prev) => !prev);
-                        }}
-                    >
-                        {searchMode === "movies" ? "Movies" : "Users"} ▼
+            <div className="navBar">
+                <div className="left">
+                    <div id="navLogo">
+                        <a href="/"><img src="/Watchr_LOGO.png" alt="Watchr Logo" /></a>
                     </div>
 
-                    {modeDropdownOpen && (
-                        <div className="searchModeDropdown" ref={modeDropdownRef}>
-                            <div
-                                onClick={() => {
-                                    setSearchMode("movies");
-                                    setModeDropdownOpen(false);
-                                }}
-                            >
-                                Movies
+                    <div id="menu">
+                        <button id="dropbtn">
+                            <img src="/hamburger-icon.png" alt="" />
+                            <span> Menu</span>
+                        </button>
+                        <div id="dropdown-content">
+                            <a href="/">Home</a>
+                            <a href="/popularMovies">Popular Movies</a>
+                            <a href="/upcomingMovies" id="upcomingOption">Upcoming Movies</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="middle">
+                    <div id="searchBar">
+                        <input
+                            ref={inputRef}
+                            type="search"
+                            placeholder={searchMode === "movies" ? "Search Movies" : "Search Users"}
+                            id="search-input"
+                            value={query}
+                            onChange={(e) => setQuery(e.target.value)}
+                            autoComplete="off"
+                        />
+
+                        <div
+                            id="modeSelectorBtn"
+                            className="searchModeSelector"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setModeDropdownOpen((prev) => !prev);
+                            }}
+                        >
+                            {searchMode === "movies" ? "Movies" : "Users"} ▼
+                        </div>
+
+                        {modeDropdownOpen && (
+                            <div className="searchModeDropdown" ref={modeDropdownRef}>
+                                <div
+                                    onClick={() => {
+                                        setSearchMode("movies");
+                                        setModeDropdownOpen(false);
+                                    }}
+                                >
+                                    Movies
+                                </div>
+                                <div
+                                    onClick={() => {
+                                        setSearchMode("users");
+                                        setModeDropdownOpen(false);
+                                    }}
+                                >
+                                    Users
+                                </div>
                             </div>
-                            <div
-                                onClick={() => {
-                                    setSearchMode("users");
-                                    setModeDropdownOpen(false);
-                                }}
-                            >
-                                Users
+                        )}
+
+                        {results.length > 0 && (
+                            <div id="searchDropdown" ref={dropdownRef}>
+                                {searchMode === "movies" &&
+                                    results.map((movie) => (
+                                        <div
+                                            key={movie.id}
+                                            className="searchItem"
+                                            onClick={() => goToMovie(movie.id)}
+                                        >
+                                            <img
+                                                src={
+                                                    movie.poster_path
+                                                        ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
+                                                        : "/no-image.png"
+                                                }
+                                                className="searchPoster"
+                                            />
+                                            <span className="searchTitle">{movie.title}</span>
+                                            <span className="searchDate">
+                                                {movie.release_date?.slice(0, 4)}
+                                            </span>
+                                            <span className="searchDirector">
+                                                Directed By: {movie.director}
+                                            </span>
+                                        </div>
+                                    ))}
+
+                                {searchMode === "users" &&
+                                    results.map((user) => (
+                                        <div
+                                            key={user.username}
+                                            className="userSearchItem"
+                                            onClick={() => goToUser(user.username)}
+                                        >
+                                            <img
+                                                src={user.avatarURL}
+                                                className="userSearchAvatar"
+                                            />
+                                            <span className="userSearchName">
+                                                {user.username}
+                                            </span>
+                                            {user.isFollowing ? (
+                                                <span className="followingTag">Following</span>
+                                            ) : (
+                                                <span className="notFollowingTag">Not Following</span>
+                                            )}
+                                        </div>
+                                    ))}
                             </div>
+<<<<<<< HEAD
+                        )}
+                    </div>
+                </div>
+
+                <div className="right">
+                    <div id="profile" ref={profRef}>
+                        <button
+                            id="profBtn"
+                            type="button"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setIsOpen((prev) => !prev);
+                            }}
+                        >
+                            <img src={avatarURL} />
+                        </button>
+
+                        {isOpen && (
+                            <div id="profile-menu">
+                                <div id="profile-header">
+                                    <div id="profile-name">{username}</div>
+                                </div>
+                                <a onClick={(e) => { goToProfile(); }}>Profile</a>
+                                <Link to={`/user/${username}/settings`}>Settings</Link>
+                                <a onClick={(e) => {
+                                    localStorage.removeItem("token");
+                                    window.location.href = '/';
+                                }} id="logoutButton">Sign Out</a>
+                            </div>
+                        )}
+=======
                         </div>
                     )}
 
@@ -292,11 +384,10 @@ function NavBar() {
                             localStorage.removeItem("token");
                             window.location.href='/';
                         }} id="logoutButton">Sign Out</a>
+>>>>>>> main
                     </div>
-                )}
                 </div>
             </div>
-        </div>
     );
 }
 

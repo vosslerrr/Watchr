@@ -22,12 +22,12 @@ function UpcomingMovies(){
     const upcomingMoviesRef = useRef(null);
     const scrollLeft = () => {
         if(upcomingMoviesRef.current) {
-            upcomingMoviesRef.current.scrollLeft -= 1265;
+            upcomingMoviesRef.current.scrollLeft -= 1255;
         }
     }
     const scrollRight = () => {
         if(upcomingMoviesRef.current) {
-            upcomingMoviesRef.current.scrollLeft += 1265;
+            upcomingMoviesRef.current.scrollLeft += 1255;
         }
     }
 
@@ -35,7 +35,7 @@ function UpcomingMovies(){
             <section className="upcomingMoviesSection">
                 <div className="upcomingHeader">
                     <h2 className="upcomingTitle">Upcoming Movies</h2>
-                    <a href="/movies" className="seeAllupcoming">SEE ALL</a>
+                    <a href="/upcomingmovies" className="seeAllupcoming">SEE ALL</a>
                     
                 </div>
                 <div className="upcomingMovieBar">
@@ -50,8 +50,15 @@ function UpcomingMovies(){
 
                             return(
                                 poster ? (
-                                    <div id="movie1" key={m.id}>
-                                        <Link to={`/movie/${details[index].id}`}><img src={`https://image.tmdb.org/t/p/w500${details[index].poster_path}`}/></Link>
+                                    <div id="upcomingMoviePosters" key={m.id}>
+                                        <Link to={`/movie/${details[index].id}`}>
+                                        <img src={`https://image.tmdb.org/t/p/w500${details[index].poster_path}`}/>
+                                        
+                                        <div id="upcomingMoviesOverlay">
+                                            <h3>{details[index].title}</h3>
+                                            <p>{details[index].release_date?.slice(0,4)}</p>
+                                        </div>
+                                        </Link>
                                     </div>
                                 ) : null
                             );

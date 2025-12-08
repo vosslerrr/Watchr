@@ -1,6 +1,7 @@
 import "./navBar.css"
 import { useNavigate } from "react-router";
 import { searchMovies, getMovieCredits, searchUsers } from "../../../../utils/EC2api";
+import { Link } from "react-router-dom";
 import React, { useState, useRef, useEffect } from "react";
 
 function NavBar() {
@@ -147,7 +148,12 @@ function NavBar() {
                     </button>
                     <div id="outdropdown-content">
                         <a href="/">Home</a>
+<<<<<<< HEAD
+                        <a href="/popularMovies">Popular Movies</a>
+                        <a href="/upcomingMovies" id="outWatchlistOption">Upcoming Movies</a>
+=======
                         <a href="/movies" id="outmoviesOption">Movies</a>
+>>>>>>> main
                     </div>
                 </div>
             </div>

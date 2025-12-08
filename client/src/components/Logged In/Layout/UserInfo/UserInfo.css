@@ -302,3 +302,11 @@
 .currfollowers, .currfollowing{
     cursor: pointer;
 }
+
+#textFollowing:hover, 
+#textFollowers:hover,
+#currtextFollowing:hover,
+#currtextFollowers:hover{
+    color: var(--text);
+    opacity: 0.5;
+}

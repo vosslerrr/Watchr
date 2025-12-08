@@ -13,6 +13,7 @@ function FriendReviews(){
     const [movieIds, setMovieIds] = useState([]);
     const [posters, setPosters] = useState([]);
     const [titles, setTitles] = useState([]);
+    const [dates, setDates] = useState([]);
 
     useEffect(() =>{
         async function loadReviews(){
@@ -56,6 +57,17 @@ function FriendReviews(){
             setPosters(posterArray);
         }
 
+        async function loadDates(){
+            const datePromises = movieIds.map(async(id) =>{
+                const res = await getMovieDetails(id);
+                return res.release_date;
+            });
+
+            const dateArray = await Promise.all(datePromises);
+
+            setDates(dateArray);
+        }
+
         async function loadTitles(){
             const titlePromises = movieIds.map(async (id) => {
                 const res = await getMovieDetails(id);
@@ -66,10 +78,11 @@ function FriendReviews(){
 
             setTitles(titleArray);
         }
-
+        loadDates();
         loadPosters();
         loadTitles();
     }, [movieIds]);
+
 
     const goToProfile = (username) => navigate(`/user/${username}`);
     
@@ -97,6 +110,11 @@ function FriendReviews(){
                                     <Link to={`/movie/${review.movie_id}`}>
                                         <img src={`https://image.tmdb.org/t/p/w500${posters[index]}`}></img>
                                     </Link>
+
+                                    <div id="FRPosterOverlay">
+                                    <h3>{titles[index]}</h3>
+                                    <p>{dates[index]?.slice(0, 4)}</p>
+                                </div>
                                 </div>
 
                                 <div className="FRReviewContent">

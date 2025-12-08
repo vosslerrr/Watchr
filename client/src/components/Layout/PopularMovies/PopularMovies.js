@@ -22,12 +22,12 @@ function PopularMovies(){
     const popularMoviesRef = useRef(null);
     const scrollLeft = () => {
         if(popularMoviesRef.current) {
-            popularMoviesRef.current.scrollLeft -= 1265;
+            popularMoviesRef.current.scrollLeft -= 1255;
         }
     }
     const scrollRight = () => {
         if(popularMoviesRef.current) {
-            popularMoviesRef.current.scrollLeft += 1265;
+            popularMoviesRef.current.scrollLeft += 1255;
         }
     }
 
@@ -35,7 +35,7 @@ function PopularMovies(){
             <section className="popularMoviesSection">
                 <div className="popularHeader">
                     <h2 className="popularTitle">Popular Movies</h2>
-                    <a href="/movies" className="seeAll">SEE ALL</a>
+                    <a href="/popularmovies" className="seeAll">SEE ALL</a>
                 </div>
                 <div className="movieBar">
                     <div id="left">
@@ -49,8 +49,15 @@ function PopularMovies(){
 
                             return(
                                 poster ? (
-                                    <div id="movie1" key={m.id}>
-                                        <Link to={`/movie/${details[index].id}`}><img src={`https://image.tmdb.org/t/p/w500${details[index].poster_path}`}/></Link>
+                                    <div id="popularMoviePosters" key={m.id}>
+                                        <Link to={`/movie/${details[index].id}`}>
+                                        <img src={`https://image.tmdb.org/t/p/w500${details[index].poster_path}`}/>
+                                        
+                                        <div id="popularMoviesOverlay">
+                                            <h3>{details[index].title}</h3>
+                                            <p>{details[index].release_date?.slice(0,4)}</p>
+                                        </div>
+                                        </Link>
                                     </div>
                                 ) : null
                             );

@@ -64,16 +64,13 @@
     scroll-behavior: smooth;
 }
 
-#popularMovies > #movie1 img{
-    max-width: 220px;
+#popularMovies > #popularMoviePosters img{
+    max-width: 218px;
     display: block;
     object-fit: contain;
-    filter: grayscale(0%);
+    border-radius: 8px;    
 }
 
-#popularMovies > #movie1 img:hover{
-    filter: grayscale(100%);
-}
 
 #popularMovies::-webkit-scrollbar{
    display: none;
@@ -89,4 +86,42 @@
     background-color: var(--bgBody);
     border:none;
     cursor: pointer;
+}
+
+#popularMoviePosters{
+    position: relative;
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+   
+}
+
+#popularMoviesOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.65);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 0 20px;          
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+#popularMoviePosters:hover #popularMoviesOverlay  {
+    opacity: 1;
+}
+#popularMoviePosters:hover img {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
 }

@@ -70,6 +70,11 @@ function UserReviews(){
                                 <Link to={`/movie/${review.movie_id}`}>
                                     <img src={`https://image.tmdb.org/t/p/w500${details[index]?.poster_path}`}></img>
                                 </Link>
+
+                                <div id="posterOverlay">
+                                    <h3>{details[index]?.title}</h3>
+                                    <p>{details[index]?.release_date?.slice(0, 4)}</p>
+                                </div>
                             </div>
 
                             <div id="reviewContent">

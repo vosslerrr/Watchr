@@ -4,6 +4,7 @@
     margin: 50px 600px 0 500px;
     height: 500px;
     align-items: center;
+    min-height: calc(100vh - 314px); 
 }
 
 #settingsUsername{

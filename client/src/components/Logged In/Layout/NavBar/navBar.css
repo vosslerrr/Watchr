@@ -140,7 +140,7 @@ body{
     background-color: var(--goldHover);
 }
 
-#menu:hover #dropdown-content #moviesOption{
+#menu:hover #dropdown-content #upcomingOption{
     border-radius: 0 0 18px 18px;
 }
 

@@ -16,6 +16,7 @@ function AllReviews(){
         });
     const { reviewPara, rating } = reviewData;
 
+
     useEffect(() => {
             async function load(){
                 const res = await getUserReviews(username);
@@ -73,6 +74,11 @@ function AllReviews(){
                                 <Link to={`/movie/${review.movie_id}`}>
                                     <img src={`https://image.tmdb.org/t/p/w500${details[index]?.poster_path}`}></img>
                                 </Link>
+
+                                <div id="ARPosterOverlay">
+                                    <h3>{details[index]?.title}</h3>
+                                    <p>{details[index]?.release_date?.slice(0, 4)}</p>
+                                </div>
                             </div>
                             
                             <div className="ARReviewContent">
