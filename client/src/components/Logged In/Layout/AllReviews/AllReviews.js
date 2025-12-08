@@ -1,5 +1,5 @@
 import './allReviews.css'
-import { getUserReviews, getMovieDetails, deleteUserReview, editUserReview } from '../../../../utils/api'
+import { getUserReviews, getMovieDetails, deleteUserReview, editUserReview } from '../../../../utils/EC2api'
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from 'react-router-dom';
