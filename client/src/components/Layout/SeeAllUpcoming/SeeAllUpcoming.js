@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import './seeAllUpcoming.css';
-import { getMovieDetails, getUpcomingMovies } from '../../../utils/api';
+import { getMovieDetails, getUpcomingMovies } from '../../../utils/EC2api';
 import { Link } from 'react-router-dom';
 
 function SeeAllUpcoming() {
