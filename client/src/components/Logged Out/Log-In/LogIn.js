@@ -13,7 +13,7 @@ function LogIn() {
     const onSubmit = async e => {
         e.preventDefault();
         const res = await logInUser(username, password);
-        if (res.msg == null) {
+        if (res.msg) {
             setMessage(res.msg);
         }
         localStorage.setItem('token', res.token);
