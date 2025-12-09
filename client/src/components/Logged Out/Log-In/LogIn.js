@@ -14,11 +14,13 @@ function LogIn() {
         e.preventDefault();
         const res = await logInUser(username, password);
         if (res.msg) {
-            setMessage(res.msg);
+            return setMessage(res.msg);
         }
+
         localStorage.setItem('token', res.token);
         localStorage.setItem('username', username);
         window.location.href = '/';
+
     };
     return (
         <div className="loginWrapper">
