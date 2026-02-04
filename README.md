@@ -6,12 +6,12 @@ This website is only configured for a 1920x1080 aspect ratio, any other configur
 
 ### Home Page ###
 
-![Home Page screenshot](readme-images/homePage.png)
+<img width="1917" height="919" alt="image" src="https://github.com/user-attachments/assets/044081f6-e6dc-4365-9475-5a7bfa8f1f0d" />
 
 ### Movie Page ###
 
-![Movie Page screenshot](readme-images/moviePage.png)
+<img width="1918" height="915" alt="image" src="https://github.com/user-attachments/assets/43bafbf1-3acf-4311-88b2-60ef2afa573c" />
 
 ### Profile Page ###
 
-![Profile Page screenshot](readme-images/profilePage.png)
+<img width="1915" height="919" alt="image" src="https://github.com/user-attachments/assets/3296ef17-1901-407f-b55e-b8088ce61add" />
